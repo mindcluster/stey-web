@@ -109,7 +109,7 @@ export default {
 
 .register {
   width: 80%;
-  color: var(--blueHibredu);
+  color: var(--darkGreyStey);
   font-size: 0.5em;
   text-align: left;
 }
