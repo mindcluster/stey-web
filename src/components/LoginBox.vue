@@ -17,12 +17,11 @@
         type="password"
       />
       <div class="check-register">
-        <CheckBox @click.native="remember = !remember" label="Lembrar login" />
-        <div class="register" @click="redirectRegister()">Cadastre-se</div>
+        <div class="register" @click="redirectRegister()">Esqueceu sua senha?</div>
       </div>
       <NormalButton
         @click.native="validate"
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         text="Login"
       />
     </v-form>
@@ -32,7 +31,6 @@
 <script>
 import globalMethods from "../mixins/globalMethods";
 import NormalButton from "../components/buttons/NormalButton";
-import CheckBox from "../components/inputs/CheckBox";
 import EmailInput from "../components/inputs/EmailInput";
 import PasswordInput from "../components/inputs/PasswordInput";
 import DefaultLoading from "../components/loading/DefaultLoading"
@@ -43,7 +41,6 @@ export default {
   mixins: [globalMethods],
   components: {
     NormalButton,
-    CheckBox,
     PasswordInput,
     EmailInput,
     DefaultLoading
@@ -114,7 +111,7 @@ export default {
   width: 80%;
   color: var(--blueHibredu);
   font-size: 0.5em;
-  text-align: right;
+  text-align: left;
 }
 
 .register:hover {

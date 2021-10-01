@@ -90,7 +90,7 @@ export default {
 }
 
 .v-list-item {
-  border-bottom: solid 1px var(--lightGrayHibredu);
+  border-bottom: solid 1px var(--lightGreyStey);
   width: auto;
 }
 

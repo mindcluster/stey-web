@@ -1,12 +1,12 @@
 <template>
   <div class="password-input">
-    <v-form color="var(--yellowHibredu)">
+    <v-form color="var(--yellowStey)">
       <v-text-field
         solo
         flat
-        background-color="var(--lightGrayHibredu)"
-        color="var(--yellowHibredu)"
-        :prepend-inner-icon="ico"
+        color="var(--yellowStey)"
+        outlined
+        :prepend-icon="ico"
         v-model="password"
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
         :rules="[rules.required, rules.min]"

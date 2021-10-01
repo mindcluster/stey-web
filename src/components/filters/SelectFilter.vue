@@ -13,7 +13,7 @@
       return-object
       single-line
       dense
-      background-color="var(--lightGrayHibredu)"
+      background-color="var(--lightGreyStey)"
       item-color="var(--yellowHibredu)"
       :prefix="text"
       @change="$emit('update:value', filter)"

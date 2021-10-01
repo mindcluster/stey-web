@@ -48,6 +48,6 @@ export default {
 }
 
 .v-list-item:hover {
-  background-color: var(--lightGrayHibredu);
+  background-color: var(--lightGreyStey);
 }
 </style>

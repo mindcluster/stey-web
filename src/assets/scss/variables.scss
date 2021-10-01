@@ -4,8 +4,11 @@ $greenHibredu: #44AB34 !important;
 $blueHibredu: #2DACE2 !important;
 $whiteHibredu: #FFFFFF !important;
 $grayHibredu: #B3B1B2 !important;
-$lightGrayHibredu: #F5F5F5 !important;
+$lightGreyStey: #F5F5F5 !important;
 $blackHibredu: #000000 !important;
+
+$darkGreyStey: #2D3037 !important;
+$yellowStey: #FAE615 !important;
 
 /*Secondary Colors*/
 $darkBlueHibredu: #076CAB !important;
@@ -25,8 +28,10 @@ $blueAlert: #006E99 !important;
     --blueHibredu: #{$blueHibredu};
     --whiteHibredu: #{$whiteHibredu};
     --grayHibredu: #{$grayHibredu};
-    --lightGrayHibredu: #{$lightGrayHibredu};
+    --lightGreyStey: #{$lightGreyStey};
     --blackHibredu: #{$blackHibredu};
+    --darkGreyStey: #{$darkGreyStey};
+    --yellowStey: #{$yellowStey};
 
     --darkBlueHibredu: #{$darkBlueHibredu};
     --lightBlueHibredu: #{$lightBlueHibredu};

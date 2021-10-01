@@ -4,7 +4,7 @@
       :color="color" 
       solo
       depressed
-      dark>
+      >
       {{ text }}
     </v-btn>
 </template>
@@ -22,7 +22,7 @@ export default {
 }
 
 .inactive {
-  background-color: var(--lightGrayHibredu) !important;
+  background-color: var(--lightGreyStey) !important;
   cursor: default;
   pointer-events: none;
 }

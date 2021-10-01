@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <img src="../../assets/images/stey-logo.png">
+        <img src="../../assets/images/stey-white-logo.png">
     </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
 .logo {
-    width: 40%;
+    width: 30%;
 }
 
 .logo img{

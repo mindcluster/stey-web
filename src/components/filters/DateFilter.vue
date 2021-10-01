@@ -13,7 +13,7 @@
       return-object
       single-line
       dense
-      background-color="var(--lightGrayHibredu)"
+      background-color="var(--lightGreyStey)"
       item-color="var(--yellowHibredu)"
       prefix="Data Inicial"
       @change="$emit('update:value', filter)"
@@ -31,7 +31,7 @@
       return-object
       single-line
       dense
-      background-color="var(--lightGrayHibredu)"
+      background-color="var(--lightGreyStey)"
       item-color="var(--yellowHibredu)"
       prefix="Data Final"
       @change="$emit('update:value', filter)"

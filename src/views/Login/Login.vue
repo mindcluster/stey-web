@@ -1,7 +1,7 @@
 <template>
   <div class="general">
-    <Logo />
-    <LoginBox />
+      <Logo />
+      <LoginBox />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 .general {
   width: 100%;
   height: 100%;
-  background-color: var(--lightBlueHibredu);
+  background-color: var(--darkGreyStey);
   background-image: url(../../assets/images/background.png);
   background-position: center;
   background-size: cover;

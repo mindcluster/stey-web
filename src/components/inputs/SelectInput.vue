@@ -1,7 +1,7 @@
 <template>
   <div class="text-input">
     <v-select
-      background-color="var(--lightGrayHibredu)"
+      background-color="var(--lightGreyStey)"
       solo
       flat
       color="var(--yellowHibredu)"

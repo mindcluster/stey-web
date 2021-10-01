@@ -5,7 +5,7 @@
     <v-progress-linear
       color="var(--yellowHibredu)"
       height="20"
-      background-color="var(--lightGrayHibredu)"
+      background-color="var(--lightGreyStey)"
       :value="this.value / 10"
     >
       <template v-slot:default="{ value }">

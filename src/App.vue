@@ -23,7 +23,7 @@ export default {
 }
 
 .swal2-styled.swal2-confirm {
-  background-color: var(--yellowHibredu) !important;
+  background-color: var(--yellowStey) !important;
   font-family: 'Metropolis Regular';
   color: #fff;
 }

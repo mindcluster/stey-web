@@ -1,13 +1,13 @@
 <template>
   <div class="text-input">
-    <v-form color="var(--yellowHibredu)">
+    <v-form color="var(--yellowStey)">
       <v-text-field
-        background-color="var(--lightGrayHibredu)"
         solo
         flat
-        color="var(--yellowHibredu)"
+        outlined
+        color="var(--yellowStey)"
         v-model="text"
-        :prepend-inner-icon="ico"
+        :prepend-icon="ico"
         :placeholder="label"
         :type="type"
         :rules="emailRules"

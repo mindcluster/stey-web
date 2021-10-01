@@ -55,7 +55,7 @@ export default {
 }
 
 .v-list-item {
-  border-bottom: solid 1px var(--lightGrayHibredu);
+  border-bottom: solid 1px var(--lightGreyStey);
 }
 
 @media only screen and (max-width: 1024px) {
