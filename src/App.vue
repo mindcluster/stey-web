@@ -25,6 +25,6 @@ export default {
 .swal2-styled.swal2-confirm {
   background-color: var(--yellowStey) !important;
   font-family: 'Metropolis Regular';
-  color: #fff;
+  color: var(--blackStey) !important;;
 }
 </style>

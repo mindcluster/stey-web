@@ -1,28 +1,29 @@
 <template>
   <div class="general">
-    <Logo/>
-    <RegistrationBox/>
+      <Logo />
+      <ForgotPasswordBox />
   </div>
 </template>
 
 <script>
-import RegistrationBox from "../../components/RegistrationBox"
-import Logo from "../../components/logo/Logo"
+import ForgotPasswordBox from "../../components/ForgotPasswordBox";
+import Logo from "../../components/logo/Logo";
 
 export default {
-    name: 'Registration',
+  name: "ForgotPassword",
 
-    components: {
-        RegistrationBox, Logo
-    },
-}
+  components: {
+    ForgotPasswordBox,
+    Logo,
+  },
+};
 </script>
 
 <style scoped>
 .general {
   width: 100%;
   height: 100%;
-  background-color: var(--lightblueStey);
+  background-color: var(--darkGreyStey);
   background-image: url(../../assets/images/background.png);
   background-position: center;
   background-size: cover;
@@ -33,9 +34,9 @@ export default {
   text-align: center;
 }
 
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 1024px) {
   .general {
-    width: 100%;
+    width: auto;
     height: 100%;
     display: flex;
     flex-direction: column;

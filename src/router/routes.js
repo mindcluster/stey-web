@@ -2,7 +2,7 @@ import Login from '../views/Login/Login';
 import PrincipalDashboard from '../views/Dashboard/PrincipalDashboard';
 import StudentDashboard from '../views/Dashboard/StudentDashboard';
 import ClassroomDashboard from '../views/Dashboard/ClassroomDashboard';
-import Registration from '../views/Registration/Registration';
+import ForgotPassword from '../views/ForgotPassword/ForgotPassword';
 import Importation from '../views/Importation/Importation';
 import ImportActivity from '../views/Importation/ImportActivity';
 import ImportAttendance from '../views/Importation/ImportAttendance';
@@ -15,7 +15,7 @@ export const routes = [
     { path: '/home', component: PrincipalDashboard, name: 'home' },
     { path: '/analysis/student', component: StudentDashboard, name: 'student' },
     { path: '/analysis/classroom', component: ClassroomDashboard, name: 'classroom' },
-    { path: '/register', component: Registration, name: 'register' },
+    { path: '/forgot_password', component: ForgotPassword, name: 'forgot_password' },
     { path: '/import', component: Importation, name: 'import' },
     { path: '/import/activity', component: ImportActivity, name: 'import_activity' },
     { path: '/import/attendance', component: ImportAttendance, name: 'import_attendance' },

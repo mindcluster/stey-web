@@ -4,25 +4,18 @@
       <DefaultLoading />
     </div>
     <v-form ref="form" lazy-validation>
+      <h5>Insira o e-mail cadastrado</h5>
+      <br>
       <EmailInput
         @update:value="email = $event"
         ico="mdi-email"
         label="E-mail"
         type="text"
       />
-      <PasswordInput
-        @update:value="password = $event"
-        ico="mdi-key-variant"
-        label="Senha"
-        type="password"
-      />
-      <div class="check-register">
-        <div class="register" @click="redirectRegister()">Esqueceu sua senha?</div>
-      </div>
       <NormalButton
         @click.native="validate"
         color="var(--yellowStey)"
-        text="Login"
+        text="Enviar"
       />
     </v-form>
   </v-card>
@@ -32,7 +25,6 @@
 import globalMethods from "../mixins/globalMethods";
 import NormalButton from "../components/buttons/NormalButton";
 import EmailInput from "../components/inputs/EmailInput";
-import PasswordInput from "../components/inputs/PasswordInput";
 import DefaultLoading from "../components/loading/DefaultLoading"
 import { mapActions } from "vuex";
 
@@ -41,7 +33,6 @@ export default {
   mixins: [globalMethods],
   components: {
     NormalButton,
-    PasswordInput,
     EmailInput,
     DefaultLoading
   },
