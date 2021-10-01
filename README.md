@@ -1,4 +1,4 @@
-# hibredu-web
+# stey-web
 
 ## Project setup
 ```
