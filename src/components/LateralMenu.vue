@@ -5,7 +5,7 @@
         <v-list-item class="logo">
           <v-list-item-icon>
             <v-img
-              src="../assets/images/hibredu-logotipo.png"
+              src="../assets/images/stey-logo.png"
               height="40"
             ></v-img>
           </v-list-item-icon>

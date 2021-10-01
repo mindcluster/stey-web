@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <img src="../../assets/images/hibredu-logotipo.png">
+        <img src="../../assets/images/stey-logo.png">
     </div>
 </template>
 
