@@ -1,0 +1,40 @@
+/*Primary Colors*/
+$yellowHibredu: #EBA50E !important;
+$greenHibredu: #44AB34 !important;
+$blueHibredu: #2DACE2 !important;
+$whiteHibredu: #FFFFFF !important;
+$grayHibredu: #B3B1B2 !important;
+$lightGrayHibredu: #F5F5F5 !important;
+$blackHibredu: #000000 !important;
+
+/*Secondary Colors*/
+$darkBlueHibredu: #076CAB !important;
+$lightBlueHibredu: #F1F3F9 !important;
+$cyanHibredu: #0DDBAB !important;
+$lightCyanHibredu: #F6F9FC !important;
+
+/*Alert Colors*/
+$greenAlert: #158300 !important;
+$redAlert: #DF0000 !important;
+$yellowAlert: #BCA902 !important;
+$blueAlert: #006E99 !important;
+
+:root {
+    --yellowHibredu: #{$yellowHibredu};
+    --greenHibredu: #{$greenHibredu};
+    --blueHibredu: #{$blueHibredu};
+    --whiteHibredu: #{$whiteHibredu};
+    --grayHibredu: #{$grayHibredu};
+    --lightGrayHibredu: #{$lightGrayHibredu};
+    --blackHibredu: #{$blackHibredu};
+
+    --darkBlueHibredu: #{$darkBlueHibredu};
+    --lightBlueHibredu: #{$lightBlueHibredu};
+    --cyanHibredu: #{$cyanHibredu};
+    --lightCyanHibredu: #{$lightCyanHibredu};
+
+    --greenAlert: #{$greenAlert};
+    --redAlert: #{$redAlert};
+    --blueAlert: #{$blueAlert};
+    --yellowAlert: #{$yellowAlert};
+}
