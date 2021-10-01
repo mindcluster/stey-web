@@ -39,18 +39,16 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
-      remember: false,
       loading: false
     };
   },
   methods: {
     ...mapActions(["action_auth"]),
     validate() {
-      if (this.validateEmail(this.email) && this.password.length >= 8) {
+      if (this.validateEmail(this.email)) {
         this.login();
       } else {
-        this.$alert("Preencha corretamente os campos solicitados");
+        this.$alert("Preencha corretamente o campo solicitado");
       }
     },
     login() {
@@ -59,15 +57,11 @@ export default {
         .then((response) => {
           this.loading = false;
           if (response.status === 200) {
-            localStorage.setItem("access_token", response.data.token);
-            localStorage.setItem("teacher_name", response.data.teacher.name);
-            localStorage.setItem("teacher_id", response.data.teacher.id);
-            localStorage.setItem("password", this.password);
-            this.$router.push("home");
+            this.$alert("As instruções para reset de senha foram enviadas com sucesso!");
           }
         })
         .catch(() => {
-          this.$alert("E-mail e/ou senha incorretos");
+          this.$alert("E-mail incorreto");
         });
     },
     redirectRegister() {
