@@ -1,11 +1,11 @@
 <template>
   <div class="text-input">
-    <v-form color="var(--yellowHibredu)">
+    <v-form color="var(--yellowStey)">
       <v-text-field
         background-color="var(--lightGreyStey)"
         solo
         flat
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         v-model="text"
         :prepend-icon="ico"
         :placeholder="label"

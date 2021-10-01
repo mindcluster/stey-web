@@ -3,7 +3,7 @@
     <h3>Hibredu Pencils</h3>
     <br />
     <v-progress-linear
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
       height="20"
       background-color="var(--lightGreyStey)"
       :value="this.value / 10"
@@ -17,9 +17,9 @@
         <v-icon :color="returnColor(this.value)"> mdi-star-circle </v-icon>
       </div>
       <div class="end-stars">
-        <v-icon color="var(--grayHibredu)"> mdi-star-circle </v-icon>
-        <v-icon color="var(--grayHibredu)"> mdi-star-circle </v-icon>
-        <v-icon color="var(--grayHibredu)"> mdi-star-circle </v-icon>
+        <v-icon color="var(--greyStey)"> mdi-star-circle </v-icon>
+        <v-icon color="var(--greyStey)"> mdi-star-circle </v-icon>
+        <v-icon color="var(--greyStey)"> mdi-star-circle </v-icon>
       </div>
     </div>
   </v-card>
@@ -42,9 +42,9 @@ export default {
     ...mapActions(["action_hibreduRewards"]),
     returnColor(value) {
       if (value < 50) {
-        return "var(--yellowHibredu)";
+        return "var(--yellowStey)";
       } else {
-        return "var(--yellowHibredu)";
+        return "var(--yellowStey)";
       }
     },
     getHibreduPencils() {

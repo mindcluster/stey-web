@@ -7,7 +7,7 @@
       <v-stepper-step
         :complete="importStep > 1"
         step="1"
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         max-height="30em"
       >
         <label>Importar arquivo</label>
@@ -26,7 +26,7 @@
             importStep = 2;
             sendFile();
           "
-          :color="`var(--greenHibredu)`"
+          :color="`var(--greenStey)`"
           :text="`Próximo`"
         />
       </v-stepper-content>
@@ -34,7 +34,7 @@
       <v-stepper-step
         :complete="importStep > 2"
         step="2"
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
       >
         <label>Configurações</label>
       </v-stepper-step>
@@ -71,7 +71,7 @@
           @click.native="
             importStep = 3;
           "
-          color="var(--greenHibredu)"
+          color="var(--greenStey)"
           text="Próximo"
         />
       </v-stepper-content>
@@ -79,7 +79,7 @@
       <v-stepper-step
         :complete="importStep > 3"
         step="3"
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
       >
         <label>Conferir valores</label>
       </v-stepper-step>
@@ -93,7 +93,7 @@
         <div class="space"></div>
         <NormalButton
           @click.native="sendAttendance()"
-          color="var(--greenHibredu)"
+          color="var(--greenStey)"
           text="Finalizar Envio"
         />
       </v-stepper-content>
@@ -204,7 +204,7 @@ export default {
 <style scoped>
 .vertical-progress-step-bar {
   font-family: "Metropolis Regular";
-  color: var(--grayHibredu);
+  color: var(--greyStey);
   height: auto;
   width: 100%;
   height: auto;
@@ -255,7 +255,7 @@ export default {
 }
 
 .header {
-  background-color: var(--lightCyanHibredu);
+  background-color: var(--lightCyanStey);
   padding: 0.5em;
   display: flex;
   flex-direction: row;

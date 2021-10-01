@@ -38,16 +38,16 @@
               <IconNormalButton
                 icon="mdi-cloud-download"
                 text="Exportar"
-                color="var(--whiteHibredu)"
-                colorText="var(--grayHibredu)"
+                color="var(--whiteStey)"
+                colorText="var(--greyStey)"
               />
             </download-csv>
             <IconNormalButton
               :email="this.profileInfos.email"
               icon="mdi-email"
               text="Enviar E-mail"
-              color="var(--whiteHibredu)"
-              colorText="var(--grayHibredu)"
+              color="var(--whiteStey)"
+              colorText="var(--greyStey)"
             />
           </div>
           <div class="second-column">
@@ -235,7 +235,7 @@ export default {
 .student-dashboard {
   width: 100%;
   height: 120%;
-  background-color: var(--lightBlueHibredu);
+  background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -341,7 +341,7 @@ export default {
   .student-dashboard {
     width: 100%;
     height: 400%;
-    background-color: var(--lightBlueHibredu);
+    background-color: var(--lightblueStey);
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -445,7 +445,7 @@ export default {
   .student-dashboard {
     width: 100%;
     height: 170%;
-    background-color: var(--lightBlueHibredu);
+    background-color: var(--lightblueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

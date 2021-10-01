@@ -1,6 +1,6 @@
 <template>
   <v-card class="construction" flat solo>
-      <v-icon size="300" color="var(--yellowHibredu)">
+      <v-icon size="300" color="var(--yellowStey)">
           mdi-account-hard-hat
       </v-icon>
       <h2>Em Construção</h2>
@@ -23,6 +23,6 @@ export default {
     height: 15em;
     width: 25em;
     font-size: 2em;
-    color: var(--yellowHibredu);
+    color: var(--yellowStey);
 }
 </style>

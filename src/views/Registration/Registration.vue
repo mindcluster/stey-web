@@ -22,7 +22,7 @@ export default {
 .general {
   width: 100%;
   height: 100%;
-  background-color: var(--lightBlueHibredu);
+  background-color: var(--lightblueStey);
   background-image: url(../../assets/images/background.png);
   background-position: center;
   background-size: cover;

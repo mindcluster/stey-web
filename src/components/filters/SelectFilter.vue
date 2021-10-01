@@ -8,13 +8,13 @@
       :label="label"
       outlined
       height="auto"
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
       persistent-hint
       return-object
       single-line
       dense
       background-color="var(--lightGreyStey)"
-      item-color="var(--yellowHibredu)"
+      item-color="var(--yellowStey)"
       :prefix="text"
       @change="$emit('update:value', filter)"
     />

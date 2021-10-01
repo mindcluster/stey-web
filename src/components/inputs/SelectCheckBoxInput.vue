@@ -4,7 +4,7 @@
       background-color="var(--lightGreyStey)"
       solo
       flat
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
       v-model="classrooms"
       :items="items"
       item-text="name"

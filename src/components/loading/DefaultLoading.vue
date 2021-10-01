@@ -3,7 +3,7 @@
     <v-progress-circular
       :size="50"
       indeterminate
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
     ></v-progress-circular>
   </div>
 </template>

@@ -78,7 +78,7 @@ export default {
 }
 
 h6 {
-  color: var(--grayHibredu)
+  color: var(--greyStey)
 }
 
 @media only screen and (max-width: 1024px) {

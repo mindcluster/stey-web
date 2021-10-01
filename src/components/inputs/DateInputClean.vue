@@ -7,7 +7,7 @@
       transition="scale-transition"
       offset-y
       min-width="auto"
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
@@ -15,7 +15,7 @@
           dense
           v-model="date"
           :label="label"
-          color="var(--yellowHibredu)"
+          color="var(--yellowStey)"
           prepend-inner-icon="mdi-calendar"
           readonly
           v-bind="attrs"
@@ -23,7 +23,7 @@
         ></v-text-field>
       </template>
       <v-date-picker
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         v-model="date"
         @input="menu = false"
         @change="$emit('update:value', date)"

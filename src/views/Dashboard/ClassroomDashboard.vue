@@ -213,7 +213,7 @@ export default {
 .classroom-dashboard {
   width: 100%;
   height: auto;
-  background-color: var(--lightBlueHibredu);
+  background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -422,7 +422,7 @@ export default {
   .classroom-dashboard {
     width: 100%;
     height: auto;
-    background-color: var(--lightBlueHibredu);
+    background-color: var(--lightblueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

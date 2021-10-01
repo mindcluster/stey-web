@@ -4,7 +4,7 @@
     <v-list dense>
       <v-list-item-group color="primary">
         <v-list-item v-for="(item, i) in params" :key="i" :disabled="true"
-          style="color: var(--blackHibredu) !important">
+          style="color: var(--blackStey) !important">
           <v-list-item-icon>
             <v-icon :color="returnColor(item.level)">mdi-checkbox-blank-circle</v-icon>
           </v-list-item-icon>

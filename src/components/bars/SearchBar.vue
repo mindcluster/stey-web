@@ -1,12 +1,12 @@
 <template>
   <div class="search-bar">
     <v-toolbar
-      color="var(--lightBlueHibredu)"
+      color="var(--lightblueStey)"
       dense
       flat
       class="search-bar rounded-pill"
     >
-      <v-btn @click.native="search" fab icon small color="var(--grayHibredu)">
+      <v-btn @click.native="search" fab icon small color="var(--greyStey)">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <input v-model="filter" type="text" placeholder="Pesquisar" />
@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 div {
-  color: var(--grayHibredu);
+  color: var(--greyStey);
 }
 
 .search-bar input {

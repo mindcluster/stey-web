@@ -62,7 +62,7 @@ export default {
   }
 
   .card-title {
-    color: var(--darkBlueHibredu);
+    color: var(--darkblueStey);
     font-size: 2em;
   }
 
@@ -90,7 +90,7 @@ export default {
   }
 
   .card-title {
-    color: var(--darkBlueHibredu);
+    color: var(--darkblueStey);
     font-size: 4em;
   }
 

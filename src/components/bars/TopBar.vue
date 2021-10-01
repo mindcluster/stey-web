@@ -12,7 +12,7 @@ export default {
 .blue-bar-top {
   width: 100%;
   height: 400px;
-  background-color: var(--blueHibredu);
+  background-color: var(--blueStey);
   position: absolute;
   z-index: -1;
 }
@@ -21,7 +21,7 @@ export default {
   .blue-bar-top {
     width: 100%;
     height: 37%;
-    background-color: var(--blueHibredu);
+    background-color: var(--blueStey);
     position: absolute;
     z-index: -1;
   }

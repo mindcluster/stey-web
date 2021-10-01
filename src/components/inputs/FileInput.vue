@@ -5,13 +5,13 @@
       @dragover.prevent="dragover = true"
       @dragenter.prevent="dragover = true"
       @dragleave.prevent="dragover = false"
-      :class="{ 'var(--yellowHibredu) lighten-2': dragover }"
+      :class="{ 'var(--yellowStey) lighten-2': dragover }"
       flat
     >
       <v-card-text>
         <v-row class="d-flex flex-column" dense align="center" justify="center">
           <v-icon
-            :color="`var(--yellowHibredu)`"
+            :color="`var(--yellowStey)`"
             :class="[dragover ? 'mt-2, mb-6' : 'mt-5']"
             size="60"
           >
@@ -46,7 +46,7 @@
           :items="uploadedFile"
           height="70"
           item-height="90"
-          :color="`var(--yellowHibredu)`"
+          :color="`var(--yellowStey)`"
         >
           <template v-slot:default="{ item }">
             <v-list-item :key="item.name">
@@ -61,7 +61,7 @@
 
               <v-list-item-action>
                 <v-btn @click="removeFile()" icon>
-                  <v-icon :color="`var(--yellowHibredu)`">
+                  <v-icon :color="`var(--yellowStey)`">
                     mdi-close-circle
                   </v-icon>
                 </v-btn>
@@ -137,18 +137,18 @@ export default {
 }
 
 .v-card {
-  border: dashed 1px var(--grayHibredu);
+  border: dashed 1px var(--greyStey);
   width: 100%;
 }
 
 .marked {
   font-weight: bold;
-  color: var(--yellowHibredu);
+  color: var(--yellowStey);
 }
 
 p {
   font-size: 20px;
-  color: var(--grayHibredu);
+  color: var(--greyStey);
 }
 
 input[type="file"] {
@@ -156,7 +156,7 @@ input[type="file"] {
 }
 
 label {
-  color: var(--yellowHibredu);
+  color: var(--yellowStey);
   cursor: pointer;
 }
 </style>

@@ -32,8 +32,8 @@
           <IconNormalButton
             icon="mdi-cloud-download"
             text="Exportar"
-            color="var(--yellowHibredu)"
-            colorText="var(--whiteHibredu)"
+            color="var(--yellowStey)"
+            colorText="var(--whiteStey)"
           />
         </download-csv>
       </div>
@@ -117,7 +117,7 @@ export default {
 .export-activity {
   width: 100%;
   height: 100%;
-  background-color: var(--lightBlueHibredu);
+  background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -151,7 +151,7 @@ export default {
 
 h4 {
   font-family: "Metropolis Regular";
-  color: var(--whiteHibredu);
+  color: var(--whiteStey);
   font-size: 1.3em;
 }
 
@@ -159,7 +159,7 @@ h4 {
   .export-activity {
     width: 100%;
     height: auto;
-    background-color: var(--lightBlueHibredu);
+    background-color: var(--lightblueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

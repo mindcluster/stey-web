@@ -115,7 +115,7 @@ export default {
 }
 
 .register:hover {
-  color: var(--yellowHibredu);
+  color: var(--yellowStey);
   cursor: pointer;
 }
 

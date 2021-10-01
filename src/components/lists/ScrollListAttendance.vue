@@ -24,7 +24,7 @@
         v-for="(item, i) in params"
         :key="i"
         :disabled="true"
-        style="color: var(--blackHibredu) !important"
+        style="color: var(--blackStey) !important"
       >
         <v-list-item-content>
           <v-list-item-title>{{ item.id }}</v-list-item-title>
@@ -87,7 +87,7 @@ export default {
 }
 
 .header {
-  background-color: var(--lightCyanHibredu);
+  background-color: var(--lightCyanStey);
   padding: 0em 2.5em 0em 2.5em;
   display: flex;
   flex-direction: row;

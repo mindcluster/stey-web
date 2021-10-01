@@ -36,7 +36,7 @@
       <div class="button">
         <NormalButton
           @click.native="update"
-          color="var(--yellowHibredu)"
+          color="var(--yellowStey)"
           text="Salvar Alterações"
         />
       </div>

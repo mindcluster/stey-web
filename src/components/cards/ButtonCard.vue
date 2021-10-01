@@ -5,8 +5,8 @@
       <IconNormalButton
         @click.native="go"
         :icon="buttons[0].ico"
-        color="var(--yellowHibredu)"
-        colorText="var(--whiteHibredu)"
+        color="var(--yellowStey)"
+        colorText="var(--whiteStey)"
         :text="buttons[0].title"
       />
       <IconNormalButtonDisabled

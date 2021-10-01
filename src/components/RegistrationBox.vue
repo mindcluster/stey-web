@@ -68,7 +68,7 @@
       <NormalButton
         :buttonClass="{ inactive: this.inactive === true }"
         @click.native="register"
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         text="Cadastrar"
       />
     </v-form>

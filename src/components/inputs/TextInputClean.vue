@@ -1,11 +1,11 @@
 <template>
   <div class="text-input">
-    <v-form color="var(--yellowHibredu)">
+    <v-form color="var(--yellowStey)">
       <v-text-field
         :label="label"
         outlined
         dense
-        color="var(--yellowHibredu)"
+        color="var(--yellowStey)"
         v-model="text"
         :placeholder="placeholder"
         :type="type"

@@ -1,6 +1,6 @@
 <template>
   <div class="checkbox">
-    <v-checkbox color="var(--yellowHibredu)" :label="label"></v-checkbox>
+    <v-checkbox color="var(--yellowStey)" :label="label"></v-checkbox>
   </div>
 </template>
 

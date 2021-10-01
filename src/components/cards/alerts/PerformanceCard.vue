@@ -7,7 +7,7 @@
           v-for="(item, i) in params"
           :key="i"
           :disabled="true"
-          style="color: var(--blackHibredu) !important"
+          style="color: var(--blackStey) !important"
         >
           <v-list-item-icon>
             <v-icon

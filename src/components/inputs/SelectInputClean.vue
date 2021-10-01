@@ -4,7 +4,7 @@
     :label="label"
       outlined
       dense      
-      color="var(--yellowHibredu)"
+      color="var(--yellowStey)"
       v-model="value"
       :items="items"
       item-text="name"

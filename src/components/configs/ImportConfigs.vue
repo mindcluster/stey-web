@@ -15,7 +15,7 @@
       <v-list-item
         v-for="(column, i) in this.returnSpreadsheet.columns"
         :key="i"
-        style="color: var(--blackHibredu) !important"
+        style="color: var(--blackStey) !important"
       >
         <v-list-item-content>
           <v-list-item-title>
@@ -42,7 +42,7 @@
             :items="items"
             item-text="value"
             :label="column[0].suggestion"
-            color="var(--yellowHibredu)"
+            color="var(--yellowStey)"
             single-line
           ></v-select>
         </v-list-item-content>
@@ -85,7 +85,7 @@ export default {
   text-transform: capitalize;
 }
 .preview {
-  color: var(--grayHibredu) !important;
+  color: var(--greyStey) !important;
 }
 
 .list-title {
@@ -102,7 +102,7 @@ export default {
 }
 
 .header {
-  background-color: var(--lightCyanHibredu);
+  background-color: var(--lightCyanStey);
   padding: 0.5em;
   display: flex;
   flex-direction: row;

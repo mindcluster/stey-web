@@ -1,7 +1,7 @@
 <template>
   <v-menu offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <v-avatar color="var(--yellowHibredu)" fab v-bind="attrs" v-on="on">
+      <v-avatar color="var(--yellowStey)" fab v-bind="attrs" v-on="on">
         <span class="white--text text-6">{{ teacher_initial }}</span>
       </v-avatar>
     </template>
@@ -13,11 +13,11 @@
         :to="{ name: item.route }"
       >
         <v-list-item-icon>
-          <v-icon color="var(--grayHibredu)">
+          <v-icon color="var(--greyStey)">
             {{ item.ico }}
           </v-icon>
         </v-list-item-icon>
-        <v-list-item-title color="var(--grayHibredu)">{{
+        <v-list-item-title color="var(--greyStey)">{{
           item.title
         }}</v-list-item-title>
       </v-list-item>
@@ -40,11 +40,11 @@ export default {
 <style scoped>
 * {
   font-family: "Metropolis Regular";
-  color: var(--grayHibredu);
+  color: var(--greyStey);
 }
 
 .v-list-item {
-  background-color: var(--whiteHibredu);
+  background-color: var(--whiteStey);
 }
 
 .v-list-item:hover {

@@ -1,20 +1,18 @@
 /*Primary Colors*/
-$yellowHibredu: #EBA50E !important;
-$greenHibredu: #44AB34 !important;
-$blueHibredu: #2DACE2 !important;
-$whiteHibredu: #FFFFFF !important;
-$grayHibredu: #B3B1B2 !important;
+$greenStey: #44AB34 !important;
+$blueStey: #2DACE2 !important;
+$whiteStey: #FFFFFF !important;
+$greyStey: #B3B1B2 !important;
 $lightGreyStey: #F5F5F5 !important;
-$blackHibredu: #000000 !important;
-
+$blackStey: #000000 !important;
 $darkGreyStey: #2D3037 !important;
 $yellowStey: #FAE615 !important;
 
 /*Secondary Colors*/
-$darkBlueHibredu: #076CAB !important;
-$lightBlueHibredu: #F1F3F9 !important;
-$cyanHibredu: #0DDBAB !important;
-$lightCyanHibredu: #F6F9FC !important;
+$darkblueStey: #076CAB !important;
+$lightblueStey: #F1F3F9 !important;
+$cyanStey: #0DDBAB !important;
+$lightCyanStey: #F6F9FC !important;
 
 /*Alert Colors*/
 $greenAlert: #158300 !important;
@@ -23,20 +21,19 @@ $yellowAlert: #BCA902 !important;
 $blueAlert: #006E99 !important;
 
 :root {
-    --yellowHibredu: #{$yellowHibredu};
-    --greenHibredu: #{$greenHibredu};
-    --blueHibredu: #{$blueHibredu};
-    --whiteHibredu: #{$whiteHibredu};
-    --grayHibredu: #{$grayHibredu};
+    --greenStey: #{$greenStey};
+    --blueStey: #{$blueStey};
+    --whiteStey: #{$whiteStey};
+    --greyStey: #{$greyStey};
     --lightGreyStey: #{$lightGreyStey};
-    --blackHibredu: #{$blackHibredu};
+    --blackStey: #{$blackStey};
     --darkGreyStey: #{$darkGreyStey};
     --yellowStey: #{$yellowStey};
 
-    --darkBlueHibredu: #{$darkBlueHibredu};
-    --lightBlueHibredu: #{$lightBlueHibredu};
-    --cyanHibredu: #{$cyanHibredu};
-    --lightCyanHibredu: #{$lightCyanHibredu};
+    --darkblueStey: #{$darkblueStey};
+    --lightblueStey: #{$lightblueStey};
+    --cyanStey: #{$cyanStey};
+    --lightCyanStey: #{$lightCyanStey};
 
     --greenAlert: #{$greenAlert};
     --redAlert: #{$redAlert};
