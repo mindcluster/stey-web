@@ -63,7 +63,7 @@
           </p>
           <div class="buttons">
             <NormalButton
-              @click.native="validate"
+              @click.native="showModal = true"
               color="var(--yellowStey)"
               text="Aumento"
             />
@@ -114,6 +114,9 @@
         </div>
       </div>
     </div>
+    <div v-if="showModal" class="increase-modal">
+        <IncreaseModal/>
+    </div>
     <Footer />
   </div>
 </template>
@@ -128,6 +131,7 @@ import ScrollCertificates from "../../components/lists/ScrollCertificates";
 import Footer from "../../components/bars/Footer";
 import ProfileCard from "../../components/cards/ProfileCard";
 import NormalButton from "../../components/buttons/NormalButton";
+import IncreaseModal from "../../components/modals/IncreaseModal";
 
 export default {
   name: "CollaboratorDetail",
@@ -138,7 +142,7 @@ export default {
     BarChart,
     DefaultLoading,
     ScrollCertificates,
-
+    IncreaseModal,
     Footer,
     ProfileCard,
     NormalButton,
@@ -152,18 +156,6 @@ export default {
         promotions: "-",
         rotativity: "-",
       },
-      entersVsExits: [
-        { enters: 238, exits: 134, date: 2000 },
-        { enters: 938, exits: 478, date: 2001 },
-        { enters: 1832, exits: 1392, date: 2002 },
-        { enters: 2092, exits: 2343, date: 2003 },
-        { enters: 2847, exits: 2346, date: 2004 },
-        { enters: 2576, exits: 2233, date: 2005 },
-        { enters: 2524, exits: 2325, date: 2006 },
-        { enters: 1648, exits: 2456, date: 2007 },
-        { enters: 2479, exits: 2329, date: 2008 },
-        { enters: 3200, exits: 2438, date: 2009 },
-      ],
       showLoading: false,
       values: ["enters", "exits"],
       contributors: [
@@ -209,6 +201,7 @@ export default {
         cargo: "Software Engineer",
         value: 50,
       },
+      showModal: false
     };
   },
   mounted() {
@@ -347,6 +340,15 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.increase-modal {
+    position: absolute;
+    background-color: rgba(36, 36, 36, 0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
