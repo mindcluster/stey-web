@@ -28,8 +28,8 @@ export default {
         values: this.values,
         date: {
           key: "date",
-          inputFormat: "%Y-%m-%d",
-          outputFormat: "%Y-%m-%d",
+          inputFormat: "%Y",
+          outputFormat: "%Y",
         },
         axis: {
           yTicks: 5,

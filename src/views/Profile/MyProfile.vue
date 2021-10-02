@@ -13,7 +13,6 @@
             <EditProfile />
           </div>
           <div>
-            <HibreduPencilsCard />
           </div>
         </div>
         <div class="second-column">
@@ -36,7 +35,6 @@ import TopBar from "../../components/bars/TopBar";
 import SearchBar from "../../components/bars/SearchBar";
 import ProfileCard from "../../components/cards/ProfileCard";
 import EditProfile from "../../components/cards/EditProfile";
-import HibreduPencilsCard from "../../components/cards/HibreduPencilsCard";
 import DefaultLoading from "../../components/loading/DefaultLoading";
 import { mapActions } from "vuex";
 
@@ -50,7 +48,6 @@ export default {
     SearchBar,
     ProfileCard,
     EditProfile,
-    HibreduPencilsCard,
     DefaultLoading
   },
   data() {

@@ -21,7 +21,7 @@ export default {
       chart_data: this.data,
       chart_config: {
         key: 'name',
-        values: ['deliveredActivities'],
+        values: ['total'],
         color: { scheme: "schemeTableau10" },
       },
     };

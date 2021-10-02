@@ -1,65 +1,78 @@
 <template>
   <div class="principal-dashboard">
-    <TopBar />
     <LateralMenu />
     <div class="content">
-      <div class="top-bar">
-        <SearchBar />
-        <DropDown />
-      </div>
       <div class="welcome-bar">
         <WelcomeBar />
       </div>
       <div class="cards">
         <InfoCard
-          text="Atividades Cadastradas"
-          :number="this.cards.deliveredActivities"
+          text="Colaboradores"
+          :number="this.cards.contributors"
+          color="color: var(--greyAlert)"
+        />
+        <InfoCard
+          text="Entradas"
+          :number="this.cards.enters"
+          color="color: var(--greenAlert)"
+        />
+        <InfoCard
+          text="Saídas"
+          :number="this.cards.exits"
+          color="color: var(--orangeAlert)"
+        />
+        <InfoCard
+          text="Promoção"
+          :number="this.cards.promotions"
           color="color: var(--blueAlert)"
         />
         <InfoCard
-          text="Porcentagem de Entrega"
-          :number="this.cards.deliveryPercentage"
-          color="color: var(--greenAlert)"
-        />
-        <InfoCard
-          text="Taxa de Acerto"
-          :number="this.cards.hitRate"
-          color="color: var(--greenAlert)"
-        />
-        <InfoCard
-          text="Alertas"
-          :number="this.cards.alerts"
+          text="Rotatividade"
+          :number="this.cards.rotativity"
           color="color: var(--redAlert)"
         />
+      </div>
+      <div class="top-bar">
+        <BudgetBar />
+      </div>
+      <div class="start">
+        <ScrollPromotions :params="this.contributors"/>
       </div>
       <div class="middle">
         <div class="line-chart">
           <LineChart
-            title="Desempenho X Presença"
-            :data="this.activitiesVsAttendance"
-            legend_1="Atividades Entregues"
-            legend_2="Presença"
+            title="Entradas X Saídas"
+            :data="this.entersVsExits"
+            legend_1="Entradas"
+            legend_2="Saídas"
             :values="this.values"
           />
         </div>
-        <div v-show="!showLoading" class="bar-chart">
-          <BarChart
-            title="Realização de atividades por turma"
-            :data="this.activitiesByClassroom"
-          />
+        <div v-show="!showLoading" class="contributors-list">
+          <ScrollContributors :params="this.contributors" />
         </div>
-
-        <v-card v-show="showLoading" flat solo class="bar-chart-loading">
+        <v-card
+          v-show="showLoading"
+          flat
+          solo
+          class="contributors-list-loading"
+        >
           <DefaultLoading />
         </v-card>
       </div>
       <div class="bottom">
-        <AlertCard :params="this.alerts" />
-        <v-card v-show="showLoading" flat solo class="performance-loading">
+        <div v-show="!showLoading" class="bar-chart">
+          <BarChart title="Promoção (%)" :data="this.promotions" />
+        </div>
+        <v-card v-show="showLoading" flat solo class="bar-chart-loading">
           <DefaultLoading />
         </v-card>
-        <PerformanceCard v-show="!showLoading" :params="this.classrooms" />
-        <ActivityCard :params="this.activities"/>
+        <div v-show="!showLoading" class="bar-chart">
+          <BarChart title="Rotatividade" :data="this.rotativity" />
+        </div>
+        <v-card v-show="showLoading" flat solo class="bar-chart-loading">
+          <DefaultLoading />
+        </v-card>
       </div>
     </div>
   </div>
@@ -68,113 +81,101 @@
 <script>
 import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
-import DropDown from "../../components/DropDown";
-import TopBar from "../../components/bars/TopBar";
-import SearchBar from "../../components/bars/SearchBar";
 import WelcomeBar from "../../components/bars/WelcomeBar";
 import InfoCard from "../../components/cards/InfoCard";
-import AlertCard from "../../components/cards/alerts/AlertCard";
-import PerformanceCard from "../../components/cards/alerts/PerformanceCard";
-import ActivityCard from "../../components/cards/alerts/ActivityCard";
 import BarChart from "../../components/graphs/BarChart";
 import LineChart from "../../components/graphs/LineChart";
 import DefaultLoading from "../../components/loading/DefaultLoading";
-import { mapActions } from "vuex";
+import ScrollContributors from "../../components/lists/ScrollContributors";
+import ScrollPromotions from "../../components/lists/ScrollPromotions";
+import BudgetBar from "../../components/cards/BudgetBar";
 
 export default {
   name: "PrincipalDashboard",
   mixins: [globalMethods],
   components: {
     LateralMenu,
-    DropDown,
-    TopBar,
-    SearchBar,
     WelcomeBar,
     InfoCard,
-    AlertCard,
-    PerformanceCard,
-    ActivityCard,
     BarChart,
     LineChart,
     DefaultLoading,
+    ScrollContributors,
+    ScrollPromotions,
+    BudgetBar
   },
   data() {
     return {
       cards: {
-        deliveredActivities: '-',
-        deliveryPercentage: '-',
-        hitRate: '-',
-        alerts: '-',
+        contributors: "-",
+        enters: "-",
+        exits: "-",
+        promotions: "-",
+        rotativity: "-",
       },
-      classrooms: [],
-      activitiesByClassroom: [],
-      activitiesVsAttendance: [],
-      alerts: [],
-      activities: [],
+      entersVsExits: [
+        { enters: 238, exits: 134, date: 2000 },
+        { enters: 938, exits: 478, date: 2001 },
+        { enters: 1832, exits: 1392, date: 2002 },
+        { enters: 2092, exits: 2343, date: 2003 },
+        { enters: 2847, exits: 2346, date: 2004 },
+        { enters: 2576, exits: 2233, date: 2005 },
+        { enters: 2524, exits: 2325, date: 2006 },
+        { enters: 1648, exits: 2456, date: 2007 },
+        { enters: 2479, exits: 2329, date: 2008 },
+        { enters: 3200, exits: 2438, date: 2009 },
+      ],
       showLoading: false,
-      values: ["present", "delivered"],
+      values: ["enters", "exits"],
+      contributors: [
+        {
+          id: 1,
+          name: "Carlos Augusto",
+          sl: "Advisory",
+          subSl: "Risk",
+          rotativity: "99%",
+        }
+      ],
+      promotions: [
+        {
+          name: "Lorem",
+          total: 30,
+        },
+        {
+          name: "Ipsum",
+          total: 21,
+        },
+        {
+          name: "Dolor",
+          total: 20,
+        },
+      ],
+      rotativity: [
+        {
+          name: "Lorem",
+          total: 30,
+        },
+        {
+          name: "Ipsum",
+          total: 21,
+        },
+        {
+          name: "Dolor",
+          total: 20,
+        },
+      ],
     };
   },
-  async mounted() {
-    this.getOverviewAttendanceActivities();
+  mounted() {
     this.getCards();
-    this.getClassrooms();
-    this.getActivities();
-    this.getAlerts();
   },
   methods: {
-    ...mapActions([
-      "action_overviewClassroom",
-      "action_classroom",
-      "action_overviewAttendanceActivities",
-      "action_overviewAlerts",
-      "action_overviewActivities",
-    ]),
     getCards() {
-      this.action_overviewClassroom().then((response) => {
-        this.cards.alerts = response.alerts;
-        this.cards.deliveredActivities = response.deliveredActivities;
-        this.cards.deliveryPercentage =
-          (response.deliveryPercentage * 100).toFixed(1) + "%";
-        this.cards.hitRate = (response.hitRate * 100).toFixed(1) + "%";
-      });
-    },
-    getClassrooms() {
-      this.showLoading = true;
-      this.action_classroom().then((response) => {
-        this.classrooms = response;
-        this.formatData2BarChart(this.classrooms);
-      });
-    },
-    getOverviewAttendanceActivities() {
-      this.action_overviewAttendanceActivities().then((response) => {
-        this.activitiesVsAttendance = response;
-      });
-    },
-    getActivities() {
-      this.action_overviewActivities().then((response) => {
-        this.activities = response.sort(function (a, b) {
-          return a.created_at < b.created_at
-            ? -1
-            : a.created_at > b.created_at
-            ? 1
-            : 0;
-        });
-      });
-    },
-    getAlerts() {
-      this.action_overviewAlerts().then((response) => {
-        this.alerts = response;
-      });
-    },
-    formatData2BarChart(data) {
-      for (let i = 0; i < data.length; i++) {
-        this.activitiesByClassroom.push({
-          name: data[i].name.substr(0, 2),
-          deliveredActivities: data[i].metrics.deliveredActivities,
-        });
-      }
-      this.showLoading = false;
+      this.cards.contributors = 7818;
+      this.cards.enters = 231;
+      this.cards.exits = 102;
+      this.cards.promotions = "23%";
+      this.cards.rotativity = "2%";
     },
   },
 };
@@ -203,7 +204,16 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100px;
+  height: 15em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.start {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 12em;
   justify-content: space-between;
   align-items: center;
 }
@@ -222,7 +232,7 @@ export default {
 
 .middle {
   margin-top: 1em;
-  height: 28em;
+  height: 30em;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -231,7 +241,7 @@ export default {
 }
 
 .bottom {
-  margin-top: 1em;
+  margin: 1em 0em 1em 0em;
   height: 25em;
   width: auto;
   display: flex;
@@ -240,15 +250,23 @@ export default {
 }
 
 .line-chart {
-  width: 55%;
-  height: auto;
+  width: 50%;
+  height: 25em;
   align-items: center;
 }
 
 .bar-chart {
-  width: 40%;
+  width: 48%;
+  height: 25em;
+  align-items: center;
+  pointer-events: none;
+}
+
+.contributors-list {
+  width: 48%;
   height: 27em;
   align-items: center;
+  pointer-events: none;
 }
 
 .bar-chart-loading {
@@ -260,9 +278,9 @@ export default {
   justify-content: space-around;
 }
 
-.performance-loading {
-  width: 30%;
-  height: auto;
+.contributors-list-loading {
+  width: 40%;
+  height: 27em;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -295,7 +313,7 @@ export default {
   }
 
   .bottom {
-    height: 45em;
+    height: 60em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -325,7 +343,13 @@ export default {
     justify-content: space-around;
   }
 
-  .performance-loading {
+  .contributors-list {
+    width: auto;
+    height: auto;
+    align-items: center;
+  }
+
+  .contributors-list-loading {
     width: auto;
     height: auto;
     align-items: center;
@@ -356,6 +380,15 @@ export default {
   }
 
   .top-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .start {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -399,6 +432,12 @@ export default {
   .line-chart {
     width: 55%;
     height: auto;
+    align-items: center;
+  }
+
+  .bar-chart {
+    width: 40%;
+    height: 27em;
     align-items: center;
   }
 

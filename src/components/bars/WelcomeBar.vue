@@ -16,7 +16,7 @@ export default {
 <style scoped>
 .welcome-bar {
   font-family: "Metropolis Regular";
-  color: var(--whiteStey);
+  color: var(--darkGreyStey);
   font-size: 1.3em;
 }
 </style>

@@ -4,7 +4,7 @@
       <h4 class="card-title" :style="color">
         {{ number }}
       </h4>
-      <h6 class="sub-title">
+      <h6 class="sub-title" :style="color">
         {{ text }}
       </h6>
     </div>  
@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .info-card {
-  width: 20%;
+  width: 18%;
   height: auto;
   font-family: 'Metropolis Regular';
   text-align: center;

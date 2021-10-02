@@ -15,10 +15,12 @@ $cyanStey: #0DDBAB !important;
 $lightCyanStey: #F6F9FC !important;
 
 /*Alert Colors*/
-$greenAlert: #158300 !important;
-$redAlert: #DF0000 !important;
+$greenAlert: #24B218 !important;
+$redAlert: #CC0066 !important;
 $yellowAlert: #BCA902 !important;
-$blueAlert: #006E99 !important;
+$blueAlert: #306FCE !important;
+$greyAlert: #7E7E7E !important;
+$orangeAlert: #D99D05 !important;
 
 :root {
     --greenStey: #{$greenStey};
@@ -39,4 +41,6 @@ $blueAlert: #006E99 !important;
     --redAlert: #{$redAlert};
     --blueAlert: #{$blueAlert};
     --yellowAlert: #{$yellowAlert};
+    --greyAlert: #{$greyAlert};
+    --orangeAlert: #{$orangeAlert};
 }
