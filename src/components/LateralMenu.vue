@@ -34,9 +34,9 @@ export default {
   data: () => ({
     items: [
       { ico: "mdi-home", title: "Home", route: "home" },
-      { ico: "mdi-account-group", title: "Colaboradores", route: "import" },
+      { ico: "mdi-account-group", title: "Colaboradores", route: "collaborator" },
       { ico: "mdi-cart-plus", title: "MarketPlace", route: "import" },
-      { ico: "mdi-account-group", title: "Configurações", route: "import" },
+      { ico: "mdi-account-edit", title: "Configurações", route: "import" },
       { ico: "mdi-logout", title: "Sair", route: "login" },
     ],
   }),
