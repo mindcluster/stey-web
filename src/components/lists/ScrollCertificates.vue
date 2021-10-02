@@ -1,17 +1,6 @@
 <template>
   <v-card class="scroll-list" flat>
-    <h4 class="list-title">Atividades</h4>
-    <div class="header">
-      <div class="column-name">
-        <h4>#</h4>
-      </div>
-      <div class="column-name">
-        <h4>Nome</h4>
-      </div>
-      <div class="column-name">
-        <h4>Data</h4>
-      </div>
-    </div>
+    <h4 class="list-title">Certificados ({{ params.length }})</h4>
     <v-list class="content" dense>
       <v-list-item
         v-for="(item, i) in params"
@@ -19,18 +8,11 @@
         :disabled="true"
         style="color: var(--blackStey) !important"
       >
-        <v-list-item-content>
-          <v-list-item-title>{{ item.id }}</v-list-item-title>
-        </v-list-item-content>
-
+        <v-list-item-icon>
+          <v-icon center color="var(--greyStey)">mdi-certificate</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
-        </v-list-item-content>
-
-        <v-list-item-content>
-          <v-list-item-title
-            >{{ formatDate(item.created_at) }}
-          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -40,7 +22,7 @@
 <script>
 import globalMethods from "../../mixins/globalMethods";
 export default {
-  name: "ScrollListActivity",
+  name: "ScrollCertificates",
   mixins: [globalMethods],
   props: ["number", "text", "color", "params"],
 };
@@ -52,32 +34,21 @@ export default {
   width: 100%;
   height: auto;
   text-transform: capitalize;
+  margin-top: 1em;
 }
 
 .list-title {
   padding: 1em;
+  background-color: var(--greyStey);
 }
 
 .content {
-  height: 18em;
+  height: 10em;
   overflow-y: auto;
 }
 
 .v-list-item {
   border-bottom: solid 1px var(--lightGreyStey);
-}
-
-.header {
-  background-color: var(--lightCyanStey);
-  padding: 0em 1.9em 0em 0.5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.column-name {
-  width: 33%;
-  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 1024px) {

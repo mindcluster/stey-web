@@ -1,33 +1,33 @@
 <template>
-  <v-card class="profile-card" flat>
-    <div class="background-profile">
-      <v-avatar size="10em">
-        <img
-          alt="Aluno"
-          src="../../assets/images/template.jpeg"
-        />
-      </v-avatar>
-    </div>
+  <div class="profile-card">
+    <v-avatar size="10em">
+      <img alt="Colaborador" src="../../assets/images/template.jpeg" />
+    </v-avatar>
     <div class="infos">
       <div>
         <h2>{{ params.name }}</h2>
       </div>
-      <div class="classroom">
-        <h6>Turma</h6>
-        <h4>{{ params.classroom }}</h4>
+      <div class="role">
+        <h4>{{ params.cargo }}</h4>
       </div>
-      <div class="subjects">
-        <h6>Matérias</h6>
-        <h4>{{ params.subjects }}</h4>
-      </div>
+      <br />
+      <h4>Satisfação com o cargo: {{ params.value }} %</h4>
+      <v-progress-linear
+        rounded
+        color="var(--yellowStey)"
+        height="20"
+        background-color="var(--greyStey)"
+        value="50"
+      >
+      </v-progress-linear>
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script>
 export default {
   name: "ProfileCard",
-  props: [ "params" ]
+  props: ["params"],
 };
 </script>
 
@@ -42,32 +42,23 @@ export default {
   align-items: center;
 }
 
-.background-profile {
-  width: 100%;
-  height: 10em;
-  background-image: url(../../assets/images/bg-profile.png);
-  background-position: center;
-  background-size: cover;
-}
-
 .v-avatar {
   margin-top: 2em;
 }
 
 .infos {
   height: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1em;
-}
-
-.name {
-  text-align: center;
-}
-
-.classroom {
+  padding: 2em 0em 0em 1em;
   text-align: left;
+}
+
+.role {
+  text-align: left;
+  color: var(--greyStey);
 }
 
 .subjects {
@@ -78,7 +69,7 @@ export default {
 }
 
 h6 {
-  color: var(--greyStey)
+  color: var(--greyStey);
 }
 
 @media only screen and (max-width: 1024px) {
@@ -88,12 +79,13 @@ h6 {
     font-family: "Metropolis Regular";
     text-align: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin-bottom: 1em;
   }
   .infos {
-    height: 40%;
+    height: auto;
   }
 }
 </style>
