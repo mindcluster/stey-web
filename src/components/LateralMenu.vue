@@ -18,7 +18,7 @@
           :key="index"
         >
           <v-list-item-icon>
-            <v-icon color="var(--whiteStey)">{{ item.ico }}</v-icon>
+            <v-icon color="var(--yellowStey)">{{ item.ico }}</v-icon>
           </v-list-item-icon>
           <v-list-item-title>
             {{ item.title }}
