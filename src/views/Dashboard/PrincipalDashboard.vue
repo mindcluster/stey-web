@@ -49,7 +49,7 @@
           />
         </div>
         <div v-show="!showLoading" class="contributors-list">
-          <ScrollContributors :params="this.contributors" />
+          <ScrollCollaborator :params="this.contributors" />
         </div>
         <v-card
           v-show="showLoading"
@@ -87,7 +87,7 @@ import InfoCard from "../../components/cards/InfoCard";
 import BarChart from "../../components/graphs/BarChart";
 import LineChart from "../../components/graphs/LineChart";
 import DefaultLoading from "../../components/loading/DefaultLoading";
-import ScrollContributors from "../../components/lists/ScrollContributors";
+import ScrollCollaborator from "../../components/lists/ScrollCollaborator";
 import ScrollPromotions from "../../components/lists/ScrollPromotions";
 import Footer from "../../components/bars/Footer";
 import BudgetBar from "../../components/cards/BudgetBar";
@@ -102,7 +102,7 @@ export default {
     BarChart,
     LineChart,
     DefaultLoading,
-    ScrollContributors,
+    ScrollCollaborator,
     ScrollPromotions,
     BudgetBar,
     Footer

@@ -52,7 +52,7 @@
 <script>
 import globalMethods from "../../mixins/globalMethods";
 export default {
-  name: "ScrollContributors",
+  name: "ScrollCollaborator",
   mixins: [globalMethods],
   props: ["number", "text", "color", "params"],
 };

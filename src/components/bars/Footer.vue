@@ -19,6 +19,6 @@ export default {
   background-color: var(--whiteStey);
   color: white;
   text-align: center;
-  z-index: 999;
+  z-index: 90;
 }
 </style>
