@@ -17,7 +17,7 @@
         type="password"
       />
       <div class="check-register">
-        <div class="register" @click="redirectRegister()">Esqueceu sua senha?</div>
+        <div class="register" @click="forgotPassword()">Esqueceu sua senha?</div>
       </div>
       <NormalButton
         @click.native="validate"
@@ -63,23 +63,24 @@ export default {
       }
     },
     login() {
-      this.loading = true;
-      this.action_auth({ email: this.email, password: this.password })
-        .then((response) => {
-          this.loading = false;
-          if (response.status === 200) {
-            localStorage.setItem("access_token", response.data.token);
-            localStorage.setItem("teacher_name", response.data.teacher.name);
-            localStorage.setItem("teacher_id", response.data.teacher.id);
-            localStorage.setItem("password", this.password);
-            this.$router.push("home");
-          }
-        })
-        .catch(() => {
-          this.$alert("E-mail e/ou senha incorretos");
-        });
+      // this.loading = true;
+      // this.action_auth({ email: this.email, password: this.password })
+      //   .then((response) => {
+      //     this.loading = false;
+      //     if (response.status === 200) {
+      //       localStorage.setItem("access_token", response.data.token);
+      //       localStorage.setItem("teacher_name", response.data.teacher.name);
+      //       localStorage.setItem("teacher_id", response.data.teacher.id);
+      //       localStorage.setItem("password", this.password);
+      //       this.$router.push("home");
+      //     }
+      //   })
+      //   .catch(() => {
+      //     this.$alert("E-mail e/ou senha incorretos");
+      //   });
+      this.$router.push("home");
     },
-    redirectRegister() {
+    forgotPassword() {
       this.$router.push("forgot_password");
     },
   },

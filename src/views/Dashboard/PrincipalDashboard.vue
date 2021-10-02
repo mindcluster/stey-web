@@ -75,6 +75,7 @@
         </v-card>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -88,6 +89,7 @@ import LineChart from "../../components/graphs/LineChart";
 import DefaultLoading from "../../components/loading/DefaultLoading";
 import ScrollContributors from "../../components/lists/ScrollContributors";
 import ScrollPromotions from "../../components/lists/ScrollPromotions";
+import Footer from "../../components/bars/Footer";
 import BudgetBar from "../../components/cards/BudgetBar";
 
 export default {
@@ -102,7 +104,8 @@ export default {
     DefaultLoading,
     ScrollContributors,
     ScrollPromotions,
-    BudgetBar
+    BudgetBar,
+    Footer
   },
   data() {
     return {
@@ -241,7 +244,7 @@ export default {
 }
 
 .bottom {
-  margin: 1em 0em 1em 0em;
+  margin: 1em 0em 3em 0em;
   height: 25em;
   width: auto;
   display: flex;
