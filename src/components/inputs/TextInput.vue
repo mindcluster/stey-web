@@ -2,7 +2,7 @@
   <div class="text-input">
     <v-form color="var(--yellowStey)">
       <v-text-field
-        background-color="var(--lightGreyStey)"
+        outlined
         solo
         flat
         color="var(--yellowStey)"

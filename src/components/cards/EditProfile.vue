@@ -4,19 +4,19 @@
       <EmailInput
         @update:value="teacher.email = $event"
         ico="mdi-email"
-        :label="this.teacher.email"
+        label="E-mail"
         type="text"
       />
       <TextInput
         @update:value="teacher.name = $event"
         ico="mdi-account-circle"
-        :label="this.teacher.name"
+        label="Nome"
         type="text"
       />
       <TextInput
         @update:value="teacher.phone = $event"
         ico="mdi-phone"
-        :label="this.teacher.phone"
+        label="Telefone"
         type="text"
       />
       <div class="password">
@@ -32,8 +32,6 @@
           label="Confirme a senha"
           type="password"
         />
-      </div>
-      <div class="button">
         <NormalButton
           @click.native="update"
           color="var(--yellowStey)"
@@ -50,7 +48,7 @@ import NormalButton from "../buttons/NormalButton";
 import TextInput from "../inputs/TextInput";
 import EmailInput from "../inputs/EmailInput";
 import PasswordInput from "../inputs/PasswordInput";
-import { mapActions } from "vuex";
+// import { mapActions } from "vuex";
 
 export default {
   name: "EditProfile",
@@ -73,36 +71,10 @@ export default {
     };
   },
   mounted() {
-    this.getTeacher();
+    
   },
   methods: {
-    ...mapActions(["action_teacherById", "action_updateTeacher"]),
-    getTeacher() {
-      this.action_teacherById({
-        teacherId: localStorage.getItem("teacher_id"),
-      }).then((response) => {
-        this.teacher.email = response.email;
-        this.teacher.name = response.name;
-        this.teacher.phone = response.phone;
-      });
-    },
-    update() {
-      this.action_updateTeacher({
-        teacherId: localStorage.getItem("teacher_id"),
-        email: this.teacher.email,
-        name: this.teacher.name,
-        phone: this.teacher.phone,
-        password: this.password,
-      })
-        .then(() => {
-          localStorage.setItem("teacher_name", this.teacher.name);
-          this.$alert("Cadastro atualizado com sucesso");
-          this.$router.go();
-        })
-        .catch(() => {
-          this.$alert("Houve um erro durante a atualização. Tente novamente");
-        });
-    },
+
   },
 };
 </script>

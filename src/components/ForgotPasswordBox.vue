@@ -1,5 +1,5 @@
 <template>
-  <v-card class="login" flat>
+  <v-card class="forgot-password" flat>
     <div class="loading" v-if="loading">
       <DefaultLoading />
     </div>
@@ -29,7 +29,7 @@ import DefaultLoading from "../components/loading/DefaultLoading"
 import { mapActions } from "vuex";
 
 export default {
-  name: "LoginBox",
+  name: "forgot-passwordBox",
   mixins: [globalMethods],
   components: {
     NormalButton,
@@ -46,33 +46,30 @@ export default {
     ...mapActions(["action_auth"]),
     validate() {
       if (this.validateEmail(this.email)) {
-        this.login();
+        this.send();
       } else {
         this.$alert("Preencha corretamente o campo solicitado");
       }
     },
-    login() {
-      this.loading = true;
-      this.action_auth({ email: this.email, password: this.password })
-        .then((response) => {
-          this.loading = false;
-          if (response.status === 200) {
-            this.$alert("As instruções para reset de senha foram enviadas com sucesso!");
-          }
-        })
-        .catch(() => {
-          this.$alert("E-mail incorreto");
-        });
-    },
-    redirectRegister() {
-      this.$router.push("forgot_password");
+    send() {
+      // this.loading = true;
+      // this.action_auth({ email: this.email, password: this.password })
+      //   .then((response) => {
+      //     this.loading = false;
+      //     if (response.status === 200) {
+      //       this.$alert("As instruções para reset de senha foram enviadas com sucesso!");
+      //     }
+      //   })
+      //   .catch(() => {
+      //     this.$alert("E-mail incorreto");
+      //   });
     },
   },
 };
 </script>
 
 <style scoped>
-.login {
+.forgot-password {
   font-size: 2em;
   width: 25%;
   height: auto;
@@ -116,7 +113,7 @@ export default {
 }
 
 @media only screen and (max-width: 1024px) {
-  .login {
+  .forgot-password {
     font-size: 2em;
     width: 80%;
     height: auto;

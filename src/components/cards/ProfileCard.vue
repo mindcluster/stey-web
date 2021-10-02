@@ -11,8 +11,9 @@
         <h4>{{ params.cargo }}</h4>
       </div>
       <br />
-      <h4>Satisfação com o cargo: {{ params.value }} %</h4>
+      <h4 v-if="params.value != null">Satisfação com o cargo: {{ params.value }} %</h4>
       <v-progress-linear
+        v-if="params.value != null"
         rounded
         color="var(--yellowStey)"
         height="20"
