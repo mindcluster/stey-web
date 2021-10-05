@@ -198,9 +198,17 @@ export default {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100px;
+    height: 10em;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .first-column {
+    height: 10em;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   .cards {
@@ -217,8 +225,8 @@ export default {
   }
 
   .edit-profile {
-    width: 40%;
-    height: 27em;
+    width: 100%;
+    height: 12em;
     align-items: center;
   }
 }

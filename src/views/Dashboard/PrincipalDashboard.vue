@@ -386,7 +386,7 @@ export default {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100px;
+    height: 10em;
     justify-content: space-between;
     align-items: center;
   }
@@ -395,7 +395,7 @@ export default {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100px;
+    height: 15em;
     justify-content: space-between;
     align-items: center;
   }
@@ -403,6 +403,7 @@ export default {
   .cards {
     margin-top: 1em;
     height: 10em;
+    margin-bottom: 2em;
     display: flex;
     width: auto;
     flex-direction: row;
@@ -433,20 +434,21 @@ export default {
   }
 
   .line-chart {
-    width: 55%;
+    width: 33em;
     height: auto;
     align-items: center;
   }
 
   .bar-chart {
-    width: 40%;
-    height: 27em;
+    width: 37em;
+    height: 25em;
     align-items: center;
   }
 
-  .bar-chart {
-    width: 40%;
-    height: 27em;
+
+  .contributors-list {
+    width: 40em;
+    height: 27.4em;
     align-items: center;
   }
 }

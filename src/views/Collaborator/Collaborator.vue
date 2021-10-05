@@ -198,5 +198,16 @@ export default {
   .page-title {
     margin-top: 10px;
   }
+  
+  .middle {
+    margin-top: 1em;
+    height: 50em;
+    margin-bottom: 5em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 10;
+  }
 }
 </style>
