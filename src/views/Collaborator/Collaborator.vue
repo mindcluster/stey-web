@@ -6,7 +6,7 @@
         <h4>Colaboradores</h4>
       </div>
       <div class="middle">
-        <ScrollCollaboratorFull :params="this.contributors" />
+        <ScrollCollaboratorFull :params="this.contributors"/>
       </div>
     </div>
     <Footer/>
@@ -18,6 +18,7 @@ import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
 import ScrollCollaboratorFull from "../../components/lists/ScrollCollaboratorFull";
 import Footer from "../../components/bars/Footer";
+import { mapActions } from "vuex";
 
 export default {
   name: "Collaborator",
@@ -29,82 +30,22 @@ export default {
   },
   data() {
     return {
-      cards: {
-        contributors: "-",
-        enters: "-",
-        exits: "-",
-        promotions: "-",
-        rotativity: "-",
-      },
-      entersVsExits: [
-        { enters: 238, exits: 134, date: 2000 },
-        { enters: 938, exits: 478, date: 2001 },
-        { enters: 1832, exits: 1392, date: 2002 },
-        { enters: 2092, exits: 2343, date: 2003 },
-        { enters: 2847, exits: 2346, date: 2004 },
-        { enters: 2576, exits: 2233, date: 2005 },
-        { enters: 2524, exits: 2325, date: 2006 },
-        { enters: 1648, exits: 2456, date: 2007 },
-        { enters: 2479, exits: 2329, date: 2008 },
-        { enters: 3200, exits: 2438, date: 2009 },
-      ],
       showLoading: false,
-      values: ["enters", "exits"],
-      contributors: [
-        {
-          id: 1,
-          name: "Carlos Augusto",
-          sl: "Advisory",
-          subSl: "Risk",
-          rotativity: "99%",
-        },
-      ],
-      promotions: [
-        {
-          name: "Lorem",
-          total: 30,
-        },
-        {
-          name: "Ipsum",
-          total: 21,
-        },
-        {
-          name: "Dolor",
-          total: 20,
-        },
-      ],
-      rotativity: [
-        {
-          name: "Lorem",
-          total: 30,
-        },
-        {
-          name: "Ipsum",
-          total: 21,
-        },
-        {
-          name: "Dolor",
-          total: 20,
-        },
-      ],
-      collaborator: {
-        id: 1,
-        name: "Guilherme Pereira",
-        cargo: "Software Engineer",
-        value: 50,
-      },
+      contributors: [],
     };
   },
   mounted() {
-    this.getCards();
+    this.getCollaborators();
   },
   methods: {
-    getCards() {
-      this.cards.contributors = 7818;
-      this.cards.enters = 231;
-      this.cards.exits = 102;
-      this.cards.promotions = "23%";
-      this.cards.rotativity = "2%";
+    ...mapActions([
+      "action_employee",
+    ]),
+    getCollaborators() {
+      this.action_employee().then((response) => {
+        this.contributors = response;
+        this.contributors = this.contributors.slice(1, 30);
+      })
     },
   },
 };

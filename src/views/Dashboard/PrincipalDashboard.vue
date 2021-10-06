@@ -36,7 +36,7 @@
         <BudgetBar />
       </div>
       <div class="start">
-        <ScrollPromotions :params="this.contributors"/>
+        <ScrollPromotions :params="this.contributors" />
       </div>
       <div class="middle">
         <div class="line-chart">
@@ -62,7 +62,12 @@
       </div>
       <div class="bottom">
         <div v-show="!showLoading" class="bar-chart">
-          <BarChart title="Promoção (%)" :data="this.promotions" />
+          <BarChart
+            title="Promoção (%)"
+            :data="this.promotions"
+            :keyBar="this.keyPromotion"
+            :values="this.valuesPromotion"
+          />
         </div>
         <v-card v-show="showLoading" flat solo class="bar-chart-loading">
           <DefaultLoading />
@@ -75,7 +80,7 @@
         </v-card>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -91,6 +96,7 @@ import ScrollCollaborator from "../../components/lists/ScrollCollaborator";
 import ScrollPromotions from "../../components/lists/ScrollPromotions";
 import Footer from "../../components/bars/Footer";
 import BudgetBar from "../../components/cards/BudgetBar";
+import { mapActions } from "vuex";
 
 export default {
   name: "PrincipalDashboard",
@@ -105,7 +111,7 @@ export default {
     ScrollCollaborator,
     ScrollPromotions,
     BudgetBar,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -116,20 +122,9 @@ export default {
         promotions: "-",
         rotativity: "-",
       },
-      entersVsExits: [
-        { enters: 238, exits: 134, date: 2000 },
-        { enters: 938, exits: 478, date: 2001 },
-        { enters: 1832, exits: 1392, date: 2002 },
-        { enters: 2092, exits: 2343, date: 2003 },
-        { enters: 2847, exits: 2346, date: 2004 },
-        { enters: 2576, exits: 2233, date: 2005 },
-        { enters: 2524, exits: 2325, date: 2006 },
-        { enters: 1648, exits: 2456, date: 2007 },
-        { enters: 2479, exits: 2329, date: 2008 },
-        { enters: 3200, exits: 2438, date: 2009 },
-      ],
+      entersVsExits: [],
       showLoading: false,
-      values: ["enters", "exits"],
+      values: ["entry", "exit"],
       contributors: [
         {
           id: 1,
@@ -137,22 +132,24 @@ export default {
           sl: "Advisory",
           subSl: "Risk",
           rotativity: "99%",
-        }
+        },
       ],
       promotions: [
         {
-          name: "Lorem",
-          total: 30,
+          month: "Feb",
+          employees: 71,
         },
         {
-          name: "Ipsum",
-          total: 21,
+          month: "Mar",
+          employees: 92,
         },
         {
-          name: "Dolor",
-          total: 20,
+          month: "Apr",
+          employees: 79,
         },
       ],
+      valuesPromotion: ["employees"],
+      keyPromotion: "month",
       rotativity: [
         {
           name: "Lorem",
@@ -173,12 +170,32 @@ export default {
     this.getCards();
   },
   methods: {
+    ...mapActions([
+      "action_employee",
+      "action_overview",
+      "action_overviewEntryVsExit",
+      "action_overviewPromotion",
+    ]),
     getCards() {
-      this.cards.contributors = 7818;
-      this.cards.enters = 231;
-      this.cards.exits = 102;
-      this.cards.promotions = "23%";
-      this.cards.rotativity = "2%";
+      this.action_overview().then((response) => {
+        this.cards.contributors = response.employees;
+        this.cards.enters = response.entry;
+        (this.cards.exits = response.exit),
+          (this.cards.promotions = response.promotion.toFixed(1) + "%");
+        this.cards.rotativity = response.turnover.toFixed(1) + "%";
+      });
+
+      this.action_overviewEntryVsExit().then((response) => {
+        this.entersVsExits = response;
+      });
+
+      // this.action_overviewPromotion().then((response) => {
+      //   this.promotions = response;
+      // });
+
+      this.action_employee().then((response) => {
+        this.contributors = response;
+      });
     },
   },
 };
@@ -444,7 +461,6 @@ export default {
     height: 25em;
     align-items: center;
   }
-
 
   .contributors-list {
     width: 40em;

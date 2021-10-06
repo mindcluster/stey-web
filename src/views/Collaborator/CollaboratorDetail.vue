@@ -10,33 +10,33 @@
         <div class="collaborator-infos">
           <div>
             <h4>GPN</h4>
-            <h5>BR1636345440</h5>
+            <h5>{{this.collaborator.gpn}}</h5>
             <br />
             <h4>Escritório/País</h4>
-            <h5>São Paulo, Brazil</h5>
+            <h5>{{this.collaborator.country}}</h5>
             <br />
             <h4>SMU</h4>
-            <h5>IT Advisory</h5>
+            <h5>{{this.collaborator.smu === null ? "Não informado" : this.collaborator.smu}}</h5>
           </div>
           <div>
             <h4>Email</h4>
-            <h5>guilherme@ey.com.br</h5>
+            <h5>{{this.collaborator.email}}</h5>
             <br />
             <h4>Gênero</h4>
-            <h5>Masculino</h5>
+            <h5>{{this.collaborator.gênero === "M" ? "Masculino" : "Feminino"}}</h5>
             <br />
             <h4>Rank</h4>
-            <h5>Manager</h5>
+            <h5>{{this.collaborator.rank}}</h5>
           </div>
           <div>
             <h4>Salário</h4>
-            <h5>R$ 15.000,00</h5>
+            <h5>R$ {{this.collaborator.salary}}</h5>
             <br />
             <h4>Salário Médio Mercado</h4>
-            <h5>R$ 16.700,00</h5>
+            <h5>R$ {{this.collaborator.salary}}</h5>
             <br />
             <h4>Dependentes</h4>
-            <h5>1</h5>
+            <h5>{{this.collaborator.dependents}}</h5>
           </div>
         </div>
       </div>
@@ -59,13 +59,11 @@
           <p>
             <strong>Promotion Score:</strong>
             <br />
-            <span style="promotion-score">99</span>/100
+            <span class="promotion-score">99</span>/100
           </p>
           <div class="buttons">
-            <NormalButton
-              @click.native="showModal = true"
-              color="var(--yellowStey)"
-              text="Aumento"
+            <IncreaseButton
+              :info="this.collaborator"
             />
             <NormalButton
               @click.native="validate"
@@ -76,10 +74,11 @@
         </div>
         <div class="second-column">
           <div class="bar-chart">
-            <BarChart title="Promoção (%)" :data="this.promotions" />
+            <BarChart title="Promoção (%)" :data="this.promotions" :keyBar="this.keyPromotion"
+            :values="this.valuesPromotion"/>
           </div>
           <div v-show="!showLoading" class="contributors-list">
-            <ScrollCertificates :params="this.contributors" />
+            <ScrollCertificates :params="this.collaborator.certificates" />
           </div>
           <v-card
             v-show="showLoading"
@@ -109,15 +108,13 @@
             />
           </div>
           <div class="line-chart">
-            <BarChart title="Promoção (%)" :data="this.promotions" />
+            <BarChart title="Promoção (%)" :data="this.promotions"  :keyBar="this.keyPromotion"
+            :values="this.valuesPromotion"/>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="showModal" class="increase-modal">
-        <IncreaseModal/>
-    </div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -131,7 +128,7 @@ import ScrollCertificates from "../../components/lists/ScrollCertificates";
 import Footer from "../../components/bars/Footer";
 import ProfileCard from "../../components/cards/ProfileCard";
 import NormalButton from "../../components/buttons/NormalButton";
-import IncreaseModal from "../../components/modals/IncreaseModal";
+import IncreaseButton from "../../components/buttons/IncreaseButton";
 
 export default {
   name: "CollaboratorDetail",
@@ -142,10 +139,10 @@ export default {
     BarChart,
     DefaultLoading,
     ScrollCertificates,
-    IncreaseModal,
     Footer,
     ProfileCard,
     NormalButton,
+    IncreaseButton
   },
   data() {
     return {
@@ -195,17 +192,14 @@ export default {
           total: 20,
         },
       ],
-      collaborator: {
-        id: 1,
-        name: "Guilherme Pereira",
-        cargo: "Software Engineer",
-        value: 50,
-      },
-      showModal: false
+      valuesPromotion: ["total"],
+      keyPromotion: "name",
+      collaborator: JSON.parse(localStorage.getItem('selected_collaborator')),
     };
   },
   mounted() {
     this.getCards();
+    console.log(this.collaborator)
   },
   methods: {
     getCards() {
@@ -310,6 +304,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: top;
 }
 
 .line-chart {
@@ -342,13 +337,9 @@ export default {
   justify-content: space-around;
 }
 
-.increase-modal {
-    position: absolute;
-    background-color: rgba(36, 36, 36, 0.6);
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    align-items: center;
+.promotion-score {
+  color: var(--greenAlert);
+  font-size: 4em;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -473,23 +464,22 @@ export default {
   .content {
     display: flex;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     height: 100%;
     padding: 2em;
-    padding-left: 8em;
+    padding-left: 5em;
   }
 
   .start {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100px;
+    height: 12em;
     justify-content: space-between;
     align-items: center;
   }
 
   .cards {
-    margin-top: 1em;
     height: 10em;
     display: flex;
     width: auto;
@@ -502,15 +492,34 @@ export default {
   }
 
   .line-chart {
-    width: 55%;
+    width: 100%;
     height: auto;
     align-items: center;
   }
 
   .bar-chart {
-    width: 40%;
+    width: 100%;
     height: 27em;
     align-items: center;
   }
+
+  .first-column {
+    height: 20em;
+    width: 18em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .middle {
+    margin-top: 1em;
+    height: 43em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
 }
 </style>

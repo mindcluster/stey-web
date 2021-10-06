@@ -2,19 +2,19 @@
   <v-card class="edit-profile" flat>
     <v-form ref="form" lazy-validation>
       <EmailInput
-        @update:value="teacher.email = $event"
+        @update:value="employee.email = $event"
         ico="mdi-email"
         label="E-mail"
         type="text"
       />
       <TextInput
-        @update:value="teacher.name = $event"
+        @update:value="employee.name = $event"
         ico="mdi-account-circle"
         label="Nome"
         type="text"
       />
       <TextInput
-        @update:value="teacher.phone = $event"
+        @update:value="employee.phone = $event"
         ico="mdi-phone"
         label="Telefone"
         type="text"
@@ -61,7 +61,7 @@ export default {
   },
   data() {
     return {
-      teacher: {
+      employee: {
         email: "",
         name: "",
         phone: "",

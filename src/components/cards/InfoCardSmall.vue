@@ -72,9 +72,9 @@ export default {
   }
 }
 
-@media only screen and (max-width: 1440px){
+@media only screen and (min-width: 1024px) and (max-width: 1440px){
   .info-card {
-    width: 14em;
+    width: 9em;
     height: auto;
     font-family: 'Metropolis Regular';
     text-align: center;

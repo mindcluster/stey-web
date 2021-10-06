@@ -2,8 +2,8 @@
   <v-card class="graph-card" flat>
     <h4>{{ title }}</h4>
     <D3BarChart
-      :config="chart_config"
-      :datum="chart_data"
+      :config="chartConfig"
+      :datum="chartData"
     ></D3BarChart>
   </v-card>
 </template>
@@ -15,18 +15,17 @@ export default {
   components: {
     D3BarChart,
   },
-  props: ["title", "data"],
+  props: ["title", "data", "keyBar", "values"],
   data() {
     return {
-      chart_data: this.data,
-      chart_config: {
-        key: 'name',
-        values: ['total'],
+      chartData: this.data,
+      chartConfig: {
+        key: this.keyBar,
+        values: this.values,
         color: { scheme: "schemeTableau10" },
       },
     };
   },
-  methods: {},
 };
 </script>
 

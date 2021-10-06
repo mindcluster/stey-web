@@ -8,7 +8,7 @@
         <h2>{{ params.name }}</h2>
       </div>
       <div class="role">
-        <h4>{{ params.cargo }}</h4>
+        <h4>{{ params.job_role }}</h4>
       </div>
       <br />
       <h4 v-if="params.value != null">Satisfação com o cargo: {{ params.value }} %</h4>

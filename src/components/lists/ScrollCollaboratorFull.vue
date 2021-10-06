@@ -8,13 +8,10 @@
         <h4>Nome</h4>
       </div>
       <div class="column-name">
-        <h4>SL</h4>
+        <h4>Cargo</h4>
       </div>
       <div class="column-name">
-        <h4>Sub SL</h4>
-      </div>
-      <div class="column-name">
-        <h4>Rotatividade</h4>
+        <h4>SMU</h4>
       </div>
     </div>
     <v-list class="content" dense>
@@ -32,19 +29,19 @@
         </v-list-item-content>
 
         <v-list-item-content>
-          <v-list-item-title>{{ item.sl }}</v-list-item-title>
+          <v-list-item-title>{{ item.job_role }}</v-list-item-title>
         </v-list-item-content>
 
         <v-list-item-content>
-          <v-list-item-title>{{ item.subSl }}</v-list-item-title>
-        </v-list-item-content>
-
-        <v-list-item-content>
-          <v-list-item-title>{{ item.rotativity }}</v-list-item-title>
+          <v-list-item-title>{{ item.smu }}</v-list-item-title>
         </v-list-item-content>
 
         <v-list-item-icon>
-          <v-btn icon color="var(--redAlert)" :to="{name:'collaborator_detail'}">
+          <v-btn
+            icon
+            color="var(--redAlert)"
+            @click.native="setCollaborator(item)"
+          >
             <v-icon>mdi-arrow-right</v-icon>
           </v-btn>
         </v-list-item-icon>
@@ -54,14 +51,23 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 import globalMethods from "../../mixins/globalMethods";
 export default {
   name: "ScrollCollaborator",
   mixins: [globalMethods],
   props: ["number", "text", "color", "params"],
   methods: {
-
-  }
+    ...mapMutations([
+      "SET_COLLABORATOR",
+    ]),
+    setCollaborator(item) {
+      this.SET_COLLABORATOR(item);
+      localStorage.setItem("selected_collaborator", JSON.stringify(item));
+      this.$router.push({name: "collaborator_detail"});
+    }
+  },
 };
 </script>
 
@@ -96,7 +102,7 @@ export default {
 }
 
 .column-name {
-  width: 20%;
+  width: 25%;
   text-transform: uppercase;
 }
 

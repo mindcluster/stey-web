@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome-bar">Olá, {{ teacher_name }}!</div>
+  <div class="welcome-bar">Olá, {{ employee_name }}!</div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   name: "WelcomeBar",
   data() {
     return {
-      teacher_name: localStorage.getItem("teacher_name"),
+      employee_name: localStorage.getItem("employee_name"),
     };
   },
 };
