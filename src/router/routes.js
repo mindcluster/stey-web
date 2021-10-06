@@ -5,7 +5,6 @@ import Collaborator from '../views/Collaborator/Collaborator';
 import CollaboratorDetail from '../views/Collaborator/CollaboratorDetail';
 import MyProfile from '../views/Settings/MyProfile';
 import MarketPlace from '../views/MarketPlace/MarketPlace';
-import Integration from '../views/Integration/Integration';
 
 export const routes = [
     { path: '/', component: Login, name: 'login' },
@@ -14,6 +13,5 @@ export const routes = [
     { path: '/collaborator', component: Collaborator, name: 'collaborator' },
     { path: '/collaborator/analysis', component: CollaboratorDetail, name: 'collaborator_detail' },
     { path: '/settings', component: MyProfile, name: 'settings' },
-    { path: '/marketplace', component: MarketPlace, name: 'marketPlace' },
-    { path: '/integration', component: Integration, name: 'integration' },
+    { path: '/marketplace', component: MarketPlace, name: 'market_place' },
 ];

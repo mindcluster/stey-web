@@ -35,7 +35,7 @@ export default {
     items: [
       { ico: "mdi-home", title: "Home", route: "home" },
       { ico: "mdi-account-group", title: "Colaboradores", route: "collaborator" },
-      { ico: "mdi-cart-plus", title: "MarketPlace", route: "marketPlace" },
+      { ico: "mdi-cart-plus", title: "MarketPlace", route: "market_place" },
       { ico: "mdi-account-edit", title: "Configurações", route: "settings" },
       { ico: "mdi-logout", title: "Sair", route: "login" },
     ],

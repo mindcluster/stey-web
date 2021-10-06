@@ -1,11 +1,18 @@
 <template>
-  <div class="marketplace">
+  <div class="settings">
     <LateralMenu />
     <div class="content">
       <div class="page-title">
         <h4>Integrações</h4>
       </div>
-      <div class="start"></div>
+        <div class="middle">
+            <div>
+                <IntegrationCard :params="this.collaborator"/>
+            </div>
+            <div>
+                <AddIntegration/>
+            </div>
+        </div>
     </div>
     <Footer />
   </div>
@@ -15,6 +22,8 @@
 import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
 import Footer from "../../components/bars/Footer";
+import IntegrationCard from "../../components/cards/IntegrationCard";
+import AddIntegration from "../../components/inputs/AddIntegration";
 
 export default {
   name: "MarketPlace",
@@ -22,19 +31,32 @@ export default {
   components: {
     LateralMenu,
     Footer,
+    IntegrationCard,
+    AddIntegration,
   },
   data() {
-    return {};
+    return {
+      collaborator: {
+        id: 1,
+        name: "Glasdoor",
+        cargo: "Diretora de Recursos Humanos",
+        value: null,
+      },
+    };
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    
+  },
+  methods: {
+   
+  },
 };
 </script>
 
 <style scoped>
-.marketplace {
+.settings {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
@@ -67,6 +89,38 @@ export default {
   color: var(--greyStey);
 }
 
+.middle {
+  margin-top: 1em;
+  height: 38em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.first-column {
+  height: 20em;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.second-column {
+  height: 38em;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.edit-profile {
+  width: auto;
+  height: 13.5em;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1024px) {
   .content {
     display: flex;
@@ -84,10 +138,36 @@ export default {
     justify-content: space-between;
     align-items: center;
   }
+
+  .middle {
+    margin-top: 1em;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
+  .first-column {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .second-column {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
-  .marketplace {
+  .settings {
     width: 100%;
     height: auto;
     background-color: var(--lightblueStey);
@@ -115,8 +195,23 @@ export default {
     align-items: center;
   }
 
+  .cards {
+    margin-top: 1em;
+    height: 10em;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .page-title {
     margin-top: 10px;
+  }
+
+  .edit-profile {
+    width: 40%;
+    height: 27em;
+    align-items: center;
   }
 }
 </style>
