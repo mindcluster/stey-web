@@ -1,5 +1,6 @@
 import {
     auth,
+    integration,
     employee,
     employeeSalaryInfo,
     overview,
@@ -49,6 +50,16 @@ export const indexStore = {
             }).catch(err => console.error(err));
         },
 
+
+        /*
+            Integration
+        */
+        async action_integration(context, payload) {
+            return await integration(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+    
 
         /*
             Employee
