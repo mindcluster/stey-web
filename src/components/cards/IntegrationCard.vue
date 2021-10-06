@@ -1,8 +1,8 @@
 <template>
   <v-card class="integration-card" flat solo>
-    <v-img size="10em">
-      <img alt="Colaborador" src="../../assets/images/image-glassdoor.png" />
-    </v-img>
+    <div class="image">
+      <v-img size="8em" :alt="params.name" :src="getImage(params.id)" />
+    </div>
     <div class="title">
       <h2>{{ params.name }}</h2>
     </div>
@@ -24,6 +24,23 @@ export default {
   components: {
     NormalButton,
   },
+  data() {
+    return {};
+  },
+  methods: {
+    getImage(id) {
+      switch (id) {
+        case 1:
+          return require("../../assets/images/image-glassdoor.png");
+        case 2:
+          return require("../../assets/images/image-google.png");
+        case 3:
+          return require("../../assets/images/image-hubspot.png");
+        case 4:
+          return require("../../assets/images/image-indeed.png");
+      }
+    },
+  },
 };
 </script>
 
@@ -34,7 +51,7 @@ export default {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -52,6 +69,11 @@ export default {
 
 h6 {
   color: var(--greyStey);
+}
+
+.image {
+  width: 80%;
+  height: 8em;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -73,13 +95,14 @@ h6 {
 
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
   .integration-card {
-    width: 100%;
+    width: 15em;
     height: 18em;
+    padding-top: 2em;
     font-family: "Metropolis Regular";
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin-bottom: 1em;
   }
