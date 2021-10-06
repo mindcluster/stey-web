@@ -16,7 +16,9 @@ export const auth = (params) => {
 export const integration = (params) => {
     return axios.get(`${url}/integration`, params);
 };
-
+export const integrationMe = (params) => {
+    return axios.get(`${url}/integration/me`, params);
+};
 
 /*
     Employees

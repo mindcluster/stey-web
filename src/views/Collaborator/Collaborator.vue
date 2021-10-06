@@ -55,7 +55,7 @@ export default {
 .collaborator {
   width: 100%;
   height: 100%;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -120,7 +120,7 @@ export default {
   .collaborator {
     width: 100%;
     height: auto;
-    background-color: var(--lightblueStey);
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

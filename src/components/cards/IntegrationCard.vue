@@ -57,7 +57,7 @@ export default {
 
 .title {
   font-family: "Metropolis Regular";
-  font-size: 10px;
+  font-size: 2em;
   text-align: left;
 }
 
@@ -67,8 +67,8 @@ export default {
   padding: 1em 1em 0em 0em;
 }
 
-h6 {
-  color: var(--greyStey);
+h2 {
+  font-size: 1.5em;
 }
 
 .image {
@@ -92,6 +92,12 @@ h6 {
   }
   .infos {
     height: auto;
+  }
+  .image {
+    width: 80%;
+    height: 5em;
+    display: flex;
+    align-items: center;
   }
 }
 

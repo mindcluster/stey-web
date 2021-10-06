@@ -1,6 +1,7 @@
 import {
     auth,
     integration,
+    integrationMe,
     employee,
     employeeSalaryInfo,
     overview,
@@ -56,6 +57,11 @@ export const indexStore = {
         */
         async action_integration(context, payload) {
             return await integration(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_integrationMe(context, payload) {
+            return await integrationMe(payload).then(response => {
                 return response.data;
             }).catch(err => console.error(err));
         },

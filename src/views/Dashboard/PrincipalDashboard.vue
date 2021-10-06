@@ -205,7 +205,7 @@ export default {
 .principal-dashboard {
   width: 100%;
   height: auto;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -383,7 +383,7 @@ export default {
   .principal-dashboard {
     width: 100%;
     height: auto;
-    background-color: var(--lightblueStey);
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

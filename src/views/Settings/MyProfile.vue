@@ -5,11 +5,10 @@
       <div class="page-title">
         <h4>Configurações</h4>
       </div>
-      <div class="start">
-        <ProfileCard :params="this.collaborator" />
-      </div>
+        
       <div class="middle">
         <div class="first-column">
+          <ProfileCard :params="this.collaborator" style="margin-bottom: 2em"/>
           <p><v-icon>mdi-office-building-marker</v-icon>São Paulo - SP</p>
           <p><v-icon>mdi-calendar</v-icon>25/10/1984</p>
           <p><v-icon>mdi-email</v-icon>flavia.souza@ey.com</p>
@@ -17,7 +16,21 @@
         </div>
         <div class="second-column">
           <div class="edit-profile">
-            <EditProfile/>
+            <div class="page-sub-title">
+              <h4>Minhas Informações</h4>
+            </div>
+            <EditProfile />
+          </div>
+
+          <div
+            class="integration-list"
+            v-for="integration in integrations"
+            :key="integration.id"
+          >
+            <div class="page-sub-title">
+              <h4>Minhas Integrações</h4>
+            </div>
+            <IntegrationCard :params="integration" />
           </div>
         </div>
       </div>
@@ -32,6 +45,8 @@ import LateralMenu from "../../components/LateralMenu";
 import EditProfile from "../../components/cards/EditProfile";
 import Footer from "../../components/bars/Footer";
 import ProfileCard from "../../components/cards/ProfileCard";
+import IntegrationCard from "../../components/cards/IntegrationCard";
+import { mapActions } from "vuex";
 
 export default {
   name: "MyProfile",
@@ -41,6 +56,7 @@ export default {
     EditProfile,
     Footer,
     ProfileCard,
+    IntegrationCard,
   },
   data() {
     return {
@@ -50,13 +66,19 @@ export default {
         cargo: "Diretora de Recursos Humanos",
         value: null,
       },
+      integrations: [],
     };
   },
   mounted() {
-    
+    this.getProfileInfos();
   },
   methods: {
-   
+    ...mapActions(["action_integrationMe"]),
+    getProfileInfos() {
+      this.action_integrationMe().then((response) => {
+        this.integrations = response;
+      });
+    },
   },
 };
 </script>
@@ -65,7 +87,7 @@ export default {
 .settings {
   width: 100%;
   height: auto;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -93,6 +115,12 @@ export default {
 
 .page-title {
   margin-top: 10px;
+  font-size: 1.5em;
+  color: var(--greyStey);
+}
+
+.page-sub-title {
+  margin-bottom: 0.5em;
   font-size: 1.5em;
   color: var(--greyStey);
 }
@@ -130,6 +158,17 @@ export default {
 }
 
 @media only screen and (max-width: 1024px) {
+  .settings {
+    width: 100%;
+    height: 180%;
+    background-color: var(--lightBlueStey);
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 1;
+    font-family: "Metropolis Regular";
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -172,13 +211,28 @@ export default {
     flex-direction: column;
     justify-content: space-between;
   }
+
+  .integration-list {
+    width: 100%;
+    height: 20em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .edit-profile {
+    width: auto;
+    height: auto;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
   .settings {
     width: 100%;
-    height: auto;
-    background-color: var(--lightblueStey);
+    height: 120%;
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -194,30 +248,21 @@ export default {
     padding-left: 8em;
   }
 
-  .start {
+  .middle {
+    margin-top: 1em;
+    height: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 10em;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .first-column {
-    height: 10em;
-    width: 18%;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
   }
 
-  .cards {
-    margin-top: 1em;
-    height: 10em;
+  .first-column {
+    height: 20em;
+    width: 30%;
     display: flex;
-    width: auto;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   .page-title {
@@ -226,8 +271,24 @@ export default {
 
   .edit-profile {
     width: 100%;
-    height: 12em;
+    height: auto;
     align-items: center;
+  }
+
+  .integration-list {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    margin: 3em 0em 3em 0em;
+  }
+
+  .second-column {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin: 0em 0em 0em 3em;
   }
 }
 </style>

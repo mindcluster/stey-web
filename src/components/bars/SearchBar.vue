@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <v-toolbar
-      color="var(--lightblueStey)"
+      color="var(--lightBlueStey)"
       dense
       flat
       class="search-bar rounded-pill"

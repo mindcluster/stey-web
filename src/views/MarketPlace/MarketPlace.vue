@@ -62,7 +62,7 @@ export default {
 .market-place {
   width: 100%;
   height: 100%;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -138,7 +138,7 @@ export default {
   .market-place {
     width: 100%;
     height: 100%;
-    background-color: var(--lightblueStey);
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

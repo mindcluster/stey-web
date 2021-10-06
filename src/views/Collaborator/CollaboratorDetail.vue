@@ -216,7 +216,7 @@ export default {
 .collaborator-detail {
   width: 100%;
   height: auto;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -453,7 +453,7 @@ export default {
   .collaborator-detail {
     width: 100%;
     height: auto;
-    background-color: var(--lightblueStey);
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;
