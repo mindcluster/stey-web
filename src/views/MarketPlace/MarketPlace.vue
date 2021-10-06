@@ -5,14 +5,18 @@
       <div class="page-title">
         <h4>Integrações</h4>
       </div>
-        <div class="middle">
-            <div class="integration-list" v-for="integration in integrations" :key="integration.id">
-                <IntegrationCard :params="integration"/>
-            </div>
-            <div>
-                <AddIntegration/>
-            </div>
+      <div class="middle">
+        <div
+          class="integration-list"
+          v-for="integration in integrations"
+          :key="integration.id"
+        >
+          <IntegrationCard :params="integration" />
         </div>
+        <div>
+          <AddIntegration />
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -24,7 +28,7 @@ import LateralMenu from "../../components/LateralMenu";
 import Footer from "../../components/bars/Footer";
 import IntegrationCard from "../../components/cards/IntegrationCard";
 import AddIntegration from "../../components/inputs/AddIntegration";
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 
 export default {
   name: "MarketPlace",
@@ -37,19 +41,19 @@ export default {
   },
   data() {
     return {
-      integrations: []
+      integrations: [],
     };
   },
   mounted() {
-    this.getIntegrations()
+    this.getIntegrations();
   },
   methods: {
     ...mapActions(["action_integration"]),
-    getIntegrations(){
+    getIntegrations() {
       this.action_integration().then((response) => {
         this.integrations = response;
-      })
-    }
+      });
+    },
   },
 };
 </script>
@@ -99,7 +103,6 @@ export default {
   justify-content: space-between;
   z-index: 10;
 }
-
 
 @media only screen and (max-width: 1024px) {
   .content {
@@ -173,7 +176,7 @@ export default {
     margin-top: 10px;
   }
 
-  .integration-list{
+  .integration-list {
     display: flex;
     width: 100%;
     height: auto;
