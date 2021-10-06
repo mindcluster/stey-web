@@ -1,6 +1,7 @@
 import {
     auth,
     employee,
+    employeeSalaryInfo,
     overview,
     overviewEntryVsExit,
     overviewPromotion
@@ -57,6 +58,12 @@ export const indexStore = {
                 return response.data.data;
             }).catch(err => console.error(err));
         },
+        async action_employeeSalaryInfo(context, payload) {
+            return await employeeSalaryInfo(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+
 
 
         /*
