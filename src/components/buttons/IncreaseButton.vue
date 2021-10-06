@@ -36,14 +36,25 @@
           </div>
         </div>
         <v-container>
+          <div class="slider-header">
+            <div>Atual</div>
+            <div>Budget SMU</div>
+          </div>
           <v-slider
+            :max="this.info.budget_smu"
+            :min="this.info.current"
             color="var(--darkGreyStey)"
             dark
+            step="10"
             track-color="var(--yellowStey)"
             v-model="slider"
-            :thumb-size="24"
+            :thumb-size="28"
             thumb-label="always"
           ></v-slider>
+          <div class="slider-header">
+            <div>{{ this.info.current}} </div>
+            <div>{{ this.info.budget_smu}} </div>
+          </div>
         </v-container>
       </v-card-text>
       <v-card-actions>
@@ -80,6 +91,15 @@ export default {
   width: 100%;
   height: 12em;
   justify-content: space-around;
+  align-items: center;
+}
+
+.slider-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
   align-items: center;
 }
 </style>

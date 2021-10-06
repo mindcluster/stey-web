@@ -33,7 +33,7 @@
             <h5>R$ {{this.collaborator.salary}}</h5>
             <br />
             <h4>Salário Médio Mercado</h4>
-            <h5>R$ {{this.collaborator.salary}}</h5>
+            <h5>R$ {{this.collaboratorInfos.market}}</h5>
             <br />
             <h4>Dependentes</h4>
             <h5>{{this.collaborator.dependents}}</h5>
@@ -55,7 +55,7 @@
               text="Gestor"
             />
           </div>
-          <p><strong>Budget SMU:</strong> $ 5,000.00 (0,8%)</p>
+          <p><strong>Budget SMU:</strong> $ {{this.collaboratorInfos.budget_smu}}</p>
           <p>
             <strong>Promotion Score:</strong>
             <br />
@@ -63,7 +63,7 @@
           </p>
           <div class="buttons">
             <IncreaseButton
-              :info="this.collaborator"
+              :info="this.collaboratorInfos"
             />
             <NormalButton
               @click.native="validate"
@@ -129,6 +129,7 @@ import Footer from "../../components/bars/Footer";
 import ProfileCard from "../../components/cards/ProfileCard";
 import NormalButton from "../../components/buttons/NormalButton";
 import IncreaseButton from "../../components/buttons/IncreaseButton";
+import { mapActions } from "vuex";
 
 export default {
   name: "CollaboratorDetail",
@@ -155,15 +156,6 @@ export default {
       },
       showLoading: false,
       values: ["enters", "exits"],
-      contributors: [
-        {
-          id: 1,
-          name: "Carlos Augusto",
-          sl: "Advisory",
-          subSl: "Risk",
-          rotativity: "99%",
-        },
-      ],
       promotions: [
         {
           name: "Lorem",
@@ -195,14 +187,21 @@ export default {
       valuesPromotion: ["total"],
       keyPromotion: "name",
       collaborator: JSON.parse(localStorage.getItem('selected_collaborator')),
+      collaboratorInfos: ''
     };
   },
   mounted() {
-    this.getCards();
+    this.getCollaborator();
     console.log(this.collaborator)
   },
   methods: {
-    getCards() {
+    ...mapActions([
+      "action_employeeSalaryInfo",
+    ]),
+    getCollaborator() {
+      this.action_employeeSalaryInfo({employeeId: this.collaborator.id}).then((response) => {
+        this.collaboratorInfos = response;
+      })
       this.cards.contributors = 7818;
       this.cards.enters = 231;
       this.cards.exits = 102;
