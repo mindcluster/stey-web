@@ -74,6 +74,8 @@ h6 {
 .image {
   width: 80%;
   height: 8em;
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -97,7 +99,6 @@ h6 {
   .integration-card {
     width: 15em;
     height: 18em;
-    padding-top: 2em;
     font-family: "Metropolis Regular";
     text-align: center;
     display: flex;
