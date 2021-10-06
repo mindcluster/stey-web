@@ -1,13 +1,13 @@
 <template>
-  <div class="settings">
+  <div class="market-place">
     <LateralMenu />
     <div class="content">
       <div class="page-title">
         <h4>Integrações</h4>
       </div>
         <div class="middle">
-            <div>
-                <IntegrationCard :params="this.collaborator"/>
+            <div class="integration-list" v-for="integration in integrations" :key="integration.id">
+                <IntegrationCard :params="integration"/>
             </div>
             <div>
                 <AddIntegration/>
@@ -24,6 +24,7 @@ import LateralMenu from "../../components/LateralMenu";
 import Footer from "../../components/bars/Footer";
 import IntegrationCard from "../../components/cards/IntegrationCard";
 import AddIntegration from "../../components/inputs/AddIntegration";
+import { mapActions } from 'vuex';
 
 export default {
   name: "MarketPlace",
@@ -36,27 +37,27 @@ export default {
   },
   data() {
     return {
-      collaborator: {
-        id: 1,
-        name: "Glasdoor",
-        cargo: "Diretora de Recursos Humanos",
-        value: null,
-      },
+      integrations: []
     };
   },
   mounted() {
-    
+    this.getIntegrations()
   },
   methods: {
-   
+    ...mapActions(["action_integration"]),
+    getIntegrations(){
+      this.action_integration().then((response) => {
+        this.integrations = response;
+      })
+    }
   },
 };
 </script>
 
 <style scoped>
-.settings {
+.market-place {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
@@ -99,34 +100,14 @@ export default {
   z-index: 10;
 }
 
-.first-column {
-  height: 20em;
-  width: 18%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.second-column {
-  height: 38em;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.edit-profile {
-  width: auto;
-  height: 13.5em;
-  align-items: center;
-}
 
 @media only screen and (max-width: 1024px) {
   .content {
     display: flex;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     height: 100%;
+    align-items: center;
     padding-left: 2em 2em 2em 3em;
   }
 
@@ -148,28 +129,12 @@ export default {
     justify-content: space-between;
     z-index: 10;
   }
-
-  .first-column {
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .second-column {
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
-  .settings {
+  .market-place {
     width: 100%;
-    height: auto;
+    height: 100%;
     background-color: var(--lightblueStey);
     display: flex;
     flex-direction: row;
@@ -208,10 +173,13 @@ export default {
     margin-top: 10px;
   }
 
-  .edit-profile {
-    width: 40%;
-    height: 27em;
-    align-items: center;
+  .integration-list{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0.5em;
   }
 }
 </style>

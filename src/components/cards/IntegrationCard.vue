@@ -1,34 +1,23 @@
 <template>
-  <div class="integration-card">
-    <div class="infos">
-        <v-img size="10em">
-            <img alt="Colaborador" src="../../assets/images/image-glassdoor.png" />
-        </v-img>
-        <div class="title">
-            <h2>{{ params.name }}</h2>
-        </div>
-        <div class="button">
-            <NormalButton 
-            @click.native="update"
-            color="var(--yellowStey)"
-            text="Integrar"
-            />
-        </div>
-        <v-progress-linear
-            v-if="params.value != null"
-            rounded
-            color="var(--yellowStey)"
-            height="20"
-            background-color="var(--greyStey)"
-            value="50"
-        >
-        </v-progress-linear>
+  <v-card class="integration-card" flat solo>
+    <v-img size="10em">
+      <img alt="Colaborador" src="../../assets/images/image-glassdoor.png" />
+    </v-img>
+    <div class="title">
+      <h2>{{ params.name }}</h2>
     </div>
-  </div>
+    <div class="button">
+      <NormalButton
+        @click.native="update"
+        color="var(--yellowStey)"
+        text="Integrar"
+      />
+    </div>
+  </v-card>
 </template>
 
 <script>
-import NormalButton from '../buttons/NormalButton';
+import NormalButton from "../buttons/NormalButton";
 export default {
   name: "IntegrationCard",
   props: ["params"],
@@ -40,27 +29,13 @@ export default {
 
 <style scoped>
 .integration-card {
-  height: auto;
+  height: 18em;
   font-family: "Metropolis Regular";
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--whiteStey);
-  border-radius: 17px;
-}
-
-
-
-.infos {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2em 0em 0em 1em;
-  text-align: left;
 }
 
 .title {
@@ -80,14 +55,31 @@ h6 {
 }
 
 @media only screen and (max-width: 1024px) {
-  .profile-card {
-    width: auto;
-    height: auto;
+  .integration-card {
+    width: 100%;
+    height: 18em;
     font-family: "Metropolis Regular";
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+  .infos {
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  .integration-card {
+    width: 100%;
+    height: 18em;
+    font-family: "Metropolis Regular";
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
   }
