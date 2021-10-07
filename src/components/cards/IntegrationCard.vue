@@ -46,6 +46,7 @@ export default {
 
 <style scoped>
 .integration-card {
+  width: 15em;
   height: 18em;
   font-family: "Metropolis Regular";
   text-align: center;

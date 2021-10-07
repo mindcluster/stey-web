@@ -14,8 +14,8 @@
           <p><v-icon>mdi-email</v-icon>flavia.souza@ey.com</p>
           <p><v-icon>mdi-baby-face-outline</v-icon>1 dependente</p>
         </div>
-        <div class="second-column">
-          <div class="edit-profile">
+        <div class="second-column" style="border: solid 1px blue">
+          <div class="edit-profile" style="border: solid 1px orange">
             <div class="page-sub-title">
               <h4>Minhas Informações</h4>
             </div>
@@ -26,6 +26,7 @@
             class="integration-list"
             v-for="integration in integrations"
             :key="integration.id"
+            style="border: solid 1px purple"
           >
             <div class="page-sub-title">
               <h4>Minhas Integrações</h4>
@@ -86,7 +87,7 @@ export default {
 <style scoped>
 .settings {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
@@ -144,7 +145,7 @@ export default {
 }
 
 .second-column {
-  height: 38em;
+  height: 53em;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -155,6 +156,15 @@ export default {
   width: auto;
   height: 13.5em;
   align-items: center;
+}
+
+.integration-list {
+  width: 100%;
+  height: 20em;
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 @media only screen and (max-width: 1024px) {
