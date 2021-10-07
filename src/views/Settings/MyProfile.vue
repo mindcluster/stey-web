@@ -14,8 +14,8 @@
           <p><v-icon>mdi-email</v-icon>flavia.souza@ey.com</p>
           <p><v-icon>mdi-baby-face-outline</v-icon>1 dependente</p>
         </div>
-        <div class="second-column" style="border: solid 1px blue">
-          <div class="edit-profile" style="border: solid 1px orange">
+        <div class="second-column">
+          <div class="edit-profile">
             <div class="page-sub-title">
               <h4>Minhas Informações</h4>
             </div>
@@ -26,7 +26,6 @@
             class="integration-list"
             v-for="integration in integrations"
             :key="integration.id"
-            style="border: solid 1px purple"
           >
             <div class="page-sub-title">
               <h4>Minhas Integrações</h4>
