@@ -59,7 +59,7 @@
           <p>
             <strong>Promotion Score:</strong>
             <br />
-            <span class="promotion-score">{{this.collaboratorInfos.promotion_score}}</span>/100
+            <span class="promotion-score">{{this.collaborator.promotion_score}}</span>/100
           </p>
           <div class="buttons">
             <IncreaseButton
@@ -194,7 +194,8 @@ export default {
   methods: {
     ...mapActions([
       "action_employeeSalaryInfo",
-      "action_employeeId"
+      "action_employeeId",
+      "action_overviewUseEmployee"
     ]),
     getCollaborator() {
       this.action_employeeSalaryInfo({employeeId: this.collaborator.id}).then((response) => {
@@ -209,6 +210,12 @@ export default {
         this.cards.company_time = "-";
         this.cards.last_vacation = "-";
         this.collaborator = response;
+      });
+
+      this.action_overviewUseEmployee({employeeId: this.collaborator.id}).then((response) => {
+        // this.collaboratorInfos = response;
+        console.log(response.data)
+        console.log(response.employee_use.toFixed(1))
       });
     },
   },

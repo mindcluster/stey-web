@@ -15,10 +15,11 @@ export default {
   components: {
     D3BarChart,
   },
-  props: ["title", "data", "keyBar", "values"],
+  props: ["title", "data", "keyBar", "values", "current"],
   data() {
     return {
       chartData: this.data,
+      currentKey: this.current,
       chartConfig: {
         key: this.keyBar,
         values: this.values,

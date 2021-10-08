@@ -73,7 +73,8 @@
         />
       </div>
       <div class="top-bar">
-        <BudgetBar :params="this.currentBudget" />
+        <DefaultLoading v-if="this.currentBudget === null" />
+        <BudgetBar v-else :params="this.currentBudget" />
       </div>
       <div class="start">
         <ScrollPromotions :params="this.contributors" />
@@ -264,7 +265,7 @@ export default {
   flex-direction: row;
   width: 100%;
   height: 15em;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 

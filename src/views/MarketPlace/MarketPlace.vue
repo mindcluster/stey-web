@@ -6,7 +6,9 @@
         <h4>Integrações</h4>
       </div>
       <div class="middle">
+        <DefaultLoading v-if="integrations.length === 0"/>
         <div
+          v-else
           class="integration-list"
           v-for="integration in integrations"
           :key="integration.id"
@@ -29,6 +31,7 @@ import Footer from "../../components/bars/Footer";
 import IntegrationCard from "../../components/cards/IntegrationCard";
 import AddIntegration from "../../components/inputs/AddIntegration";
 import { mapActions } from "vuex";
+import DefaultLoading from "../../components/loading/DefaultLoading";
 
 export default {
   name: "MarketPlace",
@@ -38,6 +41,7 @@ export default {
     Footer,
     IntegrationCard,
     AddIntegration,
+    DefaultLoading
   },
   data() {
     return {
