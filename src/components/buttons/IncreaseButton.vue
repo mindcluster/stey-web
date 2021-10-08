@@ -19,8 +19,8 @@
       <v-card-text>
         <div class="collaborator-infos">
           <div>
-            <h4>GPN</h4>
-            <h5>{{ this.info.gpn }}</h5>
+            <h4>Colaborador</h4>
+            <h5>{{ this.info.name }}</h5>
             <br />
             <h4>SMU</h4>
             <h5>
@@ -28,8 +28,8 @@
             </h5>
           </div>
           <div>
-            <h4>Email</h4>
-            <h5>{{ this.info.name }}</h5>
+            <h4>GPN</h4>
+            <h5>{{ this.info.gpn }}</h5>
             <br />
             <h4>Rank</h4>
             <h5>{{ this.info.rank }}</h5>
