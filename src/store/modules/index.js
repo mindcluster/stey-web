@@ -8,6 +8,7 @@ import {
     overview,
     overviewEntryVsExit,
     overviewPromotion,
+    overviewTurnover,
     budget,
     currentBudget,
     budgetById,
@@ -108,6 +109,11 @@ export const indexStore = {
         },
         async action_overviewPromotion(context, payload) {
             return await overviewPromotion(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_overviewTurnover(context, payload) {
+            return await overviewTurnover(payload).then(response => {
                 return response.data;
             }).catch(err => console.error(err));
         },

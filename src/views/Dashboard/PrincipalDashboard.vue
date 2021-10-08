@@ -6,51 +6,67 @@
         <WelcomeBar />
       </div>
       <div class="cards">
+        <v-card v-if="this.cards.contributors === null" flat solo class="card-loading">
+          <DefaultLoading />
+        </v-card>
         <InfoCard
+          v-else
           text="Colaboradores"
           :number="this.cards.contributors"
           color="color: var(--greyAlert)"
         />
+        <v-card v-if="this.cards.enters === null" flat solo class="card-loading">
+          <DefaultLoading />
+        </v-card>
         <InfoCard
+          v-else
           text="Entradas"
           :number="this.cards.enters"
           color="color: var(--greenAlert)"
         />
+        <v-card v-if="this.cards.exits === null" flat solo class="card-loading">
+          <DefaultLoading />
+        </v-card>
         <InfoCard
+          v-else
           text="Saídas"
           :number="this.cards.exits"
           color="color: var(--orangeAlert)"
         />
+        <v-card v-if="this.cards.promotions === null" flat solo class="card-loading">
+          <DefaultLoading />
+        </v-card>
         <InfoCard
+          v-else
           text="Promoção"
           :number="this.cards.promotions"
           color="color: var(--blueAlert)"
         />
+        <v-card v-if="this.cards.rotativity === null" flat solo class="card-loading">
+          <DefaultLoading />
+        </v-card>
         <InfoCard
+          v-else
           text="Rotatividade"
           :number="this.cards.rotativity"
           color="color: var(--redAlert)"
         />
       </div>
       <div class="top-bar">
-        <BudgetBar :params="this.currentBudget"/>
+        <BudgetBar :params="this.currentBudget" />
       </div>
       <div class="start">
         <ScrollPromotions :params="this.contributors" />
       </div>
       <div class="middle">
-        <div class="bar-chart">
-          <div v-show="!showLoading" class="bar-chart">
-            <BarChart
-              title="Promoção (%)"
-              :data="this.promotions"
-              :keyBar="this.keyPromotion"
-              :values="this.valuesPromotion"
-            />
-          </div>
-          <v-card v-show="showLoading" flat solo class="bar-chart-loading">
-            <DefaultLoading />
-          </v-card>
+        <div class="line-chart">
+          <LineChart
+            title="Entradas X Saídas"
+            :data="this.entersVsExits"
+            legend_1="Entradas"
+            legend_2="Saídas"
+            :values="this.values"
+          />
         </div>
         <div v-show="!showLoading" class="contributors-list">
           <ScrollCollaborator :params="this.contributors" />
@@ -65,18 +81,33 @@
         </v-card>
       </div>
       <div class="bottom">
-        <div v-show="!showLoading" class="line-chart">
-          <LineChart
-            title="Entradas X Saídas"
-            :data="this.entersVsExits"
-            legend_1="Entradas"
-            legend_2="Saídas"
-            :values="this.values"
-          />
-        </div>
-        <v-card v-show="showLoading" flat solo class="bar-chart-loading">
+        <v-card
+          v-if="this.promotions.length === 0"
+          flat
+          solo
+          class="bar-chart-loading"
+        >
           <DefaultLoading />
         </v-card>
+        <div v-else class="bar-chart">
+          <BarChart
+            title="Promoção (%)"
+            :data="this.promotions"
+            :keyBar="this.keyPromotion"
+            :values="this.valuesPromotion"
+          />
+        </div>
+        <v-card v-if="this.turnover.length === 0" flat solo class="bar-chart-loading">
+          <DefaultLoading />
+        </v-card>
+        <div v-else class="bar-chart">
+          <BarChart
+            title="Rotatividade"
+            :data="this.turnover"
+            :keyBar="this.keyTurnover"
+            :values="this.valuesTurnover"
+          />
+        </div>
       </div>
     </div>
     <Footer />
@@ -115,11 +146,11 @@ export default {
   data() {
     return {
       cards: {
-        contributors: "-",
-        enters: "-",
-        exits: "-",
-        promotions: "-",
-        rotativity: "-",
+        contributors: null,
+        enters: null,
+        exits: null,
+        promotions: null,
+        rotativity: null,
       },
       entersVsExits: [],
       showLoading: false,
@@ -134,26 +165,20 @@ export default {
         },
       ],
       promotions: [
-        {
-          month: "Feb",
-          employees: 71,
-        },
-        {
-          month: "Mar",
-          employees: 92,
-        },
-        {
-          month: "Apr",
-          employees: 79,
-        },
+      
       ],
       valuesPromotion: ["employees"],
+      valuesTurnover: ["turnover"],
       keyPromotion: "month",
-      currentBudget: ""
+      keyTurnover: "date",
+      turnover: [
+       
+      ],
+      currentBudget: "",
     };
   },
   mounted() {
-    this.getCards();
+    this.getInfos();
   },
   methods: {
     ...mapActions([
@@ -161,9 +186,10 @@ export default {
       "action_overview",
       "action_overviewEntryVsExit",
       "action_overviewPromotion",
-      "action_currentBudget"
+      "action_overviewTurnover",
+      "action_currentBudget",
     ]),
-    getCards() {
+    getInfos() {
       this.action_overview().then((response) => {
         this.cards.contributors = response.employees;
         this.cards.enters = response.entry;
@@ -176,9 +202,13 @@ export default {
         this.entersVsExits = response;
       });
 
-      // this.action_overviewPromotion().then((response) => {
-      //   this.promotions = response;
-      // });
+      this.action_overviewPromotion().then((response) => {
+        this.promotions = response;
+      });
+      
+      this.action_overviewTurnover().then((response) => {
+        this.turnover = response;
+      });
 
       this.action_employee().then((response) => {
         this.contributors = response;
@@ -186,7 +216,7 @@ export default {
 
       this.action_currentBudget().then((response) => {
         this.currentBudget = response;
-      })
+      });
     },
   },
 };
@@ -242,7 +272,7 @@ export default {
 }
 
 .middle {
-  margin-top: 2em;
+  margin-top: 1em;
   height: 30em;
   width: 100%;
   display: flex;
@@ -252,8 +282,8 @@ export default {
 }
 
 .bottom {
-  margin: 0em 0em 3em 0em;
-  height: 30em;
+  margin: 1em 0em 3em 0em;
+  height: 25em;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -261,27 +291,27 @@ export default {
 }
 
 .line-chart {
-  width: 100%;
+  width: 50%;
   height: 25em;
   align-items: center;
 }
 
 .bar-chart {
-  width: 80%;
+  width: 48%;
   height: 25em;
   align-items: center;
   pointer-events: none;
 }
 
 .contributors-list {
-  width: 50%;
-  height: 25em;
+  width: 48%;
+  height: 27em;
   align-items: center;
 }
 
 .bar-chart-loading {
-  width: 40%;
-  height: 27em;
+  width: 48%;
+  height: 25em;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -296,6 +326,18 @@ export default {
   flex-direction: row;
   justify-content: space-around;
 }
+
+.card-loading {
+  width: 14em;
+  height: auto;
+  font-family: 'Metropolis Regular';
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media only screen and (max-width: 1024px) {
   .content {
@@ -455,6 +497,17 @@ export default {
   .contributors-list {
     width: 40em;
     height: 27.4em;
+    align-items: center;
+  }
+
+  .card-loading {
+    width: 14em;
+    height: auto;
+    font-family: 'Metropolis Regular';
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
   }
 }

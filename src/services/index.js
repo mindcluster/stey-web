@@ -47,7 +47,9 @@ export const overviewEntryVsExit = (params) => {
 export const overviewPromotion = (params) => {
     return axios.get(`${url}/overview/promotion`, params);
 };
-
+export const overviewTurnover = (params) => {
+    return axios.get(`${url}/overview/turnover`, params);
+};
 
 /*
     Budget

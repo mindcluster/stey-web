@@ -115,4 +115,18 @@ export default {
     margin-bottom: 2em;
   }
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  .scroll-list {
+    font-family: "Metropolis Regular";
+    margin-top: 2em;
+    width: 100%;
+    height: 30em;
+    margin-bottom: 2em;
+  }
+  .content {
+    height: 35em;
+    overflow-y: auto;
+  }
+}
 </style>

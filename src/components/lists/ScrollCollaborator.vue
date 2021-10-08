@@ -95,4 +95,11 @@ export default {
     margin-bottom: 2em;
   }
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  .content {
+    height: 20em;
+    overflow-y: auto;
+  }
+}
 </style>

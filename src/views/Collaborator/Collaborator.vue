@@ -6,7 +6,10 @@
         <h4>Colaboradores</h4>
       </div>
       <div class="middle">
-        <ScrollCollaboratorFull :params="this.contributors"/>
+        <v-card v-if="showLoading" flat solo class="list-loading">
+          <DefaultLoading />
+        </v-card>
+        <ScrollCollaboratorFull v-else :params="this.contributors"/>
       </div>
     </div>
     <Footer/>
@@ -18,6 +21,7 @@ import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
 import ScrollCollaboratorFull from "../../components/lists/ScrollCollaboratorFull";
 import Footer from "../../components/bars/Footer";
+import DefaultLoading from "../../components/loading/DefaultLoading";
 import { mapActions } from "vuex";
 
 export default {
@@ -27,6 +31,7 @@ export default {
     LateralMenu,
     ScrollCollaboratorFull,
     Footer,
+    DefaultLoading
   },
   data() {
     return {
@@ -42,8 +47,10 @@ export default {
       "action_employee",
     ]),
     getCollaborators() {
+      this.showLoading = true;
       this.action_employee().then((response) => {
         this.contributors = response;
+        this.showLoading = false;
       })
     },
   },
@@ -54,7 +61,7 @@ export default {
 .collaborator {
   width: 100%;
   height: 100%;
-  background-color: var(--lightblueStey);
+  background-color: var(--lightBlueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -86,6 +93,17 @@ export default {
   z-index: 10;
 }
 
+.list-loading {
+  margin-top: 1em;
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  z-index: 10;
+}
 
 @media only screen and (max-width: 1024px) {
   .content {
@@ -118,8 +136,8 @@ export default {
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
   .collaborator {
     width: 100%;
-    height: auto;
-    background-color: var(--lightblueStey);
+    height: 100%;
+    background-color: var(--lightBlueStey);
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -140,14 +158,11 @@ export default {
   }
   
   .middle {
-    margin-top: 1em;
-    height: 50em;
-    margin-bottom: 5em;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    z-index: 10;
   }
 }
 </style>
