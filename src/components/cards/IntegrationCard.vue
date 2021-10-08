@@ -3,7 +3,7 @@
     <div class="image">
       <v-img size="8em" :alt="params.name" :src="getImage(params.id)" />
     </div>
-    <div class="title">
+    <div class="card-title">
       <h2>{{ params.name }}</h2>
     </div>
     <div class="button">
@@ -56,9 +56,9 @@ export default {
   align-items: center;
 }
 
-.title {
+.card-title {
   font-family: "Metropolis Regular";
-  font-size: 2em;
+  font-size: 1em;
   text-align: left;
 }
 
@@ -66,10 +66,6 @@ export default {
   text-align: right;
   margin-bottom: 2em;
   padding: 1em 1em 0em 0em;
-}
-
-h2 {
-  font-size: 1.5em;
 }
 
 .image {

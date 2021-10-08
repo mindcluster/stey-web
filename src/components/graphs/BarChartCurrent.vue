@@ -1,6 +1,12 @@
 <template>
   <v-card class="graph-card" flat>
     <h4>{{ title }}</h4>
+    <div class="legend-graph">
+      <v-icon color="var(--yellowStey)">mdi-square</v-icon>
+      {{ legend_1 }}
+      <v-icon color="var(--darkBlueStey)">mdi-square</v-icon>
+      {{ legend_2 }}
+    </div>
     <D3BarChart
       :config="chartConfig"
       :datum="chartData"
@@ -15,14 +21,18 @@ export default {
   components: {
     D3BarChart,
   },
-  props: ["title", "data", "keyBar", "values"],
+  props: ["title", "data", "keyBar", "values", "legend_1", "legend_2"],
   data() {
     return {
-      chartData: this.data,
+      chartData: this.data.data,
       chartConfig: {
         key: this.keyBar,
         values: this.values,
-        color: { scheme: "schemeTableau10" },
+        currentKey: 0.2,
+        color: {
+          default: 'var(--darkBlueStey)',
+          current: 'var(--yellowStey)'
+        }
       },
     };
   },

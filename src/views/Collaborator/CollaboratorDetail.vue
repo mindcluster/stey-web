@@ -10,33 +10,41 @@
         <div class="collaborator-infos">
           <div>
             <h4>GPN</h4>
-            <h5>{{this.collaborator.gpn}}</h5>
+            <h5>{{ this.collaborator.gpn }}</h5>
             <br />
             <h4>Escritório/País</h4>
-            <h5>{{this.collaborator.country}}</h5>
+            <h5>{{ this.collaborator.country }}</h5>
             <br />
             <h4>SMU</h4>
-            <h5>{{this.collaborator.smu === null ? "Não informado" : this.collaborator.smu}}</h5>
+            <h5>
+              {{
+                this.collaborator.smu === null
+                  ? "Não informado"
+                  : this.collaborator.smu
+              }}
+            </h5>
           </div>
           <div>
             <h4>Email</h4>
-            <h5>{{this.collaborator.email}}</h5>
+            <h5>{{ this.collaborator.email }}</h5>
             <br />
             <h4>Gênero</h4>
-            <h5>{{this.collaborator.gênero === "M" ? "Masculino" : "Feminino"}}</h5>
+            <h5>
+              {{ this.collaborator.gênero === "M" ? "Masculino" : "Feminino" }}
+            </h5>
             <br />
             <h4>Rank</h4>
-            <h5>{{this.collaborator.rank}}</h5>
+            <h5>{{ this.collaborator.rank }}</h5>
           </div>
           <div>
             <h4>Salário</h4>
-            <h5>R$ {{this.collaborator.salary}}</h5>
+            <h5>R$ {{ this.collaborator.salary }}</h5>
             <br />
             <h4>Salário Médio Mercado</h4>
-            <h5>R$ {{this.collaboratorInfos.market}}</h5>
+            <h5>R$ {{ this.collaboratorInfos.market }}</h5>
             <br />
             <h4>Dependentes</h4>
-            <h5>{{this.collaborator.dependents}}</h5>
+            <h5>{{ this.collaborator.dependents }}</h5>
           </div>
         </div>
       </div>
@@ -55,16 +63,20 @@
               text="Gestor"
             />
           </div>
-          <p><strong>Budget SMU:</strong> $ {{this.collaboratorInfos.budget_smu}}</p>
+          <p>
+            <strong>Budget SMU:</strong> $
+            {{ this.collaboratorInfos.budget_smu }}
+          </p>
           <p>
             <strong>Promotion Score:</strong>
             <br />
-            <span class="promotion-score">{{this.collaborator.promotion_score}}</span>/100
+            <span class="promotion-score">{{
+              this.collaborator.promotion_score
+            }}</span
+            >/100
           </p>
           <div class="buttons">
-            <IncreaseButton
-              :info="this.collaboratorInfos"
-            />
+            <IncreaseButton :info="this.collaboratorInfos" />
             <NormalButton
               @click.native="validate"
               color="var(--yellowStey)"
@@ -74,8 +86,23 @@
         </div>
         <div class="second-column">
           <div class="bar-chart">
-            <BarChart title="Promoção (%)" :data="this.promotions" :keyBar="this.keyPromotion"
-            :values="this.valuesPromotion"/>
+            <v-card
+              v-if="this.employee_use.length === 0"
+              flat
+              solo
+              class="bar-chart-loading"
+            >
+              <DefaultLoading />
+            </v-card>
+            <BarChartCurrent
+              v-else
+              title="Utilização do Colaborador"
+              :data="this.employee_use"
+              :keyBar="'key'"
+              :values="this.valuesEmployeeUse"
+              :legend_1="this.collaborator.name"
+              legend_2="Demais Colaboradores"
+            />
           </div>
           <div v-show="!showLoading" class="contributors-list">
             <ScrollCertificates :params="this.collaborator.certificates" />
@@ -108,13 +135,17 @@
             />
           </div>
           <div class="line-chart">
-            <BarChart title="Promoção (%)" :data="this.promotions"  :keyBar="this.keyPromotion"
-            :values="this.valuesPromotion"/>
+            <BarChartCurrent
+              title="Promoção (%)"
+              :data="this.promotions"
+              :keyBar="this.keyPromotion"
+              :values="this.valuesPromotion"
+            />
           </div>
         </div>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -122,7 +153,7 @@
 import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
 import InfoCardSmall from "../../components/cards/InfoCardSmall";
-import BarChart from "../../components/graphs/BarChart";
+import BarChartCurrent from "../../components/graphs/BarChartCurrent";
 import DefaultLoading from "../../components/loading/DefaultLoading";
 import ScrollCertificates from "../../components/lists/ScrollCertificates";
 import Footer from "../../components/bars/Footer";
@@ -137,13 +168,13 @@ export default {
   components: {
     LateralMenu,
     InfoCardSmall,
-    BarChart,
+    BarChartCurrent,
     DefaultLoading,
     ScrollCertificates,
     Footer,
     ProfileCard,
     NormalButton,
-    IncreaseButton
+    IncreaseButton,
   },
   data() {
     return {
@@ -154,6 +185,7 @@ export default {
       },
       showLoading: false,
       values: ["enters", "exits"],
+      employee_use: [],
       promotions: [
         {
           name: "Lorem",
@@ -184,8 +216,9 @@ export default {
       ],
       valuesPromotion: ["total"],
       keyPromotion: "name",
-      collaborator: JSON.parse(localStorage.getItem('selected_collaborator')),
-      collaboratorInfos: ''
+      collaborator: JSON.parse(localStorage.getItem("selected_collaborator")),
+      collaboratorInfos: "",
+      valuesEmployeeUse: ["value"],
     };
   },
   mounted() {
@@ -195,27 +228,34 @@ export default {
     ...mapActions([
       "action_employeeSalaryInfo",
       "action_employeeId",
-      "action_overviewUseEmployee"
+      "action_overviewUseEmployee",
     ]),
     getCollaborator() {
-      this.action_employeeSalaryInfo({employeeId: this.collaborator.id}).then((response) => {
-        this.collaboratorInfos = response;
-      });
+      this.action_employeeSalaryInfo({ employeeId: this.collaborator.id }).then(
+        (response) => {
+          this.collaboratorInfos = response;
+        }
+      );
 
-      this.action_employeeId({employeeId: this.collaborator.id}).then((response) => {
-        // this.cards.last_promotion = response.last_promotion;
-        // this.cards.company_time = response.company_time;
-        // this.cards.last_vacation = response.last_vacation;
-        this.cards.last_promotion = "-";
-        this.cards.company_time = "-";
-        this.cards.last_vacation = "-";
-        this.collaborator = response;
-      });
+      this.action_employeeId({ employeeId: this.collaborator.id }).then(
+        (response) => {
+          // this.cards.last_promotion = response.last_promotion;
+          // this.cards.company_time = response.company_time;
+          // this.cards.last_vacation = response.last_vacation;
+          this.cards.last_promotion = "-";
+          this.cards.company_time = "-";
+          this.cards.last_vacation = "-";
+          this.collaborator = response;
+        }
+      );
 
-      this.action_overviewUseEmployee({employeeId: this.collaborator.id}).then((response) => {
+      this.action_overviewUseEmployee({
+        employeeId: this.collaborator.id,
+      }).then((response) => {
+        this.employee_use = response;
         // this.collaboratorInfos = response;
-        console.log(response.data)
-        console.log(response.employee_use.toFixed(1))
+        console.log(response.data);
+        console.log(response.employee_use.toFixed(1));
       });
     },
   },
@@ -410,7 +450,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
   }
-  
+
   .buttons {
     height: auto;
     width: auto;
@@ -529,6 +569,5 @@ export default {
     justify-content: space-between;
     z-index: 10;
   }
-
 }
 </style>
