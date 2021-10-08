@@ -10,6 +10,7 @@ import {
     overviewPromotion,
     overviewTurnover,
     overviewUseEmployee,
+    overviewFutureLevelExperience,
     budget,
     currentBudget,
     budgetById,
@@ -120,6 +121,11 @@ export const indexStore = {
         },
         async action_overviewUseEmployee(context, payload) {
             return await overviewUseEmployee(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_overviewFutureLevelExperience(context, payload) {
+            return await overviewFutureLevelExperience(payload).then(response => {
                 return response.data;
             }).catch(err => console.error(err));
         },

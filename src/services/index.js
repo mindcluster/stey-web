@@ -53,6 +53,9 @@ export const overviewTurnover = (params) => {
 export const overviewUseEmployee = (params) => {
     return axios.get(`${url}/overview/use-employee/${params.employeeId}`, params);
 };
+export const overviewFutureLevelExperience = (params) => {
+    return axios.get(`${url}/overview/future-level-experience/${params.employeeId}`, params);
+};
 
 
 /*
