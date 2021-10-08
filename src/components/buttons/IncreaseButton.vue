@@ -53,7 +53,7 @@
           ></v-slider>
           <div class="slider-header">
             <div>{{ this.info.current}} </div>
-            <div>{{ this.info.budget_smu}} </div>
+            <div>{{ this.info.budget_smu - this.slider }} </div>
           </div>
         </v-container>
       </v-card-text>

@@ -21,14 +21,14 @@ export default {
   components: {
     D3BarChart,
   },
-  props: ["title", "data", "keyBar", "values", "legend_1", "legend_2"],
+  props: ["title", "data", "legend_1", "legend_2", "current"],
   data() {
     return {
       chartData: this.data.data,
       chartConfig: {
-        key: this.keyBar,
-        values: this.values,
-        currentKey: 0.2,
+        key: "key",
+        values: ["value"],
+        currentKey: this.current,
         color: {
           default: 'var(--darkBlueStey)',
           current: 'var(--yellowStey)'

@@ -38,10 +38,10 @@
           </div>
           <div>
             <h4>Salário</h4>
-            <h5>R$ {{ this.collaborator.salary }}</h5>
+            <h5>$ {{ this.collaborator.salary }}</h5>
             <br />
             <h4>Salário Médio Mercado</h4>
-            <h5>R$ {{ this.collaboratorInfos.market }}</h5>
+            <h5>$ {{ this.collaboratorInfos.market }}</h5>
             <br />
             <h4>Dependentes</h4>
             <h5>{{ this.collaborator.dependents }}</h5>
@@ -98,17 +98,16 @@
               v-else
               title="Utilização do Colaborador"
               :data="this.employee_use"
-              :keyBar="'key'"
-              :values="this.valuesEmployeeUse"
               :legend_1="this.collaborator.name"
               legend_2="Demais Colaboradores"
+              :current="this.employee_use.employee_use"
             />
           </div>
-          <div v-show="!showLoading" class="certificates-list">
+          <div v-if="this.collaborator.certificates.length === 0" class="certificates-list">
             <ScrollCertificates :params="this.collaborator.certificates" />
           </div>
           <v-card
-            v-show="showLoading"
+            v-else
             flat
             solo
             class="certificates-list-loading"
@@ -135,11 +134,21 @@
             />
           </div>
           <div class="line-chart">
+            <v-card
+              v-if="this.employee_use.length === 0"
+              flat
+              solo
+              class="bar-chart-loading"
+            >
+              <DefaultLoading />
+            </v-card>
             <BarChartCurrent
-              title="Promoção (%)"
-              :data="this.promotions"
-              :keyBar="this.keyPromotion"
-              :values="this.valuesPromotion"
+              v-else
+              title="Nível de Experiência Futura"
+              :data="this.futureLevel"
+              :legend_1="this.collaborator.name"
+              :current="this.futureLevel.future_exp_level"
+              legend_2="Demais Colaboradores"
             />
           </div>
         </div>
@@ -183,42 +192,10 @@ export default {
         company_time: "-",
         last_vacation: "-",
       },
-      showLoading: false,
-      values: ["enters", "exits"],
       employee_use: [],
-      promotions: [
-        {
-          name: "Lorem",
-          total: 30,
-        },
-        {
-          name: "Ipsum",
-          total: 21,
-        },
-        {
-          name: "Dolor",
-          total: 20,
-        },
-      ],
-      rotativity: [
-        {
-          name: "Lorem",
-          total: 30,
-        },
-        {
-          name: "Ipsum",
-          total: 21,
-        },
-        {
-          name: "Dolor",
-          total: 20,
-        },
-      ],
-      valuesPromotion: ["total"],
-      keyPromotion: "name",
       collaborator: JSON.parse(localStorage.getItem("selected_collaborator")),
       collaboratorInfos: "",
-      valuesEmployeeUse: ["value"],
+      futureLevel: []
     };
   },
   mounted() {
@@ -229,6 +206,7 @@ export default {
       "action_employeeSalaryInfo",
       "action_employeeId",
       "action_overviewUseEmployee",
+      "action_overviewFutureLevelExperience"
     ]),
     getCollaborator() {
       this.action_employeeSalaryInfo({ employeeId: this.collaborator.id }).then(
@@ -253,9 +231,12 @@ export default {
         employeeId: this.collaborator.id,
       }).then((response) => {
         this.employee_use = response;
-        // this.collaboratorInfos = response;
-        console.log(response.data);
-        console.log(response.employee_use.toFixed(1));
+      });
+
+      this.action_overviewFutureLevelExperience({
+        employeeId: this.collaborator.id,
+      }).then((response) => {
+        this.futureLevel = response;
       });
     },
   },
@@ -389,6 +370,10 @@ export default {
 .promotion-score {
   color: var(--greenAlert);
   font-size: 4em;
+}
+
+h4 {
+  color: var(--greyStey)
 }
 
 @media only screen and (max-width: 1024px) {
