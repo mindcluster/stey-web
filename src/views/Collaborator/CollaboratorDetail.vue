@@ -56,11 +56,7 @@
               @click.native="validate"
               color="var(--greyStey)"
               text="Colaborador"
-            />
-            <NormalButton
-              @click.native="validate"
-              color="var(--greyStey)"
-              text="Gestor"
+              :email="this.collaborator.email"
             />
           </div>
           <p>

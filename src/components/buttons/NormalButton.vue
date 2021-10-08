@@ -1,5 +1,6 @@
 <template>
     <v-btn 
+      :href="href"
       :class="buttonClass"
       :color="color" 
       solo
@@ -12,7 +13,18 @@
 <script>
 export default {
   name: 'NormalButton',
-  props: [ "text", "color", "buttonClass" ]
+  props: [ "text", "color", "buttonClass", "email" ],
+  computed: {
+    href() {
+      let href = 'mailto:'+ this.email;
+      if(this.email != null) {
+        return href
+      } else {
+        href=''
+        return href
+      }
+    }
+  }
 }
 </script>
 
