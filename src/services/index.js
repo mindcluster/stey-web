@@ -50,6 +50,10 @@ export const overviewPromotion = (params) => {
 export const overviewTurnover = (params) => {
     return axios.get(`${url}/overview/turnover`, params);
 };
+export const overviewUseEmployee = (params) => {
+    return axios.get(`${url}/overview/use-employee/${params.employeeId}`, params);
+};
+
 
 /*
     Budget
