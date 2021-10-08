@@ -39,14 +39,18 @@
         <ScrollPromotions :params="this.contributors" />
       </div>
       <div class="middle">
-        <div class="line-chart">
-          <LineChart
-            title="Entradas X Saídas"
-            :data="this.entersVsExits"
-            legend_1="Entradas"
-            legend_2="Saídas"
-            :values="this.values"
-          />
+        <div class="bar-chart">
+          <div v-show="!showLoading" class="bar-chart">
+            <BarChart
+              title="Promoção (%)"
+              :data="this.promotions"
+              :keyBar="this.keyPromotion"
+              :values="this.valuesPromotion"
+            />
+          </div>
+          <v-card v-show="showLoading" flat solo class="bar-chart-loading">
+            <DefaultLoading />
+          </v-card>
         </div>
         <div v-show="!showLoading" class="contributors-list">
           <ScrollCollaborator :params="this.contributors" />
@@ -61,19 +65,14 @@
         </v-card>
       </div>
       <div class="bottom">
-        <div v-show="!showLoading" class="bar-chart">
-          <BarChart
-            title="Promoção (%)"
-            :data="this.promotions"
-            :keyBar="this.keyPromotion"
-            :values="this.valuesPromotion"
+        <div v-show="!showLoading" class="line-chart">
+          <LineChart
+            title="Entradas X Saídas"
+            :data="this.entersVsExits"
+            legend_1="Entradas"
+            legend_2="Saídas"
+            :values="this.values"
           />
-        </div>
-        <v-card v-show="showLoading" flat solo class="bar-chart-loading">
-          <DefaultLoading />
-        </v-card>
-        <div v-show="!showLoading" class="bar-chart">
-          <BarChart title="Rotatividade" :data="this.rotativity" />
         </div>
         <v-card v-show="showLoading" flat solo class="bar-chart-loading">
           <DefaultLoading />
@@ -251,7 +250,7 @@ export default {
 }
 
 .middle {
-  margin-top: 1em;
+  margin-top: 2em;
   height: 30em;
   width: 100%;
   display: flex;
@@ -261,8 +260,8 @@ export default {
 }
 
 .bottom {
-  margin: 1em 0em 3em 0em;
-  height: 25em;
+  margin: 0em 0em 3em 0em;
+  height: 30em;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -270,23 +269,22 @@ export default {
 }
 
 .line-chart {
-  width: 50%;
+  width: 100%;
   height: 25em;
   align-items: center;
 }
 
 .bar-chart {
-  width: 48%;
+  width: 80%;
   height: 25em;
   align-items: center;
   pointer-events: none;
 }
 
 .contributors-list {
-  width: 48%;
-  height: 27em;
+  width: 50%;
+  height: 25em;
   align-items: center;
-  pointer-events: none;
 }
 
 .bar-chart-loading {

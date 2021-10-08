@@ -9,17 +9,17 @@
       <div class="middle">
         <div class="first-column">
           <ProfileCard :params="this.collaborator" style="margin-bottom: 2em"/>
-          <p><v-icon>mdi-office-building-marker</v-icon>São Paulo - SP</p>
-          <p><v-icon>mdi-calendar</v-icon>25/10/1984</p>
-          <p><v-icon>mdi-email</v-icon>flavia.souza@ey.com</p>
-          <p><v-icon>mdi-baby-face-outline</v-icon>1 dependente</p>
+          <p><v-icon>mdi-office-building-marker</v-icon>{{this.collaborator.country}}</p>
+          <p><v-icon>mdi-email</v-icon>{{this.collaborator.email}}</p>
+          <p v-if="this.collaborator.dependents === 1"><v-icon>mdi-baby-face-outline</v-icon>{{this.collaborator.dependents}} dependente</p>
+          <p v-else><v-icon>mdi-baby-face-outline</v-icon>{{this.collaborator.dependents}} dependentes</p>
         </div>
         <div class="second-column">
           <div class="edit-profile">
             <div class="page-sub-title">
               <h4>Minhas Informações</h4>
             </div>
-            <EditProfile />
+            <EditProfile :params="this.collaborator"/>
           </div>
 
           <div
@@ -61,10 +61,6 @@ export default {
   data() {
     return {
       collaborator: {
-        id: 1,
-        name: "Flávia Hara",
-        cargo: "Diretora de Recursos Humanos",
-        value: null,
       },
       integrations: [],
     };
@@ -73,10 +69,17 @@ export default {
     this.getProfileInfos();
   },
   methods: {
-    ...mapActions(["action_integrationMe"]),
+    ...mapActions([
+      "action_integrationMe",
+      "action_employeeId"
+    ]),
     getProfileInfos() {
       this.action_integrationMe().then((response) => {
         this.integrations = response;
+      });
+
+      this.action_employeeId({employeeId: localStorage.getItem('employee_id')}).then((response) => {
+        this.collaborator = response;
       });
     },
   },
@@ -144,7 +147,7 @@ export default {
 }
 
 .second-column {
-  height: 53em;
+  height: 45em;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -153,7 +156,7 @@ export default {
 
 .edit-profile {
   width: auto;
-  height: 13.5em;
+  height: 10em;
   align-items: center;
 }
 

@@ -192,7 +192,6 @@ export default {
   },
   mounted() {
     this.getCollaborator();
-    console.log(this.collaborator)
   },
   methods: {
     ...mapActions([
@@ -201,7 +200,7 @@ export default {
     getCollaborator() {
       this.action_employeeSalaryInfo({employeeId: this.collaborator.id}).then((response) => {
         this.collaboratorInfos = response;
-      })
+      });
       this.cards.contributors = 7818;
       this.cards.enters = 231;
       this.cards.exits = 102;

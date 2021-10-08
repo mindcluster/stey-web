@@ -3,6 +3,7 @@ import {
     integration,
     integrationMe,
     employee,
+    employeeId,
     employeeSalaryInfo,
     overview,
     overviewEntryVsExit,
@@ -72,7 +73,12 @@ export const indexStore = {
         */
         async action_employee(context, payload) {
             return await employee(payload).then(response => {
-                return response.data.data;
+                return response.data.data.slice(1, 30);
+            }).catch(err => console.error(err));
+        },
+        async action_employeeId(context, payload) {
+            return await employeeId(payload).then(response => {
+                return response.data;
             }).catch(err => console.error(err));
         },
         async action_employeeSalaryInfo(context, payload) {

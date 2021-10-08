@@ -4,19 +4,13 @@
       <EmailInput
         @update:value="employee.email = $event"
         ico="mdi-email"
-        label="E-mail"
+        :label="this.params.email"
         type="text"
       />
       <TextInput
         @update:value="employee.name = $event"
         ico="mdi-account-circle"
-        label="Nome"
-        type="text"
-      />
-      <TextInput
-        @update:value="employee.phone = $event"
-        ico="mdi-phone"
-        label="Telefone"
+        :label="this.params.name"
         type="text"
       />
       <div class="password">
@@ -53,6 +47,7 @@ import PasswordInput from "../inputs/PasswordInput";
 export default {
   name: "EditProfile",
   mixins: [globalMethods],
+  props: ["params"],
   components: {
     NormalButton,
     TextInput,

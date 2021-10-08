@@ -44,7 +44,6 @@ export default {
     getCollaborators() {
       this.action_employee().then((response) => {
         this.contributors = response;
-        this.contributors = this.contributors.slice(1, 30);
       })
     },
   },
@@ -55,7 +54,7 @@ export default {
 .collaborator {
   width: 100%;
   height: 100%;
-  background-color: var(--lightBlueStey);
+  background-color: var(--lightblueStey);
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -120,7 +119,7 @@ export default {
   .collaborator {
     width: 100%;
     height: auto;
-    background-color: var(--lightBlueStey);
+    background-color: var(--lightblueStey);
     display: flex;
     flex-direction: row;
     position: absolute;

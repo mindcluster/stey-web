@@ -26,6 +26,9 @@ export const integrationMe = (params) => {
 export const employee = (params) => {
     return axios.get(`${url}/employee`, params);
 };
+export const employeeId = (params) => {
+    return axios.get(`${url}/employee/${params.employeeId}`, params);
+};
 export const employeeSalaryInfo = (params) => {
     return axios.get(`${url}/employee/${params.employeeId}/info-salary`, params);
 };
