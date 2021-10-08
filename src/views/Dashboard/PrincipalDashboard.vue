@@ -6,7 +6,12 @@
         <WelcomeBar />
       </div>
       <div class="cards">
-        <v-card v-if="this.cards.contributors === null" flat solo class="card-loading">
+        <v-card
+          v-if="this.cards.contributors === null"
+          flat
+          solo
+          class="card-loading"
+        >
           <DefaultLoading />
         </v-card>
         <InfoCard
@@ -15,7 +20,12 @@
           :number="this.cards.contributors"
           color="color: var(--greyAlert)"
         />
-        <v-card v-if="this.cards.enters === null" flat solo class="card-loading">
+        <v-card
+          v-if="this.cards.enters === null"
+          flat
+          solo
+          class="card-loading"
+        >
           <DefaultLoading />
         </v-card>
         <InfoCard
@@ -33,7 +43,12 @@
           :number="this.cards.exits"
           color="color: var(--orangeAlert)"
         />
-        <v-card v-if="this.cards.promotions === null" flat solo class="card-loading">
+        <v-card
+          v-if="this.cards.promotions === null"
+          flat
+          solo
+          class="card-loading"
+        >
           <DefaultLoading />
         </v-card>
         <InfoCard
@@ -42,7 +57,12 @@
           :number="this.cards.promotions"
           color="color: var(--blueAlert)"
         />
-        <v-card v-if="this.cards.rotativity === null" flat solo class="card-loading">
+        <v-card
+          v-if="this.cards.rotativity === null"
+          flat
+          solo
+          class="card-loading"
+        >
           <DefaultLoading />
         </v-card>
         <InfoCard
@@ -59,7 +79,15 @@
         <ScrollPromotions :params="this.contributors" />
       </div>
       <div class="middle">
-        <div class="line-chart">
+        <v-card
+          v-if="this.entersVsExits.length === 0"
+          flat
+          solo
+          class="line-chart-loading"
+        >
+          <DefaultLoading />
+        </v-card>
+        <div class="line-chart" v-else>
           <LineChart
             title="Entradas X Saídas"
             :data="this.entersVsExits"
@@ -68,17 +96,17 @@
             :values="this.values"
           />
         </div>
-        <div v-show="!showLoading" class="contributors-list">
-          <ScrollCollaborator :params="this.contributors" />
-        </div>
         <v-card
-          v-show="showLoading"
+          v-if="this.contributors.length === 0"
           flat
           solo
-          class="contributors-list-loading"
+          class="bar-chart-loading"
         >
           <DefaultLoading />
         </v-card>
+        <div v-else class="contributors-list">
+          <ScrollCollaborator :params="this.contributors" />
+        </div>
       </div>
       <div class="bottom">
         <v-card
@@ -93,18 +121,23 @@
           <BarChart
             title="Promoção (%)"
             :data="this.promotions"
-            :keyBar="this.keyPromotion"
+            :keyBar="'month'"
             :values="this.valuesPromotion"
           />
         </div>
-        <v-card v-if="this.turnover.length === 0" flat solo class="bar-chart-loading">
+        <v-card
+          v-if="this.turnover.length === 0"
+          flat
+          solo
+          class="bar-chart-loading"
+        >
           <DefaultLoading />
         </v-card>
         <div v-else class="bar-chart">
           <BarChart
             title="Rotatividade"
             :data="this.turnover"
-            :keyBar="this.keyTurnover"
+            :keyBar="'date'"
             :values="this.valuesTurnover"
           />
         </div>
@@ -153,28 +186,13 @@ export default {
         rotativity: null,
       },
       entersVsExits: [],
-      showLoading: false,
       values: ["entry", "exit"],
-      contributors: [
-        {
-          id: 1,
-          name: "Carlos Augusto",
-          sl: "Advisory",
-          subSl: "Risk",
-          rotativity: "99%",
-        },
-      ],
-      promotions: [
-      
-      ],
+      contributors: [],
+      promotions: [],
       valuesPromotion: ["employees"],
       valuesTurnover: ["turnover"],
-      keyPromotion: "month",
-      keyTurnover: "date",
-      turnover: [
-       
-      ],
-      currentBudget: "",
+      turnover: [],
+      currentBudget: null,
     };
   },
   mounted() {
@@ -205,7 +223,7 @@ export default {
       this.action_overviewPromotion().then((response) => {
         this.promotions = response;
       });
-      
+
       this.action_overviewTurnover().then((response) => {
         this.turnover = response;
       });
@@ -294,6 +312,7 @@ export default {
   width: 50%;
   height: 25em;
   align-items: center;
+  pointer-events: none;
 }
 
 .bar-chart {
@@ -318,6 +337,15 @@ export default {
   justify-content: space-around;
 }
 
+.line-chart-loading {
+  width: 50%;
+  height: 27em;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .contributors-list-loading {
   width: 40%;
   height: 27em;
@@ -328,16 +356,15 @@ export default {
 }
 
 .card-loading {
-  width: 14em;
+  width: 20em;
   height: auto;
-  font-family: 'Metropolis Regular';
+  font-family: "Metropolis Regular";
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-
 
 @media only screen and (max-width: 1024px) {
   .content {
@@ -503,7 +530,7 @@ export default {
   .card-loading {
     width: 14em;
     height: auto;
-    font-family: 'Metropolis Regular';
+    font-family: "Metropolis Regular";
     text-align: center;
     display: flex;
     flex-direction: row;
