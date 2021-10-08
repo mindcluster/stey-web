@@ -95,7 +95,7 @@ export default {
 
 .list-loading {
   margin-top: 1em;
-  height: 85%;
+  height: 50em;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -163,6 +163,17 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .list-loading {
+    margin-top: 1em;
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
   }
 }
 </style>
