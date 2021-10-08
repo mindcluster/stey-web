@@ -38,7 +38,7 @@ export default {
 }
 
 .list-title {
-  padding: 1em;
+  padding: 0.4em;
   background-color: var(--greyStey);
 }
 

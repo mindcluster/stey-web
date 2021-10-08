@@ -104,14 +104,14 @@
               legend_2="Demais Colaboradores"
             />
           </div>
-          <div v-show="!showLoading" class="contributors-list">
+          <div v-show="!showLoading" class="certificates-list">
             <ScrollCertificates :params="this.collaborator.certificates" />
           </div>
           <v-card
             v-show="showLoading"
             flat
             solo
-            class="contributors-list-loading"
+            class="certificates-list-loading"
           >
             <DefaultLoading />
           </v-card>
@@ -365,21 +365,21 @@ export default {
 
 .bar-chart {
   width: auto;
-  height: 23.5em;
+  height: 25em;
   align-items: center;
   pointer-events: none;
 }
 
-.contributors-list {
+.certificates-list {
   width: auto;
-  height: 20em;
+  height: 17em;
   align-items: center;
   pointer-events: none;
 }
 
 .bar-chart-loading {
-  width: 40%;
-  height: 27em;
+  width: 100%;
+  height: 25em;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -492,7 +492,7 @@ export default {
     justify-content: space-around;
   }
 
-  .contributors-list {
+  .certificates-list {
     width: auto;
     height: auto;
     align-items: center;
