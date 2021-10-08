@@ -20,6 +20,7 @@ export const integrationMe = (params) => {
     return axios.get(`${url}/integration/me`, params);
 };
 
+
 /*
     Employees
 */
@@ -32,6 +33,8 @@ export const employeeId = (params) => {
 export const employeeSalaryInfo = (params) => {
     return axios.get(`${url}/employee/${params.employeeId}/info-salary`, params);
 };
+
+
 /*
     Overview
 */
@@ -43,4 +46,21 @@ export const overviewEntryVsExit = (params) => {
 };
 export const overviewPromotion = (params) => {
     return axios.get(`${url}/overview/promotion`, params);
+};
+
+
+/*
+    Budget
+*/
+export const budget = (params) => {
+    return axios.get(`${url}/budget`, params);
+};
+export const currentBudget = (params) => {
+    return axios.get(`${url}/budget/current`, params);
+};
+export const budgetById = (params) => {
+    return axios.get(`${url}/budget/${params.budgetId}`, params);
+};
+export const usedBudget = (params) => {
+    return axios.patch(`${url}/budget/${params.budgetId}`, params);
 };

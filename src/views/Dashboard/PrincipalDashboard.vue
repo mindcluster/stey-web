@@ -33,7 +33,7 @@
         />
       </div>
       <div class="top-bar">
-        <BudgetBar />
+        <BudgetBar :params="this.currentBudget"/>
       </div>
       <div class="start">
         <ScrollPromotions :params="this.contributors" />
@@ -149,20 +149,7 @@ export default {
       ],
       valuesPromotion: ["employees"],
       keyPromotion: "month",
-      rotativity: [
-        {
-          name: "Lorem",
-          total: 30,
-        },
-        {
-          name: "Ipsum",
-          total: 21,
-        },
-        {
-          name: "Dolor",
-          total: 20,
-        },
-      ],
+      currentBudget: ""
     };
   },
   mounted() {
@@ -174,6 +161,7 @@ export default {
       "action_overview",
       "action_overviewEntryVsExit",
       "action_overviewPromotion",
+      "action_currentBudget"
     ]),
     getCards() {
       this.action_overview().then((response) => {
@@ -195,6 +183,10 @@ export default {
       this.action_employee().then((response) => {
         this.contributors = response;
       });
+
+      this.action_currentBudget().then((response) => {
+        this.currentBudget = response;
+      })
     },
   },
 };

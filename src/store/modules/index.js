@@ -7,7 +7,11 @@ import {
     employeeSalaryInfo,
     overview,
     overviewEntryVsExit,
-    overviewPromotion
+    overviewPromotion,
+    budget,
+    currentBudget,
+    budgetById,
+    usedBudget
 } from "../../services/index"
 
 export const indexStore = {
@@ -104,6 +108,31 @@ export const indexStore = {
         },
         async action_overviewPromotion(context, payload) {
             return await overviewPromotion(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+
+
+        /*
+            Budget
+        */
+        async action_budget(context, payload) {
+            return await budget(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_currentBudget(context, payload) {
+            return await currentBudget(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_budgetById(context, payload) {
+            return await budgetById(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_usedBudget(context, payload) {
+            return await usedBudget(payload).then(response => {
                 return response.data;
             }).catch(err => console.error(err));
         },

@@ -6,10 +6,11 @@
       color="var(--greenStey)"
       height="20"
       background-color="var(--lightGreyStey)"
-      :value="this.value / 10"
+      :buffer-value="params.total"
+      :value="this.params.used"
     >
       <template v-slot:default="{ value }">
-        <strong>{{ value * 10 }}</strong>
+        <strong>{{ value }}</strong>
       </template>
     </v-progress-linear>
     <div class="item">
@@ -17,7 +18,7 @@
         0 USD
       </div>
       <div class="end-item">
-        USD 100k
+        USD {{this.params.total}}
       </div>
     </div>
   </v-card>
@@ -26,13 +27,7 @@
 <script>
 export default {
   name: "BudgetBar",
-  data() {
-    return {
-      value: 450,
-    };
-  },
-  mounted() {
-  },
+  props: ["params"],
   methods: {
     returnColor(value) {
       if (value < 50) {
