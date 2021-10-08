@@ -8,7 +8,7 @@
         
       <div class="middle">
         <div class="first-column">
-          <ProfileCard :params="this.collaborator" style="margin-bottom: 2em"/>
+          <EditProfileCard :params="this.collaborator" style="margin-bottom: 2em"/>
           <p><v-icon>mdi-office-building-marker</v-icon>{{this.collaborator.country}}</p>
           <p><v-icon>mdi-email</v-icon>{{this.collaborator.email}}</p>
           <p v-if="this.collaborator.dependents === 1"><v-icon>mdi-baby-face-outline</v-icon>{{this.collaborator.dependents}} dependente</p>
@@ -44,7 +44,7 @@ import globalMethods from "../../mixins/globalMethods";
 import LateralMenu from "../../components/LateralMenu";
 import EditProfile from "../../components/cards/EditProfile";
 import Footer from "../../components/bars/Footer";
-import ProfileCard from "../../components/cards/ProfileCard";
+import EditProfileCard from "../../components/cards/EditProfileCard";
 import IntegrationCard from "../../components/cards/IntegrationCard";
 import { mapActions } from "vuex";
 
@@ -55,7 +55,7 @@ export default {
     LateralMenu,
     EditProfile,
     Footer,
-    ProfileCard,
+    EditProfileCard,
     IntegrationCard,
   },
   data() {

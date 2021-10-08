@@ -59,7 +59,7 @@
           <p>
             <strong>Promotion Score:</strong>
             <br />
-            <span class="promotion-score">99</span>/100
+            <span class="promotion-score">{{this.collaboratorInfos.promotion_score}}</span>/100
           </p>
           <div class="buttons">
             <IncreaseButton
@@ -93,17 +93,17 @@
           <div class="cards">
             <InfoCardSmall
               text="Última Promoção"
-              :number="this.cards.contributors"
+              :number="this.cards.last_promotion"
               color="color: var(--greyAlert)"
             />
             <InfoCardSmall
               text="Tempo de Empresa"
-              :number="this.cards.enters"
+              :number="this.cards.company_time"
               color="color: var(--greyAlert)"
             />
             <InfoCardSmall
               text="Últimas Férias"
-              :number="this.cards.exits"
+              :number="this.cards.last_vacation"
               color="color: var(--greyAlert)"
             />
           </div>
@@ -148,11 +148,9 @@ export default {
   data() {
     return {
       cards: {
-        contributors: "-",
-        enters: "-",
-        exits: "-",
-        promotions: "-",
-        rotativity: "-",
+        last_promotion: "-",
+        company_time: "-",
+        last_vacation: "-",
       },
       showLoading: false,
       values: ["enters", "exits"],
@@ -196,16 +194,22 @@ export default {
   methods: {
     ...mapActions([
       "action_employeeSalaryInfo",
+      "action_employeeId"
     ]),
     getCollaborator() {
       this.action_employeeSalaryInfo({employeeId: this.collaborator.id}).then((response) => {
         this.collaboratorInfos = response;
       });
-      this.cards.contributors = 7818;
-      this.cards.enters = 231;
-      this.cards.exits = 102;
-      this.cards.promotions = "23%";
-      this.cards.rotativity = "2%";
+
+      this.action_employeeId({employeeId: this.collaborator.id}).then((response) => {
+        // this.cards.last_promotion = response.last_promotion;
+        // this.cards.company_time = response.company_time;
+        // this.cards.last_vacation = response.last_vacation;
+        this.cards.last_promotion = "-";
+        this.cards.company_time = "-";
+        this.cards.last_vacation = "-";
+        this.collaborator = response;
+      });
     },
   },
 };

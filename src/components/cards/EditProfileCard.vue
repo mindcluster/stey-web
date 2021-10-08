@@ -10,24 +10,13 @@
       <div class="role">
         <h4>{{ params.job_role }}</h4>
       </div>
-      <br />
-      <h4 v-if="params.role_satisfaction != null">Satisfação com o cargo: {{ params.role_satisfaction }} %</h4>
-      <v-progress-linear
-        v-if="params.role_satisfaction != null"
-        rounded
-        color="var(--yellowStey)"
-        height="20"
-        background-color="var(--greyStey)"
-        value="50"
-      >
-      </v-progress-linear>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProfileCard",
+  name: "EditProfileCard",
   props: ["params"],
 };
 </script>
