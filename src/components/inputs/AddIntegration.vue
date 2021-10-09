@@ -19,7 +19,7 @@
       </v-text-field>
       <div class="button">
         <NormalButton
-          @click.native="update"
+          @click.native="requestIntegration"
           color="var(--yellowStey)"
           text="Solicitar Integração"
         />
@@ -41,6 +41,15 @@ export default {
       text: this.valueField || "",
     };
   },
+  methods: {
+    requestIntegration(){
+      if(this.text && this.text != '') {
+        this.$alert("Sua solicitação foi registrada com sucesso!");
+      } else {
+        this.$alert("Preencha o campo corretamente");
+      }
+    }
+  }
 };
 </script>
 

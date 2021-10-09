@@ -17,7 +17,7 @@
         v-else
         @click.native="integrated = false"
         color="var(--redAlert)"
-        text="Integrado"
+        text="Remover"
       />
     </div>
   </v-card>
@@ -27,7 +27,7 @@
 import NormalButton from "../buttons/NormalButton";
 export default {
   name: "IntegrationCard",
-  props: ["params"],
+  props: ["params", "myIntegrations"],
   components: {
     NormalButton,
   },
@@ -35,6 +35,11 @@ export default {
     return {
       integrated: false
     };
+  },
+  mounted() {
+    if(this.myIntegrations) {
+      this.integrated = true;
+    }
   },
   methods: {
     getImage(id) {
@@ -82,6 +87,11 @@ export default {
   height: 8em;
   display: flex;
   align-items: center;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
 }
 
 @media only screen and (max-width: 1024px) {

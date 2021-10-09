@@ -30,7 +30,7 @@
             <div class="page-sub-title">
               <h4>Minhas Integrações</h4>
             </div>
-            <IntegrationCard :params="integration" />
+            <IntegrationCard :params="integration" myIntegrations="true" />
           </div>
         </div>
       </div>

@@ -69,7 +69,9 @@ export default {
     
   },
   methods: {
-
+    update() {
+      this.$alert("As informações foram atualizadas com sucesso");
+    }
   },
 };
 </script>
