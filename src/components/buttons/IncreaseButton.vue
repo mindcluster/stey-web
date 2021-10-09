@@ -90,6 +90,7 @@ export default {
       //   this.$alert("Aumento realizado com sucesso!");
       // })
       this.$alert("Aumento realizado com sucesso!");
+      this.dialog = false;
     },
   },
 };

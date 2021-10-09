@@ -50,7 +50,7 @@
         <v-btn color="var(--redAlert)" text @click="dialog = false">
           NÃo
         </v-btn>
-        <v-btn color="var(--greenAlert)" text @click="updateBudget">
+        <v-btn color="var(--greenAlert)" text @click="updateRank">
           SIM
         </v-btn>
         <v-spacer></v-spacer>
@@ -76,6 +76,7 @@ export default {
       //   this.$alert("Aumento realizado com sucesso!");
       // })
       this.$alert("Colaborador promovido com sucesso!");
+      this.dialog = false;
     },
   },
 };
