@@ -73,11 +73,7 @@
           </p>
           <div class="buttons">
             <IncreaseButton :info="this.collaboratorInfos" />
-            <NormalButton
-              @click.native="validate"
-              color="var(--yellowStey)"
-              text="Promoção"
-            />
+            <PromotionButton :info="this.collaborator" />
           </div>
         </div>
         <div class="second-column">
@@ -164,6 +160,7 @@ import ScrollCertificates from "../../components/lists/ScrollCertificates";
 import Footer from "../../components/bars/Footer";
 import ProfileCard from "../../components/cards/ProfileCard";
 import NormalButton from "../../components/buttons/NormalButton";
+import PromotionButton from "../../components/buttons/PromotionButton";
 import IncreaseButton from "../../components/buttons/IncreaseButton";
 import { mapActions } from "vuex";
 
@@ -180,6 +177,7 @@ export default {
     ProfileCard,
     NormalButton,
     IncreaseButton,
+    PromotionButton
   },
   data() {
     return {

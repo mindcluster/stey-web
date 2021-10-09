@@ -63,6 +63,7 @@ export default {
       //   .catch(() => {
       //     this.$alert("E-mail incorreto");
       //   });
+      this.$alert("As instruções para reset de senha foram enviadas com sucesso!");
     },
   },
 };

@@ -9,12 +9,12 @@
         v-bind="attrs"
         v-on="on"
       >
-        AUMENTO
+        PROMOÇÃO
       </v-btn>
     </template>
     <v-card>
       <v-card-title>
-        <span class="text-h5">Aumento</span>
+        <span class="text-h5">Promoção</span>
       </v-card-title>
       <v-card-text>
         <div class="collaborator-infos">
@@ -22,49 +22,38 @@
             <h4>Colaborador</h4>
             <h5>{{ this.info.name }}</h5>
             <br />
+            <h4>Cargo Atual</h4>
+            <h5>{{ this.info.job_role }}</h5>
+            <br />
+            <h4>Salário Atual</h4>
+            <h5>{{ this.info.salary }}</h5>
+            <br />
+          </div>
+          <div>
             <h4>SMU</h4>
             <h5>
               {{ this.info.smu === null ? "Não informado" : this.info.smu }}
             </h5>
-          </div>
-          <div>
-            <h4>GPN</h4>
-            <h5>{{ this.info.gpn }}</h5>
             <br />
-            <h4>Rank</h4>
-            <h5>{{ this.info.rank }}</h5>
+            <h4>Cargo Futuro</h4>
+            <h5>{{ this.info.job_role }}</h5>
+            <br />
+            <h4>Salário Futuro</h4>
+            <h5>{{ this.info.job_role }}</h5>
           </div>
         </div>
-        <v-container>
-          <div class="slider-header">
-            <div>Atual</div>
-            <div>Budget SMU</div>
-          </div>
-          <v-slider
-            :max="this.info.budget_smu"
-            :min="this.info.current"
-            color="var(--darkGreyStey)"
-            dark
-            step="10"
-            track-color="var(--yellowStey)"
-            v-model="slider"
-            :thumb-size="28"
-            thumb-label="always"
-          ></v-slider>
-          <div class="slider-header">
-            <div>{{ this.info.current}} </div>
-            <div>{{ this.info.budget_smu - this.slider }} </div>
-          </div>
-        </v-container>
+
+        <h3>Deseja promover o colaborador?</h3>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="dialog = false">
-          CANCELAR
+        <v-btn color="var(--redAlert)" text @click="dialog = false">
+          NÃo
         </v-btn>
-        <v-btn color="blue darken-1" text @click="updateBudget">
-          SALVAR
+        <v-btn color="var(--greenAlert)" text @click="updateBudget">
+          SIM
         </v-btn>
+        <v-spacer></v-spacer>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -73,24 +62,22 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: "IncreaseButton",
+  name: "PromotionButton",
   props: ["info"],
   data: () => ({
     dialog: false,
     slider: "",
   }),
   methods: {
-    ...mapActions([
-      "action_usedBudget",
-    ]),
-    updateBudget() {
+    ...mapActions([]),
+    updateRank() {
       // this.action_usedBudget({used: 10}).then((response) => {
       //   console.log(response)
       //   this.$alert("Aumento realizado com sucesso!");
       // })
-      this.$alert("Aumento realizado com sucesso!");
-    }
-  }
+      this.$alert("Colaborador promovido com sucesso!");
+    },
+  },
 };
 </script>
 
@@ -103,7 +90,7 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 12em;
+  height: 15em;
   justify-content: space-around;
   align-items: center;
 }
@@ -115,5 +102,9 @@ export default {
   height: auto;
   justify-content: space-between;
   align-items: center;
+}
+
+h4 {
+  color: var(--greyStey);
 }
 </style>
