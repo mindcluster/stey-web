@@ -42,19 +42,24 @@
           </div>
           <v-slider
             :max="this.info.budget_smu"
-            :min="this.info.current"
+            :min="0"
             color="var(--darkGreyStey)"
             dark
-            step="10"
+            step="5"
             track-color="var(--yellowStey)"
             v-model="slider"
             :thumb-size="28"
             thumb-label="always"
           ></v-slider>
           <div class="slider-header">
-            <div>{{ this.info.current}} </div>
-            <div>{{ this.info.budget_smu - this.slider }} </div>
+            <div>{{ this.info.current }}</div>
+            <div>{{ this.info.budget_smu - this.slider }}</div>
           </div>
+          <br />
+          <h4>
+            Salário Futuro: USD
+            {{ parseInt(this.info.current) + parseInt(this.slider) }}
+          </h4>
         </v-container>
       </v-card-text>
       <v-card-actions>
@@ -62,9 +67,7 @@
         <v-btn color="blue darken-1" text @click="dialog = false">
           CANCELAR
         </v-btn>
-        <v-btn color="blue darken-1" text @click="updateBudget">
-          SALVAR
-        </v-btn>
+        <v-btn color="blue darken-1" text @click="updateBudget"> SALVAR </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -80,17 +83,15 @@ export default {
     slider: "",
   }),
   methods: {
-    ...mapActions([
-      "action_usedBudget",
-    ]),
+    ...mapActions(["action_usedBudget"]),
     updateBudget() {
       // this.action_usedBudget({used: 10}).then((response) => {
       //   console.log(response)
       //   this.$alert("Aumento realizado com sucesso!");
       // })
       this.$alert("Aumento realizado com sucesso!");
-    }
-  }
+    },
+  },
 };
 </script>
 
