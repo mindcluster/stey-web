@@ -91,7 +91,7 @@ export default {
 
   .card-title {
     color: var(--darkBlueStey);
-    font-size: 4em;
+    font-size: 3em;
   }
 
   .sub-title {

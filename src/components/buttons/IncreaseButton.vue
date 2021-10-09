@@ -70,6 +70,8 @@
   </v-dialog>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "IncreaseButton",
   props: ["info"],
@@ -77,6 +79,19 @@ export default {
     dialog: false,
     slider: "",
   }),
+  methods: {
+    ...mapActions([
+      "action_employeeSalaryInfo",
+      "action_employeeId",
+      "action_overviewUseEmployee",
+      "action_overviewFutureLevelExperience"
+    ]),
+    updateBudget() {
+      this.action_usedBudget({used: this.usedBudget}).then((response) => {
+        console.log(response)
+      })
+    }
+  }
 };
 </script>
 

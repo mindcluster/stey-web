@@ -191,7 +191,7 @@ export default {
       employee_use: [],
       collaborator: JSON.parse(localStorage.getItem("selected_collaborator")),
       collaboratorInfos: "",
-      futureLevel: []
+      futureLevel: [],
     };
   },
   mounted() {
@@ -213,12 +213,9 @@ export default {
 
       this.action_employeeId({ employeeId: this.collaborator.id }).then(
         (response) => {
-          // this.cards.last_promotion = response.last_promotion;
-          // this.cards.company_time = response.company_time;
-          // this.cards.last_vacation = response.last_vacation;
-          this.cards.last_promotion = "-";
-          this.cards.company_time = "-";
-          this.cards.last_vacation = "-";
+          this.cards.last_promotion = this.diffBetweenDates(response.last_promotion);
+          this.cards.company_time = this.diffBetweenDates(response.company_time);
+          this.cards.last_vacation = this.diffBetweenDates(response.last_vacation);
           this.collaborator = response;
         }
       );
