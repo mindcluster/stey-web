@@ -290,7 +290,7 @@ export default {
   .integration-list {
     width: 100%;
     height: auto;
-    align-items: center;
+    align-items: left;
     margin: 3em 0em 3em 0em;
   }
 
