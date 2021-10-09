@@ -106,7 +106,7 @@ export const indexStore = {
         },
         async action_overviewEntryVsExit(context, payload) {
             return await overviewEntryVsExit(payload).then(response => {
-                return response.data;
+                return response.data.slice(30, 50);
             }).catch(err => console.error(err));
         },
         async action_overviewPromotion(context, payload) {
