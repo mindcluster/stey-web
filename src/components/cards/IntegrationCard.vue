@@ -8,9 +8,16 @@
     </div>
     <div class="button">
       <NormalButton
-        @click.native="update"
+        v-if="!integrated"
+        @click.native="integrated = true"
         color="var(--yellowStey)"
         text="Integrar"
+      />
+      <NormalButton
+        v-else
+        @click.native="integrated = false"
+        color="var(--redAlert)"
+        text="Integrado"
       />
     </div>
   </v-card>
@@ -25,7 +32,9 @@ export default {
     NormalButton,
   },
   data() {
-    return {};
+    return {
+      integrated: false
+    };
   },
   methods: {
     getImage(id) {
