@@ -24,7 +24,6 @@
 </template>
 
 <script>
-//      :buffer-value="this.params.total"
 export default {
   name: "BudgetBar",
   props: ["params"],
