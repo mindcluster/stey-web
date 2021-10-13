@@ -71,5 +71,5 @@ export const budgetById = (params) => {
     return axios.get(`${url}/budget/${params.budgetId}`, params);
 };
 export const usedBudget = (params) => {
-    return axios.patch(`${url}/budget/${params.budgetId}`, params);
+    return axios.patch(`${url}/budget/3`, params);
 };

@@ -56,7 +56,7 @@
             <div>{{ this.info.budget_smu - this.slider }}</div>
           </div>
           <br />
-          <h4>
+          <h4 class="salary">
             Salário Futuro: USD
             {{ parseInt(this.info.current) + parseInt(this.slider) }}
           </h4>
@@ -85,12 +85,10 @@ export default {
   methods: {
     ...mapActions(["action_usedBudget"]),
     updateBudget() {
-      // this.action_usedBudget({used: 10}).then((response) => {
-      //   console.log(response)
-      //   this.$alert("Aumento realizado com sucesso!");
-      // })
-      this.$alert("Aumento realizado com sucesso!");
-      this.dialog = false;
+      this.action_usedBudget({ used: this.slider }).then(() => {
+        this.$alert("Aumento realizado com sucesso!");
+        this.dialog = false;
+      });
     },
   },
 };
@@ -117,5 +115,13 @@ export default {
   height: auto;
   justify-content: space-between;
   align-items: center;
+}
+
+h4 {
+  color: var(--greyStey);
+}
+
+.salary {
+  color: var(--darkGreyStey);
 }
 </style>
