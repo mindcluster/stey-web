@@ -126,7 +126,7 @@
           </div>
           <div class="line-chart">
             <v-card
-              v-if="this.employee_use.length === 0 && this.futureLevel.future_exp_level === undefined"
+              v-if="this.futureLevel.length === 0"
               flat
               solo
               class="bar-chart-loading"
@@ -137,8 +137,8 @@
               v-else
               title="Nível de Experiência Futura"
               :data="this.futureLevel"
-              :legend_1="this.collaborator.name"
               :current="this.futureLevel.future_exp_level"
+              :legend_1="this.collaborator.name"
               legend_2="Demais Colaboradores"
             />
           </div>
@@ -232,6 +232,7 @@ export default {
       this.action_overviewFutureLevelExperience({
         employeeId: this.collaborator.id,
       }).then((response) => {
+        console.log(response)
         this.futureLevel = response;
       });
     },
@@ -345,14 +346,12 @@ export default {
   width: auto;
   height: 25em;
   align-items: center;
-  pointer-events: none;
 }
 
 .bar-chart {
   width: auto;
   height: 25em;
   align-items: center;
-  pointer-events: none;
 }
 
 .certificates-list {

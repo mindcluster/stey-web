@@ -1,5 +1,5 @@
 <template>
-  <v-card class="graph-card" flat>
+  <div class="graph-card" flat>
     <h4>{{ title }}</h4>
     <div class="legend-graph">
       <v-icon color="var(--yellowStey)">mdi-square</v-icon>
@@ -11,7 +11,7 @@
       :config="chartConfig"
       :datum="chartData"
     ></D3BarChart>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
         key: "key",
         values: ["value"],
         currentKey: this.current,
+        tooltip: { label: "displayName" },
         color: {
           default: 'var(--darkBlueStey)',
           current: 'var(--yellowStey)'
@@ -45,6 +46,8 @@ export default {
   width: auto;  
   padding: 1em;
   height: 100%;
+  background-color: var(--whiteStey);
+  border-radius: 3px;
 }
 
 @media only screen and (max-width: 1024px) {

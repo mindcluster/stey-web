@@ -89,11 +89,6 @@ export default {
   align-items: center;
 }
 
-.disabled {
-  pointer-events: none;
-  cursor: default;
-}
-
 @media only screen and (max-width: 1024px) {
   .integration-card {
     width: 100%;

@@ -326,7 +326,6 @@ export default {
   width: 48%;
   height: 25em;
   align-items: center;
-  pointer-events: none;
 }
 
 .contributors-list {

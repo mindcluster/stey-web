@@ -1,5 +1,5 @@
 <template>
-  <v-card class="graph-card" flat>
+  <div class="graph-card">
     <div class="header-graph">
       <h4>{{ title }}</h4>
     </div>
@@ -10,7 +10,7 @@
       {{ legend_2 }}
     </div>
     <D3LineChart :config="chart_config" :datum="data"></D3LineChart>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -60,6 +60,8 @@ export default {
   width: auto;
   padding: 1em;
   height: auto;
+  background-color: var(--whiteStey);
+  border-radius: 3px;
 }
 
 .header-graph {

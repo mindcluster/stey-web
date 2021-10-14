@@ -1,11 +1,11 @@
 <template>
-  <v-card class="graph-card" flat>
+  <div class="graph-card" flat>
     <h4>{{ title }}</h4>
     <D3BarChart
       :config="chartConfig"
       :datum="chartData"
     ></D3BarChart>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
       chartConfig: {
         key: this.keyBar,
         values: this.values,
+        tooltip: { label: "displayName" },
         color: { scheme: "schemeTableau10" },
       },
     };
@@ -35,6 +36,8 @@ export default {
   width: auto;  
   padding: 1em;
   height: 100%;
+  background-color: var(--whiteStey);
+  border-radius: 3px;
 }
 
 @media only screen and (max-width: 1024px) {
