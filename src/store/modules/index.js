@@ -5,6 +5,7 @@ import {
     employee,
     employeeId,
     employeeSalaryInfo,
+    employeeUpdate,
     employeePromote,
     employeeRecomendations,
     overview,
@@ -92,6 +93,11 @@ export const indexStore = {
         },
         async action_employeeSalaryInfo(context, payload) {
             return await employeeSalaryInfo(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_employeeUpdate(context, payload) {
+            return await employeeUpdate(payload).then(response => {
                 return response.data;
             }).catch(err => console.error(err));
         },
