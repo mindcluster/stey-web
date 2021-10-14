@@ -1,18 +1,20 @@
 <template>
   <v-card class="scroll-list" flat>
     <h4 class="list-title">Indicados Para Promoção</h4>
-    <div class="content" dense>
-      <div class="item">
-        <v-avatar
-          color="teal"
-          size="56"
-        >
-        90
-        </v-avatar>
-        <h6>Nome</h6>
-        <h6>Sl</h6>
-      </div>
-    </div>
+    <v-list class="content" dense>
+      <v-list-item
+        v-for="(item, i) in params"
+        :key="i"
+        :disabled="true"
+        style="color: var(--blackStey) !important"
+      >
+        <v-list-item-content>
+          <v-icon center x-large :color="returnColor(item.status)">mdi-check-circle</v-icon>
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
+          <v-list-item-title>{{ item.job_role }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
   </v-card>
 </template>
 
@@ -21,7 +23,17 @@ import globalMethods from "../../mixins/globalMethods";
 export default {
   name: "ScrollPromotions",
   mixins: [globalMethods],
-  props: ["number", "text", "color", "params"],
+  props: ["params"],
+  methods: {
+    returnColor(status) {
+      switch (status) {
+        case "Promotion":
+          return "var(--greenAlert)";
+        default:
+          return "var(--orangeAlert)";
+      }
+    },
+  }
 };
 </script>
 

@@ -64,12 +64,9 @@
             {{ this.collaboratorInfos.budget_smu }}
           </p>
           <p>
-            <strong>Promotion Score:</strong>
-            <br />
-            <span class="promotion-score">{{
-              this.collaborator.promotion_score
-            }}</span
-            >/100
+            <span :style="this.collaborator.promotion_score === 'Promotion' ? 'color: var(--greenAlert)' : 'color: var(--orangeAlert)'" class="promotion-score">{{
+              returnStatus(this.collaborator.promotion_score)
+            }}</span>
           </p>
           <div class="buttons">
             <IncreaseButton :info="this.collaboratorInfos" />
@@ -177,7 +174,7 @@ export default {
     ProfileCard,
     NormalButton,
     IncreaseButton,
-    PromotionButton
+    PromotionButton,
   },
   data() {
     return {
@@ -200,7 +197,7 @@ export default {
       "action_employeeSalaryInfo",
       "action_employeeId",
       "action_overviewUseEmployee",
-      "action_overviewFutureLevelExperience"
+      "action_overviewFutureLevelExperience",
     ]),
     getCollaborator() {
       this.action_employeeSalaryInfo({ employeeId: this.collaborator.id }).then(
@@ -211,9 +208,15 @@ export default {
 
       this.action_employeeId({ employeeId: this.collaborator.id }).then(
         (response) => {
-          this.cards.last_promotion = this.diffBetweenDates(response.last_promotion);
-          this.cards.company_time = this.diffBetweenDates(response.company_time);
-          this.cards.last_vacation = this.diffBetweenDates(response.last_vacation);
+          this.cards.last_promotion = this.diffBetweenDates(
+            response.last_promotion
+          );
+          this.cards.company_time = this.diffBetweenDates(
+            response.company_time
+          );
+          this.cards.last_vacation = this.diffBetweenDates(
+            response.last_vacation
+          );
           this.collaborator = response;
         }
       );
@@ -229,6 +232,14 @@ export default {
       }).then((response) => {
         this.futureLevel = response;
       });
+    },
+    returnStatus(score) {
+      switch (score) {
+        case "Promotion":
+          return "Indicado para promoção!";
+        default:
+          return "Não indicado para promoção!";
+      }
     },
   },
 };
@@ -346,7 +357,6 @@ export default {
   width: auto;
   height: 17em;
   align-items: center;
-  pointer-events: none;
 }
 
 .bar-chart-loading {
@@ -359,12 +369,11 @@ export default {
 }
 
 .promotion-score {
-  color: var(--greenAlert);
-  font-size: 4em;
+  font-size: 2em;
 }
 
 h4 {
-  color: var(--greyStey)
+  color: var(--greyStey);
 }
 
 @media only screen and (max-width: 1024px) {

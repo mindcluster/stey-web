@@ -19,30 +19,25 @@
       <v-card-text>
         <div class="collaborator-infos">
           <div>
-            <h4>Colaborador</h4>
-            <h5>{{ this.info.name }}</h5>
-            <br />
             <h4>Cargo Atual</h4>
             <h5>{{ this.info.job_role }}</h5>
             <br />
             <h4>Salário Atual</h4>
             <h5>{{ this.info.salary }}</h5>
-            <br />
           </div>
           <div>
-            <h4>SMU</h4>
-            <h5>
-              {{ this.info.smu === null ? "Não informado" : this.info.smu }}
-            </h5>
-            <br />
+            <v-icon color="green" x-large>
+              mdi-arrow-right
+            </v-icon>
+          </div>
+          <div>
             <h4>Cargo Futuro</h4>
-            <h5>{{ this.info.job_role }}</h5>
+            <h5>{{ this.info.future_job_role }}</h5>
             <br />
             <h4>Salário Futuro</h4>
-            <h5>{{ this.info.job_role }}</h5>
+            <h5>{{ this.info.salary * 1.3 }}</h5>
           </div>
         </div>
-
         <h3>Deseja promover o colaborador?</h3>
       </v-card-text>
       <v-card-actions>
@@ -66,17 +61,20 @@ export default {
   props: ["info"],
   data: () => ({
     dialog: false,
-    slider: "",
   }),
   methods: {
-    ...mapActions([]),
+    ...mapActions([
+      "action_employeePromote"
+    ]),
     updateRank() {
-      // this.action_usedBudget({used: 10}).then((response) => {
-      //   console.log(response)
-      //   this.$alert("Aumento realizado com sucesso!");
-      // })
-      this.$alert("Colaborador promovido com sucesso!");
-      this.dialog = false;
+      console.log(this.info.id)
+      this.action_employeePromote({employeeId: this.info.id}).then((response) => {
+        console.log(response)
+        this.$alert("Colaborador promovido com sucesso!");
+      }).catch(() => {
+        this.$alert("Houve um erro durante a promoção. Tente novamente.");
+      })
+      this.dialog = false
     },
   },
 };

@@ -77,7 +77,8 @@
         <BudgetBar v-else :params="this.currentBudget" />
       </div>
       <div class="start">
-        <ScrollPromotions :params="this.contributors" />
+        <DefaultLoading v-if="this.recommendations.length === 0" />
+        <ScrollPromotions v-else :params="this.recommendations" />
       </div>
       <div class="middle">
         <v-card
@@ -194,6 +195,7 @@ export default {
       valuesTurnover: ["turnover"],
       turnover: [],
       currentBudget: null,
+      recommendations: []
     };
   },
   mounted() {
@@ -207,6 +209,7 @@ export default {
       "action_overviewPromotion",
       "action_overviewTurnover",
       "action_currentBudget",
+      "action_employeeRecomendations"
     ]),
     getInfos() {
       this.action_overview().then((response) => {
@@ -235,6 +238,10 @@ export default {
 
       this.action_currentBudget().then((response) => {
         this.currentBudget = response;
+      });
+
+      this.action_employeeRecomendations().then((response) => {
+        this.recommendations = response;
       });
     },
   },
@@ -274,7 +281,7 @@ export default {
   flex-direction: row;
   width: 100%;
   height: 12em;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
