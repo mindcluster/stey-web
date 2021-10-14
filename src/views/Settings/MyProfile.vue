@@ -5,7 +5,6 @@
       <div class="page-title">
         <h4>Configurações</h4>
       </div>
-        
       <div class="middle">
         <div class="first-column">
           <EditProfileCard :params="this.collaborator" style="margin-bottom: 2em"/>
@@ -22,7 +21,11 @@
             <EditProfile :params="this.collaborator"/>
           </div>
 
+          <div v-if="this.integrations.length === 0">
+            <DefaultLoading />
+          </div>
           <div
+            v-else
             class="integration-list"
             v-for="integration in integrations"
             :key="integration.id"
@@ -46,6 +49,7 @@ import EditProfile from "../../components/cards/EditProfile";
 import Footer from "../../components/bars/Footer";
 import EditProfileCard from "../../components/cards/EditProfileCard";
 import IntegrationCard from "../../components/cards/IntegrationCard";
+import DefaultLoading from "../../components/loading/DefaultLoading"
 import { mapActions } from "vuex";
 
 export default {
@@ -57,6 +61,7 @@ export default {
     Footer,
     EditProfileCard,
     IntegrationCard,
+    DefaultLoading
   },
   data() {
     return {
@@ -71,7 +76,7 @@ export default {
   methods: {
     ...mapActions([
       "action_integrationMe",
-      "action_employeeId"
+      "action_employeeId",
     ]),
     getProfileInfos() {
       this.action_integrationMe().then((response) => {

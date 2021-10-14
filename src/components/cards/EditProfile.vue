@@ -42,7 +42,7 @@ import NormalButton from "../buttons/NormalButton";
 import TextInput from "../inputs/TextInput";
 import EmailInput from "../inputs/EmailInput";
 import PasswordInput from "../inputs/PasswordInput";
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "EditProfile",
@@ -57,9 +57,8 @@ export default {
   data() {
     return {
       employee: {
-        email: "",
-        name: "",
-        phone: "",
+        email: this.params.email,
+        name: this.params.name,
       },
       password: localStorage.getItem("password"),
       password2: localStorage.getItem("password"),
@@ -69,8 +68,20 @@ export default {
     
   },
   methods: {
+    ...mapActions([
+      "action_employeeUpdate"
+    ]),
     update() {
-      this.$alert("As informações foram atualizadas com sucesso");
+      this.action_employeeUpdate({
+        employeeId: localStorage.getItem("employee_id"),
+        email: this.employee.email,
+        name: this.employee.name,
+      }).then(() => {
+        this.$alert("As informações foram atualizadas com sucesso");
+        this.$router.go();
+      }).catch(() => {
+        this.$alert("Houve um erro durante a atualização. Tente novamente");
+      })
     }
   },
 };
