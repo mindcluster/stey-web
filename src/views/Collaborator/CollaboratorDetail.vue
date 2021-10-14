@@ -95,17 +95,17 @@
               :current="this.employee_use.employee_use"
             />
           </div>
-          <div v-if="this.collaborator.certificates.length === 0" class="certificates-list">
-            <ScrollCertificates :params="this.collaborator.certificates" />
-          </div>
           <v-card
-            v-else
+            v-if="this.collaborator.certificates.length === 0"
             flat
             solo
             class="certificates-list-loading"
           >
             <DefaultLoading />
           </v-card>
+          <div v-else class="certificates-list">
+            <ScrollCertificates :params="this.collaborator.certificates" />
+          </div>
         </div>
         <div class="third-column">
           <div class="cards">
