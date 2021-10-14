@@ -122,7 +122,7 @@ export const indexStore = {
         },
         async action_overviewEntryVsExit(context, payload) {
             return await overviewEntryVsExit(payload).then(response => {
-                return response.data.slice(30, 50);
+                return response.data.sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)).slice(428, 458);
             }).catch(err => console.error(err));
         },
         async action_overviewPromotion(context, payload) {
