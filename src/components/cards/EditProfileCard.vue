@@ -1,7 +1,7 @@
 <template>
   <div class="profile-card">
-    <v-avatar size="10em">
-      <img alt="Colaborador" src="../../assets/images/template.jpeg" />
+    <v-avatar size="10em" style="border: solid 4px var(--yellowStey)">
+      <img alt="Colaborador" :src="params.image" />
     </v-avatar>
     <div class="infos">
       <div>
