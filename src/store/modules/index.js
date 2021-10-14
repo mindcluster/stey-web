@@ -108,7 +108,7 @@ export const indexStore = {
         },
         async action_employeeRecomendations(context, payload) {
             return await employeeRecomendations(payload).then(response => {
-                return response.data.data.data.slice(1290, 1310);
+                return response.data.data;
             }).catch(err => console.error(err));
         },
 
