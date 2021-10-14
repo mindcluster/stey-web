@@ -9,7 +9,7 @@
         style="color: var(--blackStey) !important"
       >
         <v-list-item-content>
-          <v-icon center x-large :color="returnColor(item.status)">mdi-check-circle</v-icon>
+          <v-icon x-large :color="returnColor(item.status)">mdi-check-circle</v-icon>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
           <v-list-item-title>{{ item.job_role }}</v-list-item-title>
         </v-list-item-content>
@@ -66,6 +66,9 @@ export default {
   text-align: center;
 }
 
+v-list-item-content {
+  text-align: center;
+}
 @media only screen and (max-width: 1024px) {
   .scroll-list {
     font-family: "Metropolis Regular";
