@@ -22,7 +22,9 @@ export default {
       chartConfig: {
         key: this.keyBar,
         values: this.values,
-        tooltip: { label: "displayName" },
+        tooltip: { 
+          label: false
+        },
         color: { scheme: "schemeTableau10" },
       },
     };

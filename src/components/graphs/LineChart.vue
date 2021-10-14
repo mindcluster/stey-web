@@ -42,7 +42,8 @@ export default {
           hoverSize: 6,
         },
         tooltip: {
-          labels: ["Entradas", "Saídas"],
+          labels: false,
+          // labels: ["Entradas", "Saídas"],
         },
         transition: {
           duration: 350,

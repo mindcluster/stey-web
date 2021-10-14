@@ -232,7 +232,6 @@ export default {
       this.action_overviewFutureLevelExperience({
         employeeId: this.collaborator.id,
       }).then((response) => {
-        console.log(response)
         this.futureLevel = response;
       });
     },
