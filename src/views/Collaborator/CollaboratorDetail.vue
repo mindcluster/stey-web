@@ -41,7 +41,7 @@
             <h5>$ {{ this.collaborator.salary }}</h5>
             <br />
             <h4>Salário Médio Mercado</h4>
-            <h5>$ {{ this.collaboratorInfos.market }}</h5>
+            <h5>$ {{ parseInt(this.collaboratorInfos.market).toFixed(0) }}</h5>
             <br />
             <h4>Dependentes</h4>
             <h5>{{ this.collaborator.dependents }}</h5>
