@@ -18,7 +18,7 @@
         color="var(--yellowStey)"
         height="20"
         background-color="var(--greyStey)"
-        value="50"
+        :value="params.role_satisfaction"
       >
       </v-progress-linear>
     </div>

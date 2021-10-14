@@ -1,6 +1,6 @@
 <template>
   <v-card class="scroll-list" flat>
-    <h4 class="list-title">Indicados Para Promoção</h4>
+    <h4 class="list-title">Indicador De Promoção</h4>
     <v-list class="content" dense>
       <v-list-item
         v-for="(item, i) in params"
