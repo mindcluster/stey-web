@@ -78,7 +78,6 @@ export default {
         .catch(() => {
           this.$alert("E-mail e/ou senha incorretos");
         });
-      this.$router.push("home");
     },
     forgotPassword() {
       this.$router.push("forgot_password");
