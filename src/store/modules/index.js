@@ -83,7 +83,7 @@ export const indexStore = {
         */
         async action_employee(context, payload) {
             return await employee(payload).then(response => {
-                return response.data.data.slice(1, 30);
+                return response.data.data.slice(1, 20);
             }).catch(err => console.error(err));
         },
         async action_employeeId(context, payload) {
