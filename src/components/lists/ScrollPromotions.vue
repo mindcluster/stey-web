@@ -9,7 +9,9 @@
         style="color: var(--blackStey) !important"
       >
         <v-list-item-content>
-          <v-icon x-large :color="returnColor(item.status)">mdi-check-circle</v-icon>
+          <v-icon x-large :color="returnColor(item.status)">
+            {{ returnIcon(item.status) }}  
+          </v-icon>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
           <v-list-item-title>{{ item.job_role }}</v-list-item-title>
         </v-list-item-content>
@@ -31,6 +33,14 @@ export default {
           return "var(--greenAlert)";
         default:
           return "var(--orangeAlert)";
+      }
+    },
+    returnIcon(status) {
+      switch (status) {
+        case "Promotion":
+          return "mdi-check-circle";
+        default:
+          return "mdi-close-circle";
       }
     },
   }

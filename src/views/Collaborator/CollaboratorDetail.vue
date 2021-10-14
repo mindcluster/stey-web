@@ -55,7 +55,7 @@
             <NormalButton
               @click.native="validate"
               color="var(--greyStey)"
-              text="Colaborador"
+              text="E-mail"
               :email="this.collaborator.email"
             />
           </div>
@@ -64,6 +64,8 @@
             {{ this.collaboratorInfos.budget_smu }}
           </p>
           <p>
+            <strong>Status:</strong>
+            <br/>
             <span :style="this.collaborator.promotion_score === 'Promotion' ? 'color: var(--greenAlert)' : 'color: var(--orangeAlert)'" class="promotion-score">{{
               returnStatus(this.collaborator.promotion_score)
             }}</span>
@@ -76,7 +78,7 @@
         <div class="second-column">
           <div class="bar-chart">
             <v-card
-              v-if="this.employee_use.length === 0"
+              v-if="this.employee_use.length === 0 &&  this.employee_use.employee_use === undefined"
               flat
               solo
               class="bar-chart-loading"
@@ -124,7 +126,7 @@
           </div>
           <div class="line-chart">
             <v-card
-              v-if="this.employee_use.length === 0"
+              v-if="this.employee_use.length === 0 && this.futureLevel.future_exp_level === undefined"
               flat
               solo
               class="bar-chart-loading"
@@ -189,7 +191,7 @@ export default {
       futureLevel: [],
     };
   },
-  mounted() {
+  async mounted() {
     this.getCollaborator();
   },
   methods: {
@@ -211,7 +213,7 @@ export default {
           this.cards.last_promotion = this.diffBetweenDates(
             response.last_promotion
           );
-          this.cards.company_time = this.diffBetweenDates(
+          this.cards.company_time = this.diffBetweenDatesYears(
             response.company_time
           );
           this.cards.last_vacation = this.diffBetweenDates(

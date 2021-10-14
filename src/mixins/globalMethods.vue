@@ -34,6 +34,26 @@ export default {
         return '-'
       }
     },
+    diffBetweenDatesYears(pastDate) {
+      const currentDate = moment();
+
+      const now = currentDate.format("DD/MM/YYYY");
+      const past = this.formatDate(pastDate);
+
+      var diff = moment(now,"DD/MM/YYYY").diff(moment(past,"DD/MM/YYYY"));
+
+      var years = moment.duration(diff).asYears().toFixed(1);
+
+      var splited = years.split(".");
+
+      if(years > 0 && splited[1] > 0){
+        return splited[0] + 'a ' + splited[1] + 'm';
+      } else if(years > 0) {
+        return years + 'a'
+      } else {
+        return '-'
+      }
+    },
   },
 };
 </script>

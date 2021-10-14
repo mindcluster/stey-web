@@ -32,7 +32,7 @@ export default {
           outputFormat: "%Y-%m-%d",
         },
         axis: {
-          yTicks: 5,
+          yTicks: 3,
         },
         color: {
           scheme: "schemeCategory10",
@@ -42,7 +42,7 @@ export default {
           hoverSize: 6,
         },
         tooltip: {
-          labels: false,
+          labels: ["Entradas", "Saídas"],
         },
         transition: {
           duration: 350,

@@ -93,8 +93,8 @@
           <LineChart
             title="Entradas X Saídas"
             :data="this.entersVsExits"
-            legend_1="Entradas"
-            legend_2="Saídas"
+            legend_1="Saídas"
+            legend_2="Entradas"
             :values="this.values"
           />
         </div>
@@ -320,7 +320,6 @@ export default {
   width: 50%;
   height: 25em;
   align-items: center;
-  pointer-events: none;
 }
 
 .bar-chart {
@@ -521,6 +520,7 @@ export default {
     width: 33em;
     height: auto;
     align-items: center;
+    z-index: 1
   }
 
   .bar-chart {
