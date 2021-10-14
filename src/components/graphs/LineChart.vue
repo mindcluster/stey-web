@@ -4,10 +4,10 @@
       <h4>{{ title }}</h4>
     </div>
     <div class="legend-graph">
-      <v-icon color="#f97f0f">mdi-square</v-icon>
-      {{ legend_1 }}
       <v-icon color="#2077b4">mdi-square</v-icon>
       {{ legend_2 }}
+      <v-icon color="#f97f0f">mdi-square</v-icon>
+      {{ legend_1 }}
     </div>
     <D3LineChart :config="chart_config" :datum="data"></D3LineChart>
   </div>
