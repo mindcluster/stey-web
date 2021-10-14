@@ -57,7 +57,7 @@
           </div>
           <br />
           <h4 class="salary">
-            Salário Futuro: USD
+            Salário Futuro: $
             {{ parseInt(this.info.current) + parseInt(this.slider) }}
           </h4>
         </v-container>

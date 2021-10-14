@@ -9,15 +9,15 @@
       :value="this.params.used / 10"
     >
       <template v-slot:default="{ value }">
-        <strong>USD {{ value * 10 }}</strong>
+        <strong>$ {{ value * 10 }}</strong>
       </template>
     </v-progress-linear>
     <div class="item">
       <div class="init-item">
-        0 USD
+        $ 0
       </div>
       <div class="end-item">
-        USD {{this.params.total}}
+        $ {{this.params.total}}
       </div>
     </div>
   </v-card>
