@@ -33,7 +33,12 @@ export const employeeId = (params) => {
 export const employeeSalaryInfo = (params) => {
     return axios.get(`${url}/employee/${params.employeeId}/info-salary`, params);
 };
-
+export const employeePromote = (params) => {
+    return axios.patch(`${url}/employee/${params.employeeId}/promote`, params);
+};
+export const employeeRecomendations = (params) => {
+    return axios.get(`${url}/employee/recommendations`, params);
+};
 
 /*
     Overview

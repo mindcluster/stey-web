@@ -5,6 +5,8 @@ import {
     employee,
     employeeId,
     employeeSalaryInfo,
+    employeePromote,
+    employeeRecomendations,
     overview,
     overviewEntryVsExit,
     overviewPromotion,
@@ -93,8 +95,16 @@ export const indexStore = {
                 return response.data;
             }).catch(err => console.error(err));
         },
-
-
+        async action_employeePromote(context, payload) {
+            return await employeePromote(payload).then(response => {
+                return response.data;
+            }).catch(err => console.error(err));
+        },
+        async action_employeeRecomendations(context, payload) {
+            return await employeeRecomendations(payload).then(response => {
+                return response.data.data.data.slice(1290, 1310);
+            }).catch(err => console.error(err));
+        },
 
         /*
             Overview
