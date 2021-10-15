@@ -8,6 +8,7 @@ import {
     employeeUpdate,
     employeePromote,
     employeeRecomendations,
+    employeeUpdateSalary,
     overview,
     overviewEntryVsExit,
     overviewPromotion,
@@ -108,6 +109,11 @@ export const indexStore = {
         },
         async action_employeeRecomendations(context, payload) {
             return await employeeRecomendations(payload).then(response => {
+                return response.data.data;
+            }).catch(err => console.error(err));
+        },
+        async action_employeeUpdateSalary(context, payload) {
+            return await employeeUpdateSalary(payload).then(response => {
                 return response.data.data;
             }).catch(err => console.error(err));
         },

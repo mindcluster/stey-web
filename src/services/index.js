@@ -42,6 +42,10 @@ export const employeePromote = (params) => {
 export const employeeRecomendations = (params) => {
     return axios.get(`${url}/employee/recommendations`, params);
 };
+export const employeeUpdateSalary = (params) => {
+    return axios.post(`${url}/employee/${params.employeeId}/salary-increase`, params);
+};
+
 
 /*
     Overview
