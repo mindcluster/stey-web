@@ -23,7 +23,7 @@
             <h5>{{ this.info.job_role }}</h5>
             <br />
             <h4>Salário Atual</h4>
-            <h5>{{ this.info.salary }}</h5>
+            <h5>$ {{ (this.info.salary).toFixed(0) }}</h5>
           </div>
           <div>
             <v-icon color="green" x-large>
@@ -35,7 +35,7 @@
             <h5>{{ this.info.future_job_role }}</h5>
             <br />
             <h4>Salário Futuro</h4>
-            <h5>{{ this.info.salary * 1.3 }}</h5>
+            <h5>$ {{ (this.info.salary * 1.3).toFixed(0) }}</h5>
           </div>
         </div>
         <h3>Deseja promover o colaborador?</h3>
