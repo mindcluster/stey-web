@@ -89,6 +89,8 @@ export default {
         this.dialog = false;
         this.$router.go()
         this.$alert("Aumento realizado com sucesso!");
+      }).catch(() => {
+        this.$alert("Houve um erro durante o aumento. Tente novamente.");
       });
     },
   },

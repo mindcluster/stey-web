@@ -68,8 +68,9 @@ export default {
     ]),
     updateRank() {
       console.log(this.info.id)
-      this.action_employeePromote({employeeId: this.info.id}).then((response) => {
-        console.log(response)
+      this.action_employeePromote({employeeId: this.info.id}).then(() => {
+        this.dialog = false;
+        this.$router.go()
         this.$alert("Colaborador promovido com sucesso!");
       }).catch(() => {
         this.$alert("Houve um erro durante a promoção. Tente novamente.");
