@@ -23,7 +23,7 @@
             <h5>{{ this.info.job_role }}</h5>
             <br />
             <h4>Salário Atual</h4>
-            <h5>$ {{ (this.info.salary).toFixed(0) }}</h5>
+            <h5>$ {{ this.info.salary }}</h5>
           </div>
           <div>
             <v-icon color="green" x-large>
@@ -43,7 +43,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="var(--redAlert)" text @click="dialog = false">
-          NÃo
+          NÃO
         </v-btn>
         <v-btn color="var(--greenAlert)" text @click="updateRank">
           SIM

@@ -49,7 +49,7 @@ export default {
       if(years > 0 && splited[1] > 0){
         return splited[0] + 'a ' + splited[1] + 'm';
       } else if(years > 0) {
-        return years + 'a'
+        return splited[0] + 'a'
       } else {
         return '-'
       }
