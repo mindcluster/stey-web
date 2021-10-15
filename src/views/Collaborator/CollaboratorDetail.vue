@@ -71,7 +71,7 @@
             }}</span>
           </p>
           <div class="buttons">
-            <IncreaseButton :info="this.collaboratorInfos" />
+            <IncreaseButton :info="this.collaboratorInfos" :id="this.collaborator"/>
             <PromotionButton :info="this.collaborator" />
           </div>
         </div>
@@ -95,7 +95,7 @@
             />
           </div>
           <v-card
-            v-if="this.collaborator.certificates.length === 0"
+            v-if="this.collaborator.certificates.length < 0"
             flat
             solo
             class="certificates-list-loading"

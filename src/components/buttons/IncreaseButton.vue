@@ -77,17 +77,18 @@ import { mapActions } from "vuex";
 
 export default {
   name: "IncreaseButton",
-  props: ["info"],
+  props: ["info", "id"],
   data: () => ({
     dialog: false,
     slider: "",
   }),
   methods: {
-    ...mapActions(["action_usedBudget"]),
+    ...mapActions(["action_employeeUpdateSalary"]),
     updateBudget() {
-      this.action_usedBudget({ used: this.slider }).then(() => {
-        this.$alert("Aumento realizado com sucesso!");
+      this.action_employeeUpdateSalary({ salary: parseInt(this.slider), employeeId: this.id.id}).then(() => {
         this.dialog = false;
+        this.$router.go()
+        this.$alert("Aumento realizado com sucesso!");
       });
     },
   },

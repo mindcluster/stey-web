@@ -6,7 +6,7 @@
       color="var(--greenStey)"
       height="20"
       background-color="var(--lightGreyStey)"
-      :value="this.params.used / 10"
+      :value="parseInt(this.params.used) / 10"
     >
       <template v-slot:default="{ value }">
         <strong>$ {{ value * 10 }}</strong>
