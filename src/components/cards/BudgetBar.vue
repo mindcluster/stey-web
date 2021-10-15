@@ -6,10 +6,10 @@
       color="var(--greenStey)"
       height="20"
       background-color="var(--lightGreyStey)"
-      :value="parseInt(this.params.used) / 10"
+      :value="(this.params.used / this.params.total) * 100"
     >
       <template v-slot:default="{ value }">
-        <strong>$ {{ value * 10 }}</strong>
+        <strong>$ {{ ((value * params.total) / 100).toFixed(0) }}</strong>
       </template>
     </v-progress-linear>
     <div class="item">
